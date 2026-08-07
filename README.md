@@ -440,7 +440,9 @@ system design, technical documentation.
 - [`docs/interview_guide.md`](docs/interview_guide.md) -- full Q&A on every design decision
 - [`docs/interview_notes.md`](docs/interview_notes.md) -- condensed pre-interview cheat sheet
 - [`docs/demo_script.md`](docs/demo_script.md) -- a guided 3-5 minute walkthrough
+- [`docs/recruiter_walkthrough.md`](docs/recruiter_walkthrough.md) -- a fixed 60-second viewing sequence
 - [`docs/resume_bullets.md`](docs/resume_bullets.md) / [`docs/linkedin_project.md`](docs/linkedin_project.md) -- role-targeted framing
+- [`docs/screenshots/README.md`](docs/screenshots/README.md) -- exact capture checklist (screenshots not yet captured)
 
 **Contributing**
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) -- environment setup and conventions
