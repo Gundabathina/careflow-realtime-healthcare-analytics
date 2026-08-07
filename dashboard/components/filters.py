@@ -10,7 +10,12 @@ from __future__ import annotations
 
 import streamlit as st
 
+from careflow.logging_config import get_logger
+from dashboard.components.layout import render_error_state
+from dashboard.database import DashboardQueryError
 from dashboard.queries import Filters, get_filter_options
+
+logger = get_logger(__name__)
 
 _DEFAULTS: dict[str, object] = {
     "filter_start_date": None,
@@ -32,7 +37,18 @@ def _reset_filters() -> None:
 
 
 def render_sidebar_filters() -> Filters:
-    options = get_filter_options()
+    try:
+        options = get_filter_options()
+    except DashboardQueryError as exc:
+        # Never surface a raw exception/traceback to a public user (this
+        # call happens before any page's own try/except DashboardQueryError
+        # block, so it wasn't covered by that pattern). The message is
+        # already sanitized (never a credential/DSN); log it server-side
+        # since catching it here means Streamlit's own uncaught-exception
+        # logging never sees it.
+        logger.error("Sidebar filter options unavailable: %s", exc)
+        render_error_state("Unable to load dashboard data. Please try again shortly.")
+        st.stop()
 
     with st.sidebar:
         st.markdown("### Filters")

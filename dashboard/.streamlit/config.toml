@@ -21,3 +21,9 @@ gatherUsageStats = false
 
 [client]
 toolbarMode = "minimal"
+# Never render a Python traceback/exception detail to end users (e.g. if
+# a query raises before a page's own try/except DashboardQueryError
+# block runs, such as the sidebar filter-options query). The exception
+# is still logged server-side by Streamlit/the logging module -- this
+# only controls what reaches the browser.
+showErrorDetails = "none"
