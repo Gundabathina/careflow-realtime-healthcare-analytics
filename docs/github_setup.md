@@ -10,7 +10,7 @@ what's tracked-vs-not before that first commit).
 > End-to-end healthcare analytics platform on synthetic Synthea data --
 > Bronze/Silver/Gold pipeline, dimensional PostgreSQL warehouse, dbt,
 > Apache Airflow orchestration, Streamlit dashboard, and a prepared
-> Power BI implementation. 732 automated tests.
+> Power BI implementation. 804 automated tests.
 
 ## About section
 

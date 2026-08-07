@@ -37,7 +37,7 @@ def render_sidebar_filters() -> Filters:
     with st.sidebar:
         st.markdown("### Filters")
 
-        st.button("Reset Filters", on_click=_reset_filters, use_container_width=True)
+        st.button("Reset Filters", on_click=_reset_filters, width="stretch")
 
         for key, default in _DEFAULTS.items():
             st.session_state.setdefault(key, default)

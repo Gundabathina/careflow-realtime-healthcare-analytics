@@ -83,28 +83,28 @@ try:
     with col1:
         render_section_title("Age-Group Distribution")
         fig = horizontal_bar_chart(age_dist, "age_group", "patient_count", "Patients by Age Group", "Patients", "Age Group")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Gender Distribution")
         fig = horizontal_bar_chart(gender_dist, "gender", "patient_count", "Patients by Gender", "Patients", "Gender")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Race Distribution")
         fig = horizontal_bar_chart(race_dist, "race", "patient_count", "Patients by Race", "Patients", "Race")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Ethnicity Distribution")
         fig = horizontal_bar_chart(ethnicity_dist, "ethnicity", "patient_count", "Patients by Ethnicity", "Patients", "Ethnicity")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     render_section_title("Geographic Distribution", "State/county only -- never exact address, latitude, or longitude.")
     if geo_dist is not None and not geo_dist.empty:
         geo_dist_display = geo_dist.copy()
         geo_dist_display["location"] = geo_dist_display["state"].fillna("Unknown") + " / " + geo_dist_display["county"].fillna("Unknown")
         fig = horizontal_bar_chart(geo_dist_display, "location", "patient_count", "Top 20 State/County Combinations", "Patients", "State / County")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     else:
         render_empty_state()
 
@@ -112,15 +112,15 @@ try:
     with col1:
         render_section_title("Encounters per Patient")
         fig = distribution_histogram(encounters_dist, "distinct_encounter_count", "Distinct Encounters per Patient", "Encounters")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Conditions per Patient")
         fig = distribution_histogram(conditions_dist, "condition_count", "Conditions per Patient", "Conditions")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col3:
         render_section_title("Medications per Patient")
         fig = distribution_histogram(medications_dist, "medication_count", "Medications per Patient", "Medications")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
 except DashboardQueryError as exc:
     render_error_state(str(exc))

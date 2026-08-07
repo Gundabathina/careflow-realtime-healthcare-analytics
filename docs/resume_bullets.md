@@ -42,7 +42,7 @@ applying for, or blend individual bullets.
   transformation, dbt model tests, and independent dashboard-layer
   column checks) across a dimensional warehouse and its downstream
   reporting layer.
-- Achieved 732 passing automated tests across 22 test files spanning
+- Achieved 804 passing automated tests across 22 test files spanning
   ingestion, transformation, warehouse loading, dbt, orchestration, and
   dashboard security -- with isolated, version-pinned environments for
   three components (dbt, Airflow, Streamlit) whose dependency

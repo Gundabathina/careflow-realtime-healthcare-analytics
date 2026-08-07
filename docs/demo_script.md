@@ -108,7 +108,7 @@ not a sanitized version of it."*
 **Show:** `tests/` directory listing (22 files), or run
 `PYTHONPATH=src python3 -m pytest -q tests/` live in a terminal.
 
-**Say:** *"732 automated tests, covering every layer -- ingestion,
+**Say:** *"804 automated tests, covering every layer -- ingestion,
 transformation, the warehouse loader, dbt, Airflow, and dashboard
 security. Nothing in this walkthrough is untested."*
 

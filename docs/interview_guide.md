@@ -40,7 +40,7 @@ this repository actually does it; nothing here overstates the project.
 > pages, and I also fully specified a Power BI implementation -- data
 > model, DAX measures, page-by-page build guide -- since Power BI
 > Desktop wasn't available in my dev environment and I didn't want to
-> fake a `.pbix` file. The whole thing has 732 automated tests."
+> fake a `.pbix` file. The whole thing has 804 automated tests."
 
 ## 3. Architecture explanation
 

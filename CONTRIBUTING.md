@@ -23,6 +23,14 @@ and how to extend each layer safely.
 Copy `.env.example` to `.env` and set real values for anything beyond
 local development. Never commit `.env`.
 
+## Opening issues and pull requests
+
+Use the provided templates -- GitHub applies them automatically:
+[bug report](.github/ISSUE_TEMPLATE/bug_report.md),
+[feature request](.github/ISSUE_TEMPLATE/feature_request.md), and the
+[pull request template](.github/PULL_REQUEST_TEMPLATE.md) (test output
+and the security/PII checklist are required there, not optional).
+
 ## Branch naming
 
 `<type>/<short-description>`, e.g. `feature/provider-utilization-page`,

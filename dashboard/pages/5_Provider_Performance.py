@@ -73,36 +73,36 @@ try:
     with col1:
         render_section_title("Top Providers by Encounter Volume")
         fig = horizontal_bar_chart(top_by_encounters, "provider_name", "total_encounters", "Top 10 Providers by Encounter Volume", "Encounters", "Provider")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Top Providers by Patient Volume")
         fig = horizontal_bar_chart(top_by_patients, "provider_name", "total_unique_patients", "Top 10 Providers by Unique Patients", "Patients", "Provider")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Provider Utilization Over Time")
         fig = line_chart(utilization_trend, "year_month", "total_encounters", "Encounter Volume by Month", "Month", "Encounters")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Provider Speciality Distribution")
         fig = horizontal_bar_chart(speciality_dist, "speciality", "provider_count", "Providers by Speciality", "Providers", "Speciality", top_n=15)
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Average Duration by Provider")
         fig = horizontal_bar_chart(duration_by_provider, "provider_name", "avg_duration_minutes", "Top 15 by Average Encounter Duration", "Minutes", "Provider")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Total Claim Cost by Provider")
         fig = horizontal_bar_chart(cost_by_provider, "provider_name", "total_claim_cost", "Top 15 Providers by Claim Cost", "USD", "Provider", value_is_currency=True)
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     render_section_title("Provider Ranking", "Sortable by any column -- click a header to re-rank.")
     ranking = get_provider_ranking_table(filters)
     if ranking is not None and not ranking.empty:
-        st.dataframe(ranking, use_container_width=True, hide_index=True)
+        st.dataframe(ranking, width="stretch", hide_index=True)
         st.download_button(
             "Download provider utilization (CSV)", ranking.to_csv(index=False).encode("utf-8"),
             "provider_utilization.csv", "text/csv",

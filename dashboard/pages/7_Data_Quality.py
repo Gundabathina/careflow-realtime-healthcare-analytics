@@ -85,9 +85,9 @@ for stage in stages:
 if rows:
     chart_df = pd.DataFrame(rows).melt(id_vars="stage", var_name="status", value_name="count")
     fig = horizontal_bar_chart(chart_df[chart_df["status"] == "passed"], "stage", "count", "Checks Passed by Stage", "Checks", "Stage")
-    st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+    st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     with st.expander("Full stage detail"):
-        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
 else:
     render_empty_state("No pipeline reports found yet.")

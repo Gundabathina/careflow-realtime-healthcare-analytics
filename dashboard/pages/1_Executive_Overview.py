@@ -87,17 +87,17 @@ try:
     with col1:
         render_section_title("Encounters Over Time")
         fig = line_chart(encounter_trend, "year_month", "total_encounters", "Total Encounters by Month", "Month", "Encounters")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Encounter Class Distribution")
         fig = horizontal_bar_chart(class_dist, "encounter_class", "encounter_count", "Encounters by Class", "Encounters", "Encounter Class")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Monthly Readmission Trend")
         fig = line_chart(readmit_trend, "year_month", "readmission_rate_30_day", "30-Day Readmission Rate by Month", "Month", "Readmission Rate", y_is_percent=False)
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Monthly Healthcare Cost Trend")
         fig = multi_line_chart(
@@ -105,21 +105,21 @@ try:
             {"total_claim_cost": "Total Claim Cost", "total_payer_coverage": "Payer Coverage"},
             "Claim Cost & Payer Coverage by Month", "Month", "USD",
         )
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Top Organizations by Encounters")
         fig = horizontal_bar_chart(top_orgs, "organization_name", "encounter_count", "Top 10 Organizations", "Encounters", "Organization")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
     with col2:
         render_section_title("Patient Age-Group Distribution")
         fig = horizontal_bar_chart(age_dist, "age_group", "patient_count", "Patients by Age Group", "Patients", "Age Group")
-        st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     render_section_title("Payer Coverage Breakdown")
     fig = donut_chart(payer_breakdown, "payer_name", "total_payer_coverage", "Total Payer Coverage by Payer")
-    st.plotly_chart(fig, use_container_width=True) if fig else render_empty_state()
+    st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
 
     # -- Data-driven executive insights (only shown when a comparison exists) --
     insights = []
