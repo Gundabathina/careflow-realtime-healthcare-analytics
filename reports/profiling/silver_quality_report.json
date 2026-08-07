@@ -1,0 +1,2075 @@
+{
+  "generated_at_utc": "2026-08-07T03:43:26Z",
+  "transformation_version": "1.0.0",
+  "run_id": "silver_20260807T034326Z_003e1b36",
+  "summary": {
+    "total_checks": 229,
+    "passed": 226,
+    "warnings": 2,
+    "failed": 1,
+    "skipped": 0
+  },
+  "checks": [
+    {
+      "check_id": "target_columns_exist:allergies",
+      "dataset": "allergies",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 15,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:allergies:patient_id",
+      "dataset": "allergies",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:allergies:encounter_id",
+      "dataset": "allergies",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:allergies:start",
+      "dataset": "allergies",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:allergies:stop",
+      "dataset": "allergies",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:allergies:patient_id",
+      "dataset": "allergies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:allergies:encounter_id",
+      "dataset": "allergies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:allergies:code",
+      "dataset": "allergies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:allergies",
+      "dataset": "allergies",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=79 duplicates_removed=0 target=79",
+      "records_evaluated": 79,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:careplans",
+      "dataset": "careplans",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 9,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:careplans",
+      "dataset": "careplans",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:careplans",
+      "dataset": "careplans",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:careplans:patient_id",
+      "dataset": "careplans",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:careplans:encounter_id",
+      "dataset": "careplans",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:careplans:start",
+      "dataset": "careplans",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:careplans:stop",
+      "dataset": "careplans",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:careplans:id",
+      "dataset": "careplans",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:careplans:patient_id",
+      "dataset": "careplans",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:careplans:encounter_id",
+      "dataset": "careplans",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:careplans:code",
+      "dataset": "careplans",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:careplans:reasoncode",
+      "dataset": "careplans",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:careplans",
+      "dataset": "careplans",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=195 duplicates_removed=0 target=195",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:claims",
+      "dataset": "claims",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 31,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:claims",
+      "dataset": "claims",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:claims",
+      "dataset": "claims",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:claims:patient_id",
+      "dataset": "claims",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:claims:encounter_id",
+      "dataset": "claims",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:claims:currentillnessdate",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:claims:servicedate",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:claims:lastbilleddate1",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:claims:lastbilleddate2",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:claims:lastbilleddatep",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:claims:id",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:claims:patient_id",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:claims:encounter_id",
+      "dataset": "claims",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:claims",
+      "dataset": "claims",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=5287 duplicates_removed=0 target=5287",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:claims_transactions",
+      "dataset": "claims_transactions",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 33,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:claims_transactions",
+      "dataset": "claims_transactions",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:claims_transactions",
+      "dataset": "claims_transactions",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:claims_transactions:patient_id",
+      "dataset": "claims_transactions",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:claims_transactions:encounter_id",
+      "dataset": "claims_transactions",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:claims_transactions:fromdate",
+      "dataset": "claims_transactions",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:claims_transactions:todate",
+      "dataset": "claims_transactions",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:claims_transactions:id",
+      "dataset": "claims_transactions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:claims_transactions:patient_id",
+      "dataset": "claims_transactions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:claims_transactions:encounter_id",
+      "dataset": "claims_transactions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:claims_transactions:procedurecode",
+      "dataset": "claims_transactions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:claims_transactions",
+      "dataset": "claims_transactions",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=44926 duplicates_removed=0 target=44926",
+      "records_evaluated": 44926,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:conditions",
+      "dataset": "conditions",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 7,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:conditions:patient_id",
+      "dataset": "conditions",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'patient_id'",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:conditions:code",
+      "dataset": "conditions",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'code'",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:conditions:patient_id",
+      "dataset": "conditions",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:conditions:encounter_id",
+      "dataset": "conditions",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:conditions:start",
+      "dataset": "conditions",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:conditions:stop",
+      "dataset": "conditions",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:conditions:patient_id",
+      "dataset": "conditions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:conditions:encounter_id",
+      "dataset": "conditions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:conditions:code",
+      "dataset": "conditions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:conditions",
+      "dataset": "conditions",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=1725 duplicates_removed=0 target=1725",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:devices",
+      "dataset": "devices",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 7,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:devices:patient_id",
+      "dataset": "devices",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:devices:encounter_id",
+      "dataset": "devices",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:devices:start",
+      "dataset": "devices",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:devices:stop",
+      "dataset": "devices",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:devices:patient_id",
+      "dataset": "devices",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:devices:encounter_id",
+      "dataset": "devices",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:devices:code",
+      "dataset": "devices",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:devices:udi",
+      "dataset": "devices",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:devices",
+      "dataset": "devices",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=280 duplicates_removed=0 target=280",
+      "records_evaluated": 280,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:encounters",
+      "dataset": "encounters",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 15,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:encounters",
+      "dataset": "encounters",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:encounters",
+      "dataset": "encounters",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:encounters:encounter_id",
+      "dataset": "encounters",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'encounter_id'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:encounters:patient_id",
+      "dataset": "encounters",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'patient_id'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:encounters:start",
+      "dataset": "encounters",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'start'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:encounters:patient_id",
+      "dataset": "encounters",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:encounters:organization_id",
+      "dataset": "encounters",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'organization_id'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:encounters:provider_id",
+      "dataset": "encounters",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'provider_id'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:encounters:payer_id",
+      "dataset": "encounters",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'payer_id'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:encounters:start",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:encounters:stop",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:encounters:base_encounter_cost",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:encounters:total_claim_cost",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:encounters:payer_coverage",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:encounters:encounter_id",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:encounters:patient_id",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:encounters:organization_id",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:encounters:provider_id",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:encounters:payer_id",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:encounters:code",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:encounters:reasoncode",
+      "dataset": "encounters",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:encounters:base_encounter_cost",
+      "dataset": "encounters",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'base_encounter_cost'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:encounters:total_claim_cost",
+      "dataset": "encounters",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'total_claim_cost'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:encounters:payer_coverage",
+      "dataset": "encounters",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'payer_coverage'",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "encounter_stop_not_before_start",
+      "dataset": "encounters",
+      "category": "temporal",
+      "status": "pass",
+      "details": "0 encounter(s) flagged with STOP before START",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:encounters",
+      "dataset": "encounters",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=3180 duplicates_removed=0 target=3180",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:imaging_studies",
+      "dataset": "imaging_studies",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 13,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:imaging_studies",
+      "dataset": "imaging_studies",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:imaging_studies",
+      "dataset": "imaging_studies",
+      "category": "uniqueness",
+      "status": "fail",
+      "details": "100 row(s) share a duplicate primary key",
+      "records_evaluated": 258,
+      "records_failed": 100
+    },
+    {
+      "check_id": "foreign_key_not_null:imaging_studies:patient_id",
+      "dataset": "imaging_studies",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:imaging_studies:encounter_id",
+      "dataset": "imaging_studies",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:imaging_studies:date",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:imaging_studies:id",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:imaging_studies:patient_id",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:imaging_studies:encounter_id",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:imaging_studies:bodysite_code",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:imaging_studies:modality_code",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:imaging_studies:sop_code",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:imaging_studies:procedure_code",
+      "dataset": "imaging_studies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:imaging_studies",
+      "dataset": "imaging_studies",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=258 duplicates_removed=0 target=258",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:immunizations",
+      "dataset": "immunizations",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 6,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:immunizations:patient_id",
+      "dataset": "immunizations",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:immunizations:encounter_id",
+      "dataset": "immunizations",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:immunizations:immunization_date",
+      "dataset": "immunizations",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:immunizations:base_cost",
+      "dataset": "immunizations",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:immunizations:patient_id",
+      "dataset": "immunizations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:immunizations:encounter_id",
+      "dataset": "immunizations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:immunizations:code",
+      "dataset": "immunizations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:immunizations:base_cost",
+      "dataset": "immunizations",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'base_cost'",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:immunizations",
+      "dataset": "immunizations",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=845 duplicates_removed=0 target=845",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:medications",
+      "dataset": "medications",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 13,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:medications:patient_id",
+      "dataset": "medications",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'patient_id'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:medications:code",
+      "dataset": "medications",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'code'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:medications:patient_id",
+      "dataset": "medications",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:medications:encounter_id",
+      "dataset": "medications",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:medications:payer_id",
+      "dataset": "medications",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'payer_id'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:medications:start",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:medications:stop",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:medications:base_cost",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:medications:payer_coverage",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:medications:dispenses",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:medications:total_cost",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:medications:patient_id",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:medications:encounter_id",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:medications:payer_id",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:medications:code",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:medications:reasoncode",
+      "dataset": "medications",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:medications:base_cost",
+      "dataset": "medications",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'base_cost'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:medications:payer_coverage",
+      "dataset": "medications",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'payer_coverage'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:medications:total_cost",
+      "dataset": "medications",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'total_cost'",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:medications",
+      "dataset": "medications",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=2107 duplicates_removed=0 target=2107",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:observations",
+      "dataset": "observations",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 9,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:observations:patient_id",
+      "dataset": "observations",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'patient_id'",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:observations:code",
+      "dataset": "observations",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'code'",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:observations:patient_id",
+      "dataset": "observations",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:observations:encounter_id",
+      "dataset": "observations",
+      "category": "referential",
+      "status": "warning",
+      "details": "1518 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 29607,
+      "records_failed": 1518
+    },
+    {
+      "check_id": "date_type_utc:observations:observation_date",
+      "dataset": "observations",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:observations:patient_id",
+      "dataset": "observations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:observations:encounter_id",
+      "dataset": "observations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:observations:code",
+      "dataset": "observations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:observations",
+      "dataset": "observations",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=29621 duplicates_removed=14 target=29607",
+      "records_evaluated": 29621,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:organizations",
+      "dataset": "organizations",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 11,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:organizations",
+      "dataset": "organizations",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:organizations",
+      "dataset": "organizations",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:organizations:id",
+      "dataset": "organizations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:organizations:zip",
+      "dataset": "organizations",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "zip_is_string:organizations",
+      "dataset": "organizations",
+      "category": "type",
+      "status": "pass",
+      "details": "ZIP preserved as text",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:organizations",
+      "dataset": "organizations",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=161 duplicates_removed=0 target=161",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:patients",
+      "dataset": "patients",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 28,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:patients",
+      "dataset": "patients",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:patients",
+      "dataset": "patients",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:patients:patient_id",
+      "dataset": "patients",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'patient_id'",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:patients:birthdate",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:patients:deathdate",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:patients:lat",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:patients:lon",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:patients:healthcare_expenses",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:patients:healthcare_coverage",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:patients:income",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:patients:patient_id",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:patients:ssn",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:patients:drivers",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:patients:passport",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:patients:fips",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:patients:zip",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "zip_is_string:patients",
+      "dataset": "patients",
+      "category": "type",
+      "status": "pass",
+      "details": "ZIP preserved as text",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:patients:healthcare_expenses",
+      "dataset": "patients",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'healthcare_expenses'",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:patients:healthcare_coverage",
+      "dataset": "patients",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'healthcare_coverage'",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:patients:income",
+      "dataset": "patients",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'income'",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:patients",
+      "dataset": "patients",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=58 duplicates_removed=0 target=58",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:payer_transitions",
+      "dataset": "payer_transitions",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 8,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:payer_transitions:patient_id",
+      "dataset": "payer_transitions",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:payer_transitions:payer_id",
+      "dataset": "payer_transitions",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'payer_id'",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:payer_transitions:member_id",
+      "dataset": "payer_transitions",
+      "category": "referential",
+      "status": "warning",
+      "details": "357 null value(s) in foreign key 'member_id'",
+      "records_evaluated": 1975,
+      "records_failed": 357
+    },
+    {
+      "check_id": "date_type_utc:payer_transitions:start_date",
+      "dataset": "payer_transitions",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:payer_transitions:end_date",
+      "dataset": "payer_transitions",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:payer_transitions:patient_id",
+      "dataset": "payer_transitions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:payer_transitions:payer_id",
+      "dataset": "payer_transitions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:payer_transitions:member_id",
+      "dataset": "payer_transitions",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:payer_transitions",
+      "dataset": "payer_transitions",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=1975 duplicates_removed=0 target=1975",
+      "records_evaluated": 1975,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:payers",
+      "dataset": "payers",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 22,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:payers",
+      "dataset": "payers",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:payers",
+      "dataset": "payers",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:payers:id",
+      "dataset": "payers",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:payers:zip",
+      "dataset": "payers",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "zip_is_string:payers",
+      "dataset": "payers",
+      "category": "type",
+      "status": "pass",
+      "details": "ZIP preserved as text",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:payers",
+      "dataset": "payers",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=10 duplicates_removed=0 target=10",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:procedures",
+      "dataset": "procedures",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:procedures:patient_id",
+      "dataset": "procedures",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'patient_id'",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "required_not_null:procedures:code",
+      "dataset": "procedures",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null value(s) in required column 'code'",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:procedures:patient_id",
+      "dataset": "procedures",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:procedures:encounter_id",
+      "dataset": "procedures",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:procedures:start",
+      "dataset": "procedures",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:procedures:stop",
+      "dataset": "procedures",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "numeric_type:procedures:base_cost",
+      "dataset": "procedures",
+      "category": "type",
+      "status": "pass",
+      "details": "Numeric dtype",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:procedures:patient_id",
+      "dataset": "procedures",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:procedures:encounter_id",
+      "dataset": "procedures",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:procedures:code",
+      "dataset": "procedures",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:procedures:reasoncode",
+      "dataset": "procedures",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "no_negative_cost:procedures:base_cost",
+      "dataset": "procedures",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative value(s) in 'base_cost'",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:procedures",
+      "dataset": "procedures",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=7601 duplicates_removed=0 target=7601",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:providers",
+      "dataset": "providers",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 13,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_not_null:providers",
+      "dataset": "providers",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null primary key value(s)",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "primary_key_unique:providers",
+      "dataset": "providers",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 row(s) share a duplicate primary key",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:providers:organization_id",
+      "dataset": "providers",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'organization_id'",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:providers:id",
+      "dataset": "providers",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:providers:organization_id",
+      "dataset": "providers",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:providers:zip",
+      "dataset": "providers",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "zip_is_string:providers",
+      "dataset": "providers",
+      "category": "type",
+      "status": "pass",
+      "details": "ZIP preserved as text",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:providers",
+      "dataset": "providers",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=161 duplicates_removed=0 target=161",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "target_columns_exist:supplies",
+      "dataset": "supplies",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected target columns present",
+      "records_evaluated": 6,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:supplies:patient_id",
+      "dataset": "supplies",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'patient_id'",
+      "records_evaluated": 1423,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_not_null:supplies:encounter_id",
+      "dataset": "supplies",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 null value(s) in foreign key 'encounter_id'",
+      "records_evaluated": 1423,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_type_utc:supplies:supply_date",
+      "dataset": "supplies",
+      "category": "type",
+      "status": "pass",
+      "details": "UTC-aware timestamp",
+      "records_evaluated": 1423,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:supplies:patient_id",
+      "dataset": "supplies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1423,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:supplies:encounter_id",
+      "dataset": "supplies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1423,
+      "records_failed": 0
+    },
+    {
+      "check_id": "identifier_type:supplies:code",
+      "dataset": "supplies",
+      "category": "type",
+      "status": "pass",
+      "details": "Text dtype preserved",
+      "records_evaluated": 1423,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:supplies",
+      "dataset": "supplies",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=1427 duplicates_removed=4 target=1423",
+      "records_evaluated": 1427,
+      "records_failed": 0
+    },
+    {
+      "check_id": "birthdate_before_encounter_start",
+      "dataset": "cross_dataset",
+      "category": "temporal",
+      "status": "pass",
+      "details": "0 encounter(s) start before the patient's birthdate",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    }
+  ]
+}

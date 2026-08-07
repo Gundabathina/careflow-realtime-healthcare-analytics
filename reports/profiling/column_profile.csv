@@ -1,0 +1,257 @@
+file,column,dtype,nullable,null_pct,distinct_values,sample_values,classification
+allergies.csv,START,str,False,0.0,15,1960-03-23; 1960-03-23; 1960-03-23; 2014-03-23; 2014-03-23,date
+allergies.csv,STOP,float64,True,100.0,0,,numeric
+allergies.csv,PATIENT,str,False,0.0,15,aa616abe-1761-0c9a-7959-07544679dafd; aa616abe-1761-0c9a-7959-07544679dafd; aa616abe-1761-0c9a-7959-07544679dafd; 6fbddf55-7096-b883-7cd3-260f27953080; 6fbddf55-7096-b883-7cd3-260f27953080,categorical
+allergies.csv,ENCOUNTER,str,False,0.0,15,aa616abe-1761-0c9a-54eb-7c3a65dee0bf; aa616abe-1761-0c9a-54eb-7c3a65dee0bf; aa616abe-1761-0c9a-54eb-7c3a65dee0bf; 6fbddf55-7096-b883-fb77-fb23ca9b8b24; 6fbddf55-7096-b883-fb77-fb23ca9b8b24,categorical
+allergies.csv,CODE,int64,False,0.0,17,609328004; 84489001; 735029006; 609328004; 10831,categorical|numeric
+allergies.csv,SYSTEM,str,False,0.0,1,Unknown; Unknown; Unknown; Unknown; Unknown,categorical
+allergies.csv,DESCRIPTION,str,False,0.0,17,Allergic disposition (finding); Mold (organism); Shellfish (substance); Allergic disposition (finding); Sulfamethoxazole / Trimethoprim,categorical
+allergies.csv,TYPE,str,False,0.0,1,allergy; allergy; allergy; allergy; allergy,categorical
+allergies.csv,CATEGORY,str,False,0.0,3,environment; environment; food; environment; medication,categorical
+allergies.csv,REACTION1,float64,True,56.962,8,21626009.0; 39579001.0; 247472004.0; 878820003.0; 300359004.0,categorical|numeric
+allergies.csv,DESCRIPTION1,str,True,56.962,8,Cutaneous hypersensitivity (disorder); Anaphylaxis (disorder); Wheal (finding); Rhinoconjunctivitis (disorder); Finding of vomiting (finding),categorical
+allergies.csv,SEVERITY1,str,True,56.962,3,MILD; SEVERE; MODERATE; MODERATE; MODERATE,categorical
+allergies.csv,REACTION2,float64,True,72.1519,7,271807003.0; 402387002.0; 267036007.0; 56018004.0; 422587007.0,categorical|numeric
+allergies.csv,DESCRIPTION2,str,True,72.1519,7,Eruption of skin (disorder); Allergic angioedema (disorder); Dyspnea (finding); Wheezing (finding); Nausea (finding),categorical
+allergies.csv,SEVERITY2,str,True,72.1519,2,MODERATE; MODERATE; MILD; MILD; MODERATE,categorical
+careplans.csv,Id,str,False,0.0,195,aee7bbe1-0c45-c028-a083-5eb41838fd4b; aee7bbe1-0c45-c028-ad23-e425c74a7477; 46976cf7-b0bf-be20-784c-3d0f9f438ed9; aee7bbe1-0c45-c028-4692-5b47a2d24076; 46976cf7-b0bf-be20-dde9-4f0ae76d15bf,identifier|high_cardinality
+careplans.csv,START,str,False,0.0,186,2019-09-16; 2020-10-16; 2016-12-29; 2024-12-03; 2023-02-10,date|high_cardinality
+careplans.csv,STOP,str,True,51.7949,94,2019-11-10; 2020-11-26; 2017-01-24; 2025-01-29; 2023-02-27,identifier|date|high_cardinality
+careplans.csv,PATIENT,str,False,0.0,51,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 46976cf7-b0bf-be20-39a5-9f425a52886d; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 46976cf7-b0bf-be20-39a5-9f425a52886d,none
+careplans.csv,ENCOUNTER,str,False,0.0,190,aee7bbe1-0c45-c028-00c6-a8d629cc445b; aee7bbe1-0c45-c028-61fc-d7fc6179a192; 46976cf7-b0bf-be20-a543-8d08997768a1; aee7bbe1-0c45-c028-ac66-9035fcc2e528; 46976cf7-b0bf-be20-a48d-07d497762769,high_cardinality
+careplans.csv,CODE,int64,False,0.0,29,385691007; 385691007; 773513001; 385691007; 773513001,categorical|numeric
+careplans.csv,DESCRIPTION,str,False,0.0,29,Fracture care (regime/therapy); Fracture care (regime/therapy); Physiotherapy care plan (record artifact); Fracture care (regime/therapy); Physiotherapy care plan (record artifact),categorical
+careplans.csv,REASONCODE,float64,True,51.7949,31,65966004.0; 263102004.0; 44465007.0; 16114001.0; 44465007.0,categorical|numeric
+careplans.csv,REASONDESCRIPTION,str,True,51.7949,31,Fracture of forearm (disorder); Fracture subluxation of wrist (disorder); Sprain of ankle (disorder); Fracture of ankle (disorder); Sprain of ankle (disorder),categorical
+claims.csv,Id,str,False,0.0,5287,aee7bbe1-0c45-c028-6030-64ba0356be9a; aee7bbe1-0c45-c028-80b7-8c00d94d195a; aee7bbe1-0c45-c028-9b23-f9ff29497026; aee7bbe1-0c45-c028-654c-2f5345d71150; 5e688e99-61b3-5c88-822b-b3f9c786383a,identifier|high_cardinality
+claims.csv,PATIENTID,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27,categorical
+claims.csv,PROVIDERID,str,False,0.0,143,9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 43837f6a-b8e9-3f3d-9abb-90319a6d9cee; 716214ad-7326-385b-bf80-796e15f39b0f,categorical
+claims.csv,PRIMARYPATIENTINSURANCEID,str,True,4.0855,9,b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; df166300-5a78-3502-a46a-832842197811,categorical
+claims.csv,SECONDARYPATIENTINSURANCEID,str,True,73.6145,1,b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4,categorical
+claims.csv,DEPARTMENTID,int64,False,0.0,11,10; 10; 10; 4; 10,categorical|numeric
+claims.csv,PATIENTDEPARTMENTID,int64,False,0.0,11,10; 10; 10; 4; 10,categorical|numeric
+claims.csv,DIAGNOSIS1,int64,False,0.0,140,314529007; 410620009; 314529007; 125605004; 314529007,categorical|numeric
+claims.csv,DIAGNOSIS2,float64,True,72.5364,105,125605004.0; 125605004.0; 125605004.0; 125605004.0; 66383009.0,numeric
+claims.csv,DIAGNOSIS3,float64,True,89.7295,59,65966004.0; 65966004.0; 263102004.0; 263102004.0; 44465007.0,numeric
+claims.csv,DIAGNOSIS4,float64,True,96.0091,21,1121000119107.0; 422650009.0; 1121000119107.0; 1.0939881000119104e+16; 1.0939881000119104e+16,categorical|numeric
+claims.csv,DIAGNOSIS5,float64,True,98.6571,8,66383009.0; 424393004.0; 66383009.0; 66383009.0; 66383009.0,categorical|numeric
+claims.csv,DIAGNOSIS6,float64,True,99.8865,4,66383009.0; 386661006.0; 56018004.0; 66383009.0; 386661006.0,categorical|numeric
+claims.csv,DIAGNOSIS7,float64,True,99.9433,2,36955009.0; 43724002.0; 36955009.0,categorical|numeric
+claims.csv,DIAGNOSIS8,float64,True,99.9433,2,840539006.0; 386661006.0; 840539006.0,categorical|numeric
+claims.csv,REFERRINGPROVIDERID,float64,True,100.0,0,,numeric
+claims.csv,APPOINTMENTID,str,False,0.0,3180,aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-3f6f-29191f5429b8; aee7bbe1-0c45-c028-8aa7-006b1a3c0b3b; aee7bbe1-0c45-c028-00c6-a8d629cc445b; 5e688e99-61b3-5c88-5079-3a0f17c72a8b,high_cardinality
+claims.csv,CURRENTILLNESSDATE,str,False,0.0,2347,2016-10-11T15:59:53Z; 2017-10-17T15:59:53Z; 2018-10-23T15:59:53Z; 2019-09-16T15:59:53Z; 2016-11-22T12:57:16Z,date
+claims.csv,SERVICEDATE,str,False,0.0,3136,2016-10-11T15:59:53Z; 2017-10-17T15:59:53Z; 2018-10-23T15:59:53Z; 2019-09-16T15:59:53Z; 2016-11-22T12:57:16Z,date|high_cardinality
+claims.csv,SUPERVISINGPROVIDERID,str,False,0.0,143,9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 43837f6a-b8e9-3f3d-9abb-90319a6d9cee; 716214ad-7326-385b-bf80-796e15f39b0f,categorical
+claims.csv,STATUS1,str,False,0.0,2,CLOSED; CLOSED; CLOSED; CLOSED; CLOSED,categorical
+claims.csv,STATUS2,str,True,26.3855,2,CLOSED; CLOSED; CLOSED; CLOSED; CLOSED,categorical
+claims.csv,STATUSP,str,False,0.0,2,CLOSED; CLOSED; CLOSED; CLOSED; CLOSED,categorical
+claims.csv,OUTSTANDING1,float64,False,0.0,5,0.0; 0.0; 0.0; 0.0; 0.0,categorical|numeric
+claims.csv,OUTSTANDING2,float64,True,26.3855,4,0.0; 0.0; 0.0; 0.0; 0.0,categorical|numeric
+claims.csv,OUTSTANDINGP,float64,False,0.0,4,0.0; 0.0; 0.0; 0.0; 0.0,categorical|numeric
+claims.csv,LASTBILLEDDATE1,str,False,0.0,3179,2016-10-11T16:14:53Z; 2017-10-17T16:14:53Z; 2018-10-23T16:14:53Z; 2019-09-16T16:59:53Z; 2016-11-22T13:12:16Z,date|high_cardinality
+claims.csv,LASTBILLEDDATE2,str,True,26.3855,2436,2016-10-11T16:14:53Z; 2017-10-17T16:14:53Z; 2018-10-23T16:14:53Z; 2019-09-16T16:59:53Z; 2016-11-22T13:12:16Z,date|high_cardinality
+claims.csv,LASTBILLEDDATEP,str,False,0.0,3179,2016-10-11T16:14:53Z; 2017-10-17T16:14:53Z; 2018-10-23T16:14:53Z; 2019-09-16T16:59:53Z; 2016-11-22T13:12:16Z,date|high_cardinality
+claims.csv,HEALTHCARECLAIMTYPEID1,int64,False,0.0,2,1; 1; 1; 2; 1,categorical|numeric
+claims.csv,HEALTHCARECLAIMTYPEID2,int64,False,0.0,3,1; 1; 1; 2; 1,categorical|numeric
+claims_transactions.csv,ID,str,False,0.0,44926,d61d0e13-b726-0573-7ea9-30cf0b3f8263; b23a1c27-6e4c-0ae8-0352-619e167f04c7; 6474384e-dc98-15d2-06a4-c33c2cfe0991; c8e8709d-b930-2bab-0d49-867859fc1325; 23a1c276-e4c0-aecd-3526-19e167f04cb2,identifier|high_cardinality
+claims_transactions.csv,CLAIMID,str,False,0.0,5287,aee7bbe1-0c45-c028-6030-64ba0356be9a; aee7bbe1-0c45-c028-6030-64ba0356be9a; aee7bbe1-0c45-c028-6030-64ba0356be9a; aee7bbe1-0c45-c028-6030-64ba0356be9a; aee7bbe1-0c45-c028-6030-64ba0356be9a,none
+claims_transactions.csv,CHARGEID,int64,False,0.0,44926,0; 1; 2; 3; 5,identifier|numeric|high_cardinality
+claims_transactions.csv,PATIENTID,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273,categorical
+claims_transactions.csv,TYPE,str,False,0.0,4,CHARGE; TRANSFEROUT; TRANSFERIN; PAYMENT; CHARGE,categorical
+claims_transactions.csv,AMOUNT,float64,True,54.2381,2181,136.8; 136.8; 136.0; 136.0; 136.8,numeric
+claims_transactions.csv,METHOD,str,True,60.9558,5,CASH; CC; CHECK; CASH; CC,categorical
+claims_transactions.csv,FROMDATE,str,False,0.0,8054,2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z,date
+claims_transactions.csv,TODATE,str,False,0.0,8804,2016-10-11T16:14:53Z; 2016-10-11T16:14:53Z; 2016-10-11T16:14:53Z; 2016-10-11T16:14:53Z; 1970-01-01T00:00:00Z,date
+claims_transactions.csv,PLACEOFSERVICE,str,False,0.0,143,328f813e-4de8-3ec2-a113-43f3ddfb0b2a; 328f813e-4de8-3ec2-a113-43f3ddfb0b2a; 328f813e-4de8-3ec2-a113-43f3ddfb0b2a; 328f813e-4de8-3ec2-a113-43f3ddfb0b2a; 328f813e-4de8-3ec2-a113-43f3ddfb0b2a,categorical
+claims_transactions.csv,PROCEDURECODE,int64,False,0.0,362,410620009; 410620009; 410620009; 410620009; 140,categorical|numeric
+claims_transactions.csv,MODIFIER1,float64,True,100.0,0,,numeric
+claims_transactions.csv,MODIFIER2,float64,True,100.0,0,,numeric
+claims_transactions.csv,DIAGNOSISREF1,int64,False,0.0,1,1; 1; 1; 1; 1,categorical|numeric
+claims_transactions.csv,DIAGNOSISREF2,float64,True,69.1404,1,2.0; 2.0; 2.0; 2.0; 2.0,categorical|numeric
+claims_transactions.csv,DIAGNOSISREF3,float64,True,89.7565,1,3.0; 3.0; 3.0; 3.0; 3.0,categorical|numeric
+claims_transactions.csv,DIAGNOSISREF4,float64,True,96.3162,1,4.0; 4.0; 4.0; 4.0; 4.0,categorical|numeric
+claims_transactions.csv,UNITS,int64,False,0.0,1,1; 1; 1; 1; 1,categorical|numeric
+claims_transactions.csv,DEPARTMENTID,int64,False,0.0,11,10; 10; 10; 10; 10,categorical|numeric
+claims_transactions.csv,NOTES,str,False,0.0,366,Well child visit (procedure); Well child visit (procedure); Well child visit (procedure); Well child visit (procedure); Influenza  split virus  trivalent  PF,categorical
+claims_transactions.csv,UNITAMOUNT,float64,False,0.0,1408,136.8; 0.0; 0.0; 0.0; 136.0,categorical|numeric
+claims_transactions.csv,TRANSFEROUTID,float64,True,84.8061,6826,1.0; 6.0; 11.0; 16.0; 21.0,identifier|numeric|high_cardinality
+claims_transactions.csv,TRANSFERTYPE,str,True,54.2381,3,1; p; 1; p; 1,categorical
+claims_transactions.csv,PAYMENTS,float64,False,0.0,2404,0.0; 0.0; 0.0; 136.8; 0.0,numeric
+claims_transactions.csv,ADJUSTMENTS,float64,False,0.0,1,0.0; 0.0; 0.0; 0.0; 0.0,categorical|numeric
+claims_transactions.csv,TRANSFERS,float64,True,69.6123,1007,136.8; 136.8; 136.0; 136.0; 136.8,numeric
+claims_transactions.csv,OUTSTANDING,float64,False,0.0,1098,0.0; 136.8; 136.8; 0.0; 0.0,categorical|numeric
+claims_transactions.csv,APPOINTMENTID,str,False,0.0,3180,aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989,none
+claims_transactions.csv,LINENOTE,float64,True,100.0,0,,numeric
+claims_transactions.csv,PATIENTINSURANCEID,str,True,2.257,625,aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961,categorical
+claims_transactions.csv,FEESCHEDULEID,int64,False,0.0,1,1; 1; 1; 1; 1,categorical|numeric
+claims_transactions.csv,PROVIDERID,str,False,0.0,143,9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f,categorical
+claims_transactions.csv,SUPERVISINGPROVIDERID,str,False,0.0,143,9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f,categorical
+conditions.csv,START,str,False,0.0,1058,2016-10-11; 2018-10-23; 2019-09-16; 2019-09-16; 2016-11-22,date|high_cardinality
+conditions.csv,STOP,str,True,28.8696,796,2017-10-17; 2018-10-23; 2019-11-10; 2019-11-10; 2018-12-04,date|high_cardinality
+conditions.csv,PATIENT,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27,categorical
+conditions.csv,ENCOUNTER,str,False,0.0,1136,aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-8aa7-006b1a3c0b3b; aee7bbe1-0c45-c028-00c6-a8d629cc445b; aee7bbe1-0c45-c028-00c6-a8d629cc445b; 5e688e99-61b3-5c88-5079-3a0f17c72a8b,high_cardinality
+conditions.csv,SYSTEM,str,False,0.0,1,SNOMED-CT; SNOMED-CT; SNOMED-CT; SNOMED-CT; SNOMED-CT,categorical
+conditions.csv,CODE,int64,False,0.0,160,314529007; 314529007; 125605004; 65966004; 314529007,numeric
+conditions.csv,DESCRIPTION,str,False,0.0,160,Medication review due (situation); Medication review due (situation); Fracture of bone (disorder); Fracture of forearm (disorder); Medication review due (situation),none
+devices.csv,START,str,False,0.0,248,2020-11-10T18:15:24Z; 2017-12-05T15:09:30Z; 2019-12-17T15:07:42Z; 2020-12-22T14:27:25Z; 2018-08-08T15:53:37Z,date|high_cardinality
+devices.csv,STOP,str,True,30.3571,172,2020-11-10T18:15:24Z; 2017-12-05T15:09:30Z; 2019-12-17T15:07:42Z; 2020-12-22T14:27:25Z; 2021-04-13T15:19:55Z,date|high_cardinality
+devices.csv,PATIENT,str,False,0.0,54,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27; 5e688e99-61b3-5c88-3f60-21df8aaced27; 5e688e99-61b3-5c88-3f60-21df8aaced27; 46976cf7-b0bf-be20-39a5-9f425a52886d,none
+devices.csv,ENCOUNTER,str,False,0.0,227,aee7bbe1-0c45-c028-30f7-7094a1e9365f; 5e688e99-61b3-5c88-7b3b-304d85c78dfd; 5e688e99-61b3-5c88-95d6-e9d69d631f10; 5e688e99-61b3-5c88-a034-24049cd6b078; 46976cf7-b0bf-be20-5ebb-358014cdc1bc,high_cardinality
+devices.csv,CODE,int64,False,0.0,16,706298007; 706298007; 706298007; 706298007; 225738002,categorical|numeric
+devices.csv,DESCRIPTION,str,False,0.0,16,Dental x-ray system (physical object); Dental x-ray system (physical object); Dental x-ray system (physical object); Dental x-ray system (physical object); Operating room (environment),categorical
+devices.csv,UDI,str,False,0.0,280,(01)51793621209144(11)201020(17)451104(10)30067909324(21)994466156363189914; (01)74652970596194(11)171114(17)421129(10)5480274535(21)49933543461788; (01)85819283249971(11)191126(17)441210(10)58437242419416(21)739100517343839195; (01)78831552715081(11)201201(17)451216(10)36586060(21)22137837; (01)75140285814935(11)180718(17)430802(10)723036(21)6185815500483515,identifier|high_cardinality
+encounters.csv,Id,str,False,0.0,3180,aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-3f6f-29191f5429b8; aee7bbe1-0c45-c028-8aa7-006b1a3c0b3b; aee7bbe1-0c45-c028-00c6-a8d629cc445b; 5e688e99-61b3-5c88-5079-3a0f17c72a8b,identifier|high_cardinality
+encounters.csv,START,str,False,0.0,3136,2016-10-11T15:59:53Z; 2017-10-17T15:59:53Z; 2018-10-23T15:59:53Z; 2019-09-16T15:59:53Z; 2016-11-22T12:57:16Z,identifier|date|high_cardinality
+encounters.csv,STOP,str,False,0.0,3179,2016-10-11T16:14:53Z; 2017-10-17T16:14:53Z; 2018-10-23T16:14:53Z; 2019-09-16T16:59:53Z; 2016-11-22T13:12:16Z,identifier|date|high_cardinality
+encounters.csv,PATIENT,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27,categorical
+encounters.csv,ORGANIZATION,str,False,0.0,143,328f813e-4de8-3ec2-a113-43f3ddfb0b2a; 328f813e-4de8-3ec2-a113-43f3ddfb0b2a; 328f813e-4de8-3ec2-a113-43f3ddfb0b2a; ec7e487e-7e78-3eac-a9ee-37f8de98a0f9; dd3307db-114c-3f11-be44-a9eef6bb3fc5,categorical
+encounters.csv,PROVIDER,str,False,0.0,143,9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 9325eddd-ff80-356c-99e8-002b6f6fde4f; 43837f6a-b8e9-3f3d-9abb-90319a6d9cee; 716214ad-7326-385b-bf80-796e15f39b0f,categorical
+encounters.csv,PAYER,str,False,0.0,10,b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; df166300-5a78-3502-a46a-832842197811,categorical
+encounters.csv,ENCOUNTERCLASS,str,False,0.0,10,wellness; wellness; wellness; emergency; wellness,categorical
+encounters.csv,CODE,int64,False,0.0,43,410620009; 410620009; 410620009; 50849002; 410620009,categorical|numeric
+encounters.csv,DESCRIPTION,str,False,0.0,43,Well child visit (procedure); Well child visit (procedure); Well child visit (procedure); Emergency room admission (procedure); Well child visit (procedure),categorical
+encounters.csv,BASE_ENCOUNTER_COST,float64,False,0.0,11,136.8; 136.8; 136.8; 146.18; 136.8,categorical|numeric
+encounters.csv,TOTAL_CLAIM_COST,float64,False,0.0,1087,347.38; 706.8; 514.03; 1008.98; 272.8,numeric
+encounters.csv,PAYER_COVERAGE,float64,False,0.0,1198,0.0; 0.0; 0.0; 0.0; 172.8,numeric
+encounters.csv,REASONCODE,float64,True,34.717,90,125605004.0; 65966004.0; 125605004.0; 66383009.0; 263102004.0,categorical|numeric
+encounters.csv,REASONDESCRIPTION,str,True,34.717,90,Fracture of bone (disorder); Fracture of forearm (disorder); Fracture of bone (disorder); Gingivitis (disorder); Fracture subluxation of wrist (disorder),categorical
+imaging_studies.csv,Id,str,False,0.0,208,aee7bbe1-0c45-c028-edda-270089d8183e; aee7bbe1-0c45-c028-ec28-c9425fe5b331; aee7bbe1-0c45-c028-f65f-392ad7c1ac0e; 5e688e99-61b3-5c88-f226-783fd97ef1d3; 5e688e99-61b3-5c88-f16b-7c61ede56456,high_cardinality
+imaging_studies.csv,DATE,str,False,0.0,207,2019-09-16T15:59:53Z; 2020-10-16T16:31:45Z; 2020-11-10T18:15:24Z; 2017-12-05T15:09:30Z; 2019-12-17T15:07:42Z,date|high_cardinality
+imaging_studies.csv,PATIENT,str,False,0.0,51,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27; 5e688e99-61b3-5c88-3f60-21df8aaced27,none
+imaging_studies.csv,ENCOUNTER,str,False,0.0,194,aee7bbe1-0c45-c028-00c6-a8d629cc445b; aee7bbe1-0c45-c028-61fc-d7fc6179a192; aee7bbe1-0c45-c028-30f7-7094a1e9365f; 5e688e99-61b3-5c88-7b3b-304d85c78dfd; 5e688e99-61b3-5c88-95d6-e9d69d631f10,high_cardinality
+imaging_studies.csv,SERIES_UID,str,False,0.0,208,1.2.840.99999999.1.63289205.1568649593351; 1.2.840.99999999.1.15541433.1602865905351; 1.2.840.99999999.1.13786279.1605032124351; 1.2.840.99999999.1.94811367.1512486570781; 1.2.840.99999999.1.85336682.1576595262781,high_cardinality
+imaging_studies.csv,BODYSITE_CODE,int64,False,0.0,9,40983000; 8205005; 700016008; 700016008; 700016008,categorical|numeric
+imaging_studies.csv,BODYSITE_DESCRIPTION,str,False,0.0,9,Structure of upper extremity between shoulder and elbow (body structure); Wrist region structure (body structure); Structure of region of internal part of mouth (body structure); Structure of region of internal part of mouth (body structure); Structure of region of internal part of mouth (body structure),categorical
+imaging_studies.csv,MODALITY_CODE,str,False,0.0,5,DX; DX; DX; DX; DX,categorical
+imaging_studies.csv,MODALITY_DESCRIPTION,str,False,0.0,5,Digital Radiography; Digital Radiography; Digital Radiography; Digital Radiography; Digital Radiography,categorical
+imaging_studies.csv,INSTANCE_UID,str,False,0.0,258,1.2.840.99999999.1.1.21897549.1568649593351; 1.2.840.99999999.1.1.86421687.1602865905351; 1.2.840.99999999.1.1.51329681.1605032124351; 1.2.840.99999999.1.1.76222626.1512486570781; 1.2.840.99999999.1.1.90503213.1576595262781,identifier|high_cardinality
+imaging_studies.csv,SOP_CODE,str,False,0.0,5,1.2.840.10008.5.1.4.1.1.1.1; 1.2.840.10008.5.1.4.1.1.1.1; 1.2.840.10008.5.1.4.1.1.1.3; 1.2.840.10008.5.1.4.1.1.1.3; 1.2.840.10008.5.1.4.1.1.1.3,categorical
+imaging_studies.csv,SOP_DESCRIPTION,str,False,0.0,6,Digital X-Ray Image Storage; Digital X-Ray Image Storage; Digital Intra-Oral X-Ray Image Storage - For Presentation; Digital Intra-Oral X-Ray Image Storage - For Presentation; Digital Intra-Oral X-Ray Image Storage - For Presentation,categorical
+imaging_studies.csv,PROCEDURE_CODE,int64,False,0.0,11,713026007; 713024005; 241046008; 241046008; 241046008,categorical|numeric
+immunizations.csv,DATE,str,False,0.0,587,2016-10-11T15:59:53Z; 2017-10-17T15:59:53Z; 2018-10-23T15:59:53Z; 2019-10-29T15:59:53Z; 2016-11-22T12:57:16Z,date|high_cardinality
+immunizations.csv,PATIENT,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27,none
+immunizations.csv,ENCOUNTER,str,False,0.0,589,aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-3f6f-29191f5429b8; aee7bbe1-0c45-c028-8aa7-006b1a3c0b3b; aee7bbe1-0c45-c028-703b-91d77951d072; 5e688e99-61b3-5c88-5079-3a0f17c72a8b,high_cardinality
+immunizations.csv,CODE,int64,False,0.0,20,140; 140; 140; 140; 140,categorical|numeric
+immunizations.csv,DESCRIPTION,str,False,0.0,20,Influenza  split virus  trivalent  PF; Influenza  split virus  trivalent  PF; Influenza  split virus  trivalent  PF; Influenza  split virus  trivalent  PF; Influenza  split virus  trivalent  PF,categorical
+immunizations.csv,BASE_COST,float64,False,0.0,1,136.0; 136.0; 136.0; 136.0; 136.0,categorical|numeric
+medications.csv,START,str,False,0.0,1447,2019-09-16T16:31:45Z; 2020-10-16T16:55:22Z; 2017-12-05T15:49:12Z; 2016-12-29T13:19:22Z; 2019-12-17T15:58:01Z,date|high_cardinality
+medications.csv,STOP,str,True,7.6412,1367,2019-11-10T16:31:45Z; 2020-11-26T16:55:22Z; 2017-12-05T15:49:12Z; 2017-01-24T13:19:22Z; 2019-12-17T15:58:01Z,date|high_cardinality
+medications.csv,PATIENT,str,False,0.0,55,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27; 46976cf7-b0bf-be20-39a5-9f425a52886d; 5e688e99-61b3-5c88-3f60-21df8aaced27,categorical
+medications.csv,PAYER,str,False,0.0,10,b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; df166300-5a78-3502-a46a-832842197811; 26aab0cd-6aba-3e1b-ac5b-05c8867e762c; df166300-5a78-3502-a46a-832842197811,categorical
+medications.csv,ENCOUNTER,str,False,0.0,1414,aee7bbe1-0c45-c028-00c6-a8d629cc445b; aee7bbe1-0c45-c028-61fc-d7fc6179a192; 5e688e99-61b3-5c88-7b3b-304d85c78dfd; 46976cf7-b0bf-be20-a543-8d08997768a1; 5e688e99-61b3-5c88-95d6-e9d69d631f10,high_cardinality
+medications.csv,CODE,int64,False,0.0,106,313820; 198405; 1535362; 313820; 1535362,numeric
+medications.csv,DESCRIPTION,str,False,0.0,110,Acetaminophen 160 MG Chewable Tablet; Ibuprofen 100 MG Oral Tablet; sodium fluoride 0.0272 MG/MG Oral Gel; Acetaminophen 160 MG Chewable Tablet; sodium fluoride 0.0272 MG/MG Oral Gel,none
+medications.csv,BASE_COST,float64,False,0.0,487,81.03; 20.09; 129.94; 55.64; 129.94,numeric
+medications.csv,PAYER_COVERAGE,float64,False,0.0,341,0.0; 0.0; 0.0; 0.0; 79.94,numeric
+medications.csv,DISPENSES,int64,False,0.0,52,1; 1; 1; 1; 1,categorical|numeric
+medications.csv,TOTALCOST,float64,False,0.0,559,81.03; 20.09; 129.94; 55.64; 129.94,numeric
+medications.csv,REASONCODE,float64,True,25.0119,29,103697008.0; 103697008.0; 66383009.0; 103697008.0; 66383009.0,categorical|numeric
+medications.csv,REASONDESCRIPTION,str,True,25.0119,29,Patient referral for dental care (procedure); Patient referral for dental care (procedure); Gingivitis (disorder); Patient referral for dental care (procedure); Gingivitis (disorder),categorical
+observations.csv,DATE,str,False,0.0,3606,2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z; 2016-10-11T15:59:53Z,date
+observations.csv,PATIENT,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273,categorical
+observations.csv,ENCOUNTER,str,True,5.1247,1605,aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989; aee7bbe1-0c45-c028-e6a0-bcfc37b5a989,none
+observations.csv,CATEGORY,str,True,5.1247,8,vital-signs; vital-signs; vital-signs; vital-signs; vital-signs,categorical
+observations.csv,CODE,str,False,0.0,221,8302-2; 72514-3; 29463-7; 39156-5; 59576-9,categorical
+observations.csv,DESCRIPTION,str,False,0.0,222,Body Height; Pain severity - 0-10 verbal numeric rating [Score] - Reported; Body Weight; Body mass index (BMI) [Ratio]; Body mass index (BMI) [Percentile] Per age and sex,categorical
+observations.csv,VALUE,str,False,0.0,2131,118.2; 2.0; 25.5; 18.3; 94.5,numeric
+observations.csv,UNITS,str,True,28.1726,44,cm; {score}; kg; kg/m2; %,categorical
+observations.csv,TYPE,str,False,0.0,2,numeric; numeric; numeric; numeric; numeric,categorical
+organizations.csv,Id,str,False,0.0,161,74ab949d-17ac-3309-83a0-13b4405c66aa; e09d4c49-c2ef-3b0f-9a46-3719d9219306; 77645e49-3f69-3d1d-bb93-dc65210e2fac; ab701a70-a658-340e-8f69-ee196a7d40c6; 11ba6a26-59b4-3728-a268-6dc9929962b4,identifier|high_cardinality
+organizations.csv,NAME,str,False,0.0,154,Fitchburg Outpatient Clinic; UMASS MEMORIAL HEALTHALLIANCE CLINTON HOSPITAL INC; SOUTHCOAST HOSPITALS GROUP INC; CAREWELL URGENT CARE CENTERS OF MA  PC; COURTYARD NURSING CARE CENTER,high_cardinality
+organizations.csv,ADDRESS,str,False,0.0,155,881 Main Street; 60 HOSPITAL RD; 363 HIGHLAND AVE; 484 RTE 134; 200 GOVERNORS AVENUE,high_cardinality
+organizations.csv,CITY,str,False,0.0,89,Fitchburg; LEOMINSTER; FALL RIVER; WORCESTER; MEDFORD,high_cardinality
+organizations.csv,STATE,str,False,0.0,1,MA; MA; MA; MA; MA,categorical
+organizations.csv,ZIP,int64,False,0.0,157,1420; 14533290; 27205246; 16071728; 21551644,numeric|high_cardinality
+organizations.csv,LAT,float64,False,0.0,151,42.586487; 42.54031915; 41.7093779; 42.2625621; 42.42711615,numeric|high_cardinality
+organizations.csv,LON,float64,False,0.0,151,-71.80521; -71.76312990486304; -71.1460783680883; -71.8018877; -71.1121606632448,numeric|high_cardinality
+organizations.csv,PHONE,str,False,0.0,155,978-342-9781 Or 978-342-9781; 9784662000; 5086793131; 5086947901; 7813915400,numeric|high_cardinality
+organizations.csv,REVENUE,float64,False,0.0,1,0.0; 0.0; 0.0; 0.0; 0.0,categorical|numeric
+organizations.csv,UTILIZATION,int64,False,0.0,79,122; 6; 67; 5; 15,numeric
+patients.csv,Id,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27; 46976cf7-b0bf-be20-39a5-9f425a52886d; 4f083ce3-f12b-bb4b-7353-e17f0cd55b0a; 76b20010-c318-5754-8c85-983aa538522f,identifier|high_cardinality
+patients.csv,BIRTHDATE,str,False,0.0,50,2010-10-26; 2009-12-01; 2007-07-18; 1998-11-15; 2018-01-20,date|high_cardinality
+patients.csv,DEATHDATE,str,True,86.2069,8,1985-05-02; 2015-03-06; 2013-05-26; 2006-07-22; 2017-07-27,identifier|date
+patients.csv,SSN,str,False,0.0,58,999-21-5544; 999-87-5260; 999-37-5783; 999-78-6352; 999-62-9324,identifier|high_cardinality
+patients.csv,DRIVERS,str,True,20.6897,46,S99915466; S99931499; S99956685; S99973631; S99920788,identifier|high_cardinality
+patients.csv,PASSPORT,str,True,31.0345,40,X40961508X; X20333362X; X70390144X; X92189422X; X10643963X,identifier|high_cardinality
+patients.csv,PREFIX,str,True,29.3103,3,Ms.; Mr.; Mrs.; Mrs.; Mr.,categorical
+patients.csv,FIRST,str,False,0.0,56,Wilfredo622; Wallace647; Lindsay928; Ezekiel373; Jody426,high_cardinality
+patients.csv,MIDDLE,str,True,20.6897,46,Isaiah615; Raymond398; Deja232; Leslie90; Jeffrey461,identifier|high_cardinality
+patients.csv,LAST,str,False,0.0,54,Fritsch593; Effertz744; Zieme486; Walter473; Hickle134,high_cardinality
+patients.csv,SUFFIX,float64,True,100.0,0,,numeric
+patients.csv,MAIDEN,str,True,68.9655,18,Terry864; Bins636; Rosenbaum794; Luettgen772; Robel940,identifier
+patients.csv,MARITAL,str,True,39.6552,3,M; M; M; D; D,categorical
+patients.csv,RACE,str,False,0.0,4,white; native; white; white; white,categorical
+patients.csv,ETHNICITY,str,False,0.0,2,nonhispanic; nonhispanic; nonhispanic; nonhispanic; nonhispanic,categorical
+patients.csv,GENDER,str,False,0.0,2,M; M; F; M; M,categorical
+patients.csv,BIRTHPLACE,str,False,0.0,49,New Bedford  Massachusetts  US; Southwick  Massachusetts  US; Toulouse  Occitanie  FR; Onset  Massachusetts  US; Charlton  Massachusetts  US,categorical|high_cardinality
+patients.csv,ADDRESS,str,False,0.0,58,265 Schamberger Rapid Unit 70; 788 Hansen Skyway; 794 Dicki Neck Unit 4; 332 Schulist Underpass; 368 Marquardt Highlands,identifier|high_cardinality
+patients.csv,CITY,str,False,0.0,37,Whitman; Revere; Worcester; Watertown; Newburyport,categorical|high_cardinality
+patients.csv,STATE,str,False,0.0,1,Massachusetts; Massachusetts; Massachusetts; Massachusetts; Massachusetts,categorical
+patients.csv,COUNTY,str,False,0.0,11,Plymouth County; Suffolk County; Worcester County; Middlesex County; Essex County,categorical
+patients.csv,FIPS,float64,True,17.2414,9,25025.0; 25027.0; 25017.0; 25009.0; 25017.0,categorical|numeric
+patients.csv,ZIP,int64,False,0.0,37,0; 2151; 1607; 2472; 1950,categorical|numeric|high_cardinality
+patients.csv,LAT,float64,False,0.0,58,42.09511361404636; 42.42585246178816; 42.29589656519802; 42.32131597857709; 42.81308052119067,identifier|numeric|high_cardinality
+patients.csv,LON,float64,False,0.0,58,-70.96780531615718; -70.94822090106521; -71.86071035579968; -71.14289090408015; -70.83892862887681,identifier|numeric|high_cardinality
+patients.csv,HEALTHCARE_EXPENSES,float64,False,0.0,58,36961.44; 3071.02; 56128.69; 71753.52; 12700.63,identifier|numeric|high_cardinality
+patients.csv,HEALTHCARE_COVERAGE,float64,False,0.0,58,314.29; 63807.52; 106993.14; 2851.45; 9142.72,identifier|numeric|high_cardinality
+patients.csv,INCOME,int64,False,0.0,50,102779; 22038; 95959; 141031; 878354,categorical|numeric|high_cardinality
+payer_transitions.csv,PATIENT,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273,categorical
+payer_transitions.csv,MEMBERID,str,True,18.0759,1301,aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961; aee7bbe1-0c45-c028-9f64-c0a245050961,high_cardinality
+payer_transitions.csv,START_DATE,str,False,0.0,1666,2010-10-26T15:59:53Z; 2011-11-01T15:59:53Z; 2012-10-30T15:59:53Z; 2013-10-29T15:59:53Z; 2014-10-28T15:59:53Z,date|high_cardinality
+payer_transitions.csv,END_DATE,str,False,0.0,1671,2011-11-01T15:59:53Z; 2012-10-30T15:59:53Z; 2013-10-29T15:59:53Z; 2014-10-28T15:59:53Z; 2015-10-27T15:59:53Z,date|high_cardinality
+payer_transitions.csv,PAYER,str,False,0.0,10,b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4,categorical
+payer_transitions.csv,SECONDARY_PAYER,str,True,90.3291,1,b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4; b046940f-1664-3047-bca7-dfa76be352a4,categorical
+payer_transitions.csv,PLAN_OWNERSHIP,str,True,18.0759,3,Guardian; Guardian; Guardian; Guardian; Guardian,categorical
+payer_transitions.csv,OWNER_NAME,str,True,18.0759,121,Kenny207 Fritsch593; Kenny207 Fritsch593; Kenny207 Fritsch593; Kenny207 Fritsch593; Kenny207 Fritsch593,none
+payers.csv,Id,str,False,0.0,10,a735bf55-83e9-331a-899d-a82a60b9f60c; df166300-5a78-3502-a46a-832842197811; d18ef2e6-ef40-324c-be54-34a5ee865625; 26aab0cd-6aba-3e1b-ac5b-05c8867e762c; b046940f-1664-3047-bca7-dfa76be352a4,identifier
+payers.csv,NAME,str,False,0.0,10,Medicare; Medicaid; Dual Eligible; Humana; Blue Cross Blue Shield,identifier
+payers.csv,OWNERSHIP,str,False,0.0,3,GOVERNMENT; GOVERNMENT; GOVERNMENT; PRIVATE; PRIVATE,categorical
+payers.csv,ADDRESS,float64,True,100.0,0,,numeric
+payers.csv,CITY,float64,True,100.0,0,,numeric
+payers.csv,STATE_HEADQUARTERED,float64,True,100.0,0,,numeric
+payers.csv,ZIP,float64,True,100.0,0,,numeric
+payers.csv,PHONE,float64,True,100.0,0,,numeric
+payers.csv,AMOUNT_COVERED,float64,False,0.0,10,3174320.25; 11068577.36; 1468392.56; 2672529.79; 1239101.55,identifier|numeric
+payers.csv,AMOUNT_UNCOVERED,float64,False,0.0,10,98678.69; 218437.99; 48117.43; 1298202.65; 589061.15,identifier|numeric
+payers.csv,REVENUE,float64,False,0.0,10,448893.9; 78770.0; 9010.0; 1342692.0; 1497147.0,identifier|numeric
+payers.csv,COVERED_ENCOUNTERS,int64,False,0.0,10,1714; 2691; 915; 1034; 471,identifier|numeric
+payers.csv,UNCOVERED_ENCOUNTERS,int64,False,0.0,2,0; 0; 0; 0; 0,categorical|numeric
+payers.csv,COVERED_MEDICATIONS,int64,False,0.0,10,1442; 1042; 806; 367; 184,identifier|numeric
+payers.csv,UNCOVERED_MEDICATIONS,int64,False,0.0,2,0; 0; 0; 0; 0,categorical|numeric
+payers.csv,COVERED_PROCEDURES,int64,False,0.0,10,3492; 5848; 1562; 2173; 1104,identifier|numeric
+payers.csv,UNCOVERED_PROCEDURES,int64,False,0.0,2,0; 0; 0; 0; 0,categorical|numeric
+payers.csv,COVERED_IMMUNIZATIONS,int64,False,0.0,10,260; 809; 88; 534; 201,identifier|numeric
+payers.csv,UNCOVERED_IMMUNIZATIONS,int64,False,0.0,2,0; 0; 0; 0; 0,categorical|numeric
+payers.csv,UNIQUE_CUSTOMERS,int64,False,0.0,7,16; 24; 5; 11; 17,categorical|numeric
+payers.csv,QOLS_AVG,float64,False,0.0,10,0.8207411145743071; 0.935170715644702; 0.7418526951069854; 0.9596340668883956; 0.5184921103657777,identifier|numeric
+payers.csv,MEMBER_MONTHS,int64,False,0.0,10,2700; 7932; 936; 3996; 4848,identifier|numeric
+procedures.csv,START,str,False,0.0,6573,2017-10-17T15:59:53Z; 2018-10-23T15:59:53Z; 2019-09-16T15:59:53Z; 2019-09-16T15:59:53Z; 2019-10-29T15:59:53Z,date|high_cardinality
+procedures.csv,STOP,str,False,0.0,7077,2017-10-17T16:14:53Z; 2018-10-23T16:14:53Z; 2019-09-16T16:29:53Z; 2019-09-16T16:31:45Z; 2019-10-29T16:14:53Z,date|high_cardinality
+procedures.csv,PATIENT,str,False,0.0,58,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273,categorical
+procedures.csv,ENCOUNTER,str,False,0.0,2244,aee7bbe1-0c45-c028-3f6f-29191f5429b8; aee7bbe1-0c45-c028-8aa7-006b1a3c0b3b; aee7bbe1-0c45-c028-00c6-a8d629cc445b; aee7bbe1-0c45-c028-00c6-a8d629cc445b; aee7bbe1-0c45-c028-703b-91d77951d072,none
+procedures.csv,SYSTEM,str,False,0.0,1,SNOMED-CT; SNOMED-CT; SNOMED-CT; SNOMED-CT; SNOMED-CT,categorical
+procedures.csv,CODE,int64,False,0.0,195,430193006; 430193006; 713026007; 274474001; 430193006,categorical|numeric
+procedures.csv,DESCRIPTION,str,False,0.0,195,Medication reconciliation (procedure); Medication reconciliation (procedure); Plain X-ray of humerus (procedure); Bone immobilization (procedure); Medication reconciliation (procedure),categorical
+procedures.csv,BASE_COST,float64,False,0.0,931,434.0; 241.23; 431.4; 431.4; 215.7,numeric
+procedures.csv,REASONCODE,float64,True,53.7298,52,65966004.0; 263102004.0; 66383009.0; 66383009.0; 66383009.0,categorical|numeric
+procedures.csv,REASONDESCRIPTION,str,True,53.7298,52,Fracture of forearm (disorder); Fracture subluxation of wrist (disorder); Gingivitis (disorder); Gingivitis (disorder); Gingivitis (disorder),categorical
+providers.csv,Id,str,False,0.0,161,88cba885-3450-39f7-a8f0-f47b963c863b; 8bb10609-c33b-34a5-b28f-95d10e3231f5; db428abf-4a29-362a-aa8a-ee66e6806c8c; f38a4a1a-81f3-36d0-8299-27d0001fe8e9; 7fbab973-5071-3fda-9e8c-f5f3b174b8ea,identifier|high_cardinality
+providers.csv,ORGANIZATION,str,False,0.0,161,74ab949d-17ac-3309-83a0-13b4405c66aa; e09d4c49-c2ef-3b0f-9a46-3719d9219306; 77645e49-3f69-3d1d-bb93-dc65210e2fac; ab701a70-a658-340e-8f69-ee196a7d40c6; 11ba6a26-59b4-3728-a268-6dc9929962b4,identifier|high_cardinality
+providers.csv,NAME,str,False,0.0,161,Ted955 Reilly981; Jules135 Emard19; Jarvis643 Ankunding277; Jolie499 Parisian75; Angelic427 McCullough561,identifier|high_cardinality
+providers.csv,GENDER,str,False,0.0,2,M; M; M; F; F,categorical
+providers.csv,SPECIALITY,str,False,0.0,1,GENERAL PRACTICE; GENERAL PRACTICE; GENERAL PRACTICE; GENERAL PRACTICE; GENERAL PRACTICE,categorical
+providers.csv,ADDRESS,str,False,0.0,155,881 Main Street; 60 HOSPITAL RD; 363 HIGHLAND AVE; 484 RTE 134; 200 GOVERNORS AVENUE,high_cardinality
+providers.csv,CITY,str,False,0.0,89,Fitchburg; LEOMINSTER; FALL RIVER; WORCESTER; MEDFORD,high_cardinality
+providers.csv,STATE,str,False,0.0,1,MA; MA; MA; MA; MA,categorical
+providers.csv,ZIP,int64,False,0.0,157,1420; 14533290; 27205246; 16071728; 21551644,numeric|high_cardinality
+providers.csv,LAT,float64,False,0.0,151,42.586487; 42.54031915; 41.7093779; 42.2625621; 42.42711615,numeric|high_cardinality
+providers.csv,LON,float64,False,0.0,151,-71.80521; -71.76312990486304; -71.1460783680883; -71.8018877; -71.1121606632448,numeric|high_cardinality
+providers.csv,ENCOUNTERS,int64,False,0.0,79,122; 6; 67; 5; 15,numeric
+providers.csv,PROCEDURES,int64,False,0.0,1,0; 0; 0; 0; 0,categorical|numeric
+supplies.csv,DATE,str,False,0.0,486,2020-11-10; 2020-11-10; 2020-11-10; 2017-12-05; 2017-12-05,date
+supplies.csv,PATIENT,str,False,0.0,54,aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; aee7bbe1-0c45-c028-1e62-1f4cdb30c273; 5e688e99-61b3-5c88-3f60-21df8aaced27; 5e688e99-61b3-5c88-3f60-21df8aaced27,categorical
+supplies.csv,ENCOUNTER,str,False,0.0,487,aee7bbe1-0c45-c028-30f7-7094a1e9365f; aee7bbe1-0c45-c028-30f7-7094a1e9365f; aee7bbe1-0c45-c028-30f7-7094a1e9365f; 5e688e99-61b3-5c88-7b3b-304d85c78dfd; 5e688e99-61b3-5c88-7b3b-304d85c78dfd,none
+supplies.csv,CODE,int64,False,0.0,20,277183007; 1230220004; 469020004; 277183007; 1230220004,categorical|numeric
+supplies.csv,DESCRIPTION,str,False,0.0,20,Dental equipment (physical object); Conventional release periodontal gel (dose form); Dental floss (physical object); Dental equipment (physical object); Conventional release periodontal gel (dose form),categorical
+supplies.csv,QUANTITY,int64,False,0.0,8,1; 1; 1; 1; 1,categorical|numeric

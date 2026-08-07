@@ -1,0 +1,120 @@
+check_id,table,category,status,records_evaluated,records_failed,details
+schema_columns_exist:dim_patient,dim_patient,structural,pass,23,0,All expected columns present
+surrogate_key_not_null:dim_patient,dim_patient,completeness,pass,58,0,0 null surrogate key(s)
+surrogate_key_unique:dim_patient,dim_patient,uniqueness,pass,58,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_patient,dim_patient,completeness,pass,58,0,source=58 target=58
+schema_columns_exist:dim_provider,dim_provider,structural,pass,9,0,All expected columns present
+surrogate_key_not_null:dim_provider,dim_provider,completeness,pass,161,0,0 null surrogate key(s)
+surrogate_key_unique:dim_provider,dim_provider,uniqueness,pass,161,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_provider,dim_provider,completeness,pass,161,0,source=161 target=161
+schema_columns_exist:dim_organization,dim_organization,structural,pass,8,0,All expected columns present
+surrogate_key_not_null:dim_organization,dim_organization,completeness,pass,161,0,0 null surrogate key(s)
+surrogate_key_unique:dim_organization,dim_organization,uniqueness,pass,161,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_organization,dim_organization,completeness,pass,161,0,source=161 target=161
+schema_columns_exist:dim_payer,dim_payer,structural,pass,10,0,All expected columns present
+surrogate_key_not_null:dim_payer,dim_payer,completeness,pass,10,0,0 null surrogate key(s)
+surrogate_key_unique:dim_payer,dim_payer,uniqueness,pass,10,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_payer,dim_payer,completeness,pass,10,0,source=10 target=10
+schema_columns_exist:dim_date,dim_date,structural,pass,11,0,All expected columns present
+surrogate_key_not_null:dim_date,dim_date,completeness,pass,30270,0,0 null surrogate key(s)
+surrogate_key_unique:dim_date,dim_date,uniqueness,pass,30270,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_date,dim_date,completeness,pass,50352,0,source=50352 target=30270
+schema_columns_exist:dim_condition,dim_condition,structural,pass,3,0,All expected columns present
+surrogate_key_not_null:dim_condition,dim_condition,completeness,pass,160,0,0 null surrogate key(s)
+surrogate_key_unique:dim_condition,dim_condition,uniqueness,pass,160,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_condition,dim_condition,completeness,pass,1725,0,source=1725 target=160
+schema_columns_exist:dim_procedure,dim_procedure,structural,pass,3,0,All expected columns present
+surrogate_key_not_null:dim_procedure,dim_procedure,completeness,pass,195,0,0 null surrogate key(s)
+surrogate_key_unique:dim_procedure,dim_procedure,uniqueness,pass,195,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_procedure,dim_procedure,completeness,pass,7601,0,source=7601 target=195
+schema_columns_exist:dim_medication,dim_medication,structural,pass,3,0,All expected columns present
+surrogate_key_not_null:dim_medication,dim_medication,completeness,pass,106,0,0 null surrogate key(s)
+surrogate_key_unique:dim_medication,dim_medication,uniqueness,pass,106,0,0 duplicate surrogate key row(s)
+row_count_reconciliation:dim_medication,dim_medication,completeness,pass,2107,0,source=2107 target=106
+schema_columns_exist:fact_encounter,fact_encounter,structural,pass,19,0,All expected columns present
+fact_key_not_null:fact_encounter,fact_encounter,completeness,pass,3180,0,0 null fact key(s)
+fact_key_unique:fact_encounter,fact_encounter,uniqueness,pass,3180,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_encounter:patient_key_is_missing,fact_encounter,referential,pass,3180,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+foreign_key_flagged:fact_encounter:provider_key_is_missing,fact_encounter,referential,pass,3180,0,0 row(s) flagged for unresolved foreign key (provider_key_is_missing)
+foreign_key_flagged:fact_encounter:organization_key_is_missing,fact_encounter,referential,pass,3180,0,0 row(s) flagged for unresolved foreign key (organization_key_is_missing)
+foreign_key_flagged:fact_encounter:payer_key_is_missing,fact_encounter,referential,pass,3180,0,0 row(s) flagged for unresolved foreign key (payer_key_is_missing)
+date_key_resolves:fact_encounter:encounter_date_key,fact_encounter,referential,pass,3180,0,0 date key value(s) in 'encounter_date_key' not found in dim_date
+row_count_reconciliation:fact_encounter,fact_encounter,completeness,pass,3180,0,source=3180 target=3180
+schema_columns_exist:fact_condition,fact_condition,structural,pass,8,0,All expected columns present
+fact_key_not_null:fact_condition,fact_condition,completeness,pass,1725,0,0 null fact key(s)
+fact_key_unique:fact_condition,fact_condition,uniqueness,pass,1725,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_condition:patient_key_is_missing,fact_condition,referential,pass,1725,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+foreign_key_flagged:fact_condition:condition_key_is_missing,fact_condition,referential,pass,1725,0,0 row(s) flagged for unresolved foreign key (condition_key_is_missing)
+date_key_resolves:fact_condition:start_date_key,fact_condition,referential,pass,1725,0,0 date key value(s) in 'start_date_key' not found in dim_date
+date_key_resolves:fact_condition:stop_date_key,fact_condition,referential,pass,1227,0,0 date key value(s) in 'stop_date_key' not found in dim_date
+row_count_reconciliation:fact_condition,fact_condition,completeness,pass,1725,0,source=1725 target=1725
+schema_columns_exist:fact_procedure,fact_procedure,structural,pass,10,0,All expected columns present
+fact_key_not_null:fact_procedure,fact_procedure,completeness,pass,7601,0,0 null fact key(s)
+fact_key_unique:fact_procedure,fact_procedure,uniqueness,pass,7601,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_procedure:patient_key_is_missing,fact_procedure,referential,pass,7601,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+foreign_key_flagged:fact_procedure:procedure_key_is_missing,fact_procedure,referential,pass,7601,0,0 row(s) flagged for unresolved foreign key (procedure_key_is_missing)
+date_key_resolves:fact_procedure:start_date_key,fact_procedure,referential,pass,7601,0,0 date key value(s) in 'start_date_key' not found in dim_date
+date_key_resolves:fact_procedure:stop_date_key,fact_procedure,referential,pass,7601,0,0 date key value(s) in 'stop_date_key' not found in dim_date
+row_count_reconciliation:fact_procedure,fact_procedure,completeness,pass,7601,0,source=7601 target=7601
+schema_columns_exist:fact_medication,fact_medication,structural,pass,13,0,All expected columns present
+fact_key_not_null:fact_medication,fact_medication,completeness,pass,2104,0,0 null fact key(s)
+fact_key_unique:fact_medication,fact_medication,uniqueness,pass,2104,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_medication:patient_key_is_missing,fact_medication,referential,pass,2104,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+foreign_key_flagged:fact_medication:payer_key_is_missing,fact_medication,referential,pass,2104,0,0 row(s) flagged for unresolved foreign key (payer_key_is_missing)
+foreign_key_flagged:fact_medication:medication_key_is_missing,fact_medication,referential,pass,2104,0,0 row(s) flagged for unresolved foreign key (medication_key_is_missing)
+date_key_resolves:fact_medication:start_date_key,fact_medication,referential,pass,2104,0,0 date key value(s) in 'start_date_key' not found in dim_date
+date_key_resolves:fact_medication:stop_date_key,fact_medication,referential,pass,1943,0,0 date key value(s) in 'stop_date_key' not found in dim_date
+row_count_reconciliation:fact_medication,fact_medication,completeness,pass,2107,0,source=2107 target=2104
+schema_columns_exist:fact_observation,fact_observation,structural,pass,11,0,All expected columns present
+fact_key_not_null:fact_observation,fact_observation,completeness,pass,28089,0,0 null fact key(s)
+fact_key_unique:fact_observation,fact_observation,uniqueness,pass,28089,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_observation:patient_key_is_missing,fact_observation,referential,pass,28089,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+date_key_resolves:fact_observation:observation_date_key,fact_observation,referential,pass,28089,0,0 date key value(s) in 'observation_date_key' not found in dim_date
+row_count_reconciliation:fact_observation,fact_observation,completeness,pass,29607,0,source=29607 target=28089
+schema_columns_exist:fact_claim,fact_claim,structural,pass,10,0,All expected columns present
+fact_key_not_null:fact_claim,fact_claim,completeness,pass,5287,0,0 null fact key(s)
+fact_key_unique:fact_claim,fact_claim,uniqueness,pass,5287,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_claim:patient_key_is_missing,fact_claim,referential,pass,5287,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+foreign_key_flagged:fact_claim:provider_key_is_missing,fact_claim,referential,pass,5287,0,0 row(s) flagged for unresolved foreign key (provider_key_is_missing)
+foreign_key_flagged:fact_claim:payer_key_is_missing,fact_claim,referential,warning,5287,216,216 row(s) flagged for unresolved foreign key (payer_key_is_missing)
+date_key_resolves:fact_claim:service_date_key,fact_claim,referential,pass,5287,0,0 date key value(s) in 'service_date_key' not found in dim_date
+row_count_reconciliation:fact_claim,fact_claim,completeness,pass,5287,0,source=5287 target=5287
+schema_columns_exist:fact_immunization,fact_immunization,structural,pass,7,0,All expected columns present
+fact_key_not_null:fact_immunization,fact_immunization,completeness,pass,845,0,0 null fact key(s)
+fact_key_unique:fact_immunization,fact_immunization,uniqueness,pass,845,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_immunization:patient_key_is_missing,fact_immunization,referential,pass,845,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+date_key_resolves:fact_immunization:immunization_date_key,fact_immunization,referential,pass,845,0,0 date key value(s) in 'immunization_date_key' not found in dim_date
+row_count_reconciliation:fact_immunization,fact_immunization,completeness,pass,845,0,source=845 target=845
+schema_columns_exist:fact_imaging_study,fact_imaging_study,structural,pass,11,0,All expected columns present
+fact_key_not_null:fact_imaging_study,fact_imaging_study,completeness,pass,258,0,0 null fact key(s)
+fact_key_unique:fact_imaging_study,fact_imaging_study,uniqueness,pass,258,0,0 duplicate fact key row(s)
+foreign_key_flagged:fact_imaging_study:patient_key_is_missing,fact_imaging_study,referential,pass,258,0,0 row(s) flagged for unresolved foreign key (patient_key_is_missing)
+date_key_resolves:fact_imaging_study:study_date_key,fact_imaging_study,referential,pass,258,0,0 date key value(s) in 'study_date_key' not found in dim_date
+row_count_reconciliation:fact_imaging_study,fact_imaging_study,completeness,pass,258,0,source=258 target=258
+schema_columns_exist:mart_patient_360,mart_patient_360,structural,pass,23,0,All expected columns present
+row_count_reconciliation:mart_patient_360,mart_patient_360,completeness,pass,58,0,source=58 target=58
+schema_columns_exist:mart_readmission,mart_readmission,structural,pass,11,0,All expected columns present
+row_count_reconciliation:mart_readmission,mart_readmission,completeness,pass,3180,0,source=3180 target=207
+schema_columns_exist:mart_hospital_operations,mart_hospital_operations,structural,pass,13,0,All expected columns present
+row_count_reconciliation:mart_hospital_operations,mart_hospital_operations,completeness,pass,3180,0,source=3180 target=3094
+schema_columns_exist:mart_financial_performance,mart_financial_performance,structural,pass,9,0,All expected columns present
+row_count_reconciliation:mart_financial_performance,mart_financial_performance,completeness,pass,3180,0,source=3180 target=2192
+schema_columns_exist:mart_provider_utilization,mart_provider_utilization,structural,pass,7,0,All expected columns present
+row_count_reconciliation:mart_provider_utilization,mart_provider_utilization,completeness,pass,3180,0,source=3180 target=2149
+schema_columns_exist:mart_monthly_kpis,mart_monthly_kpis,structural,pass,13,0,All expected columns present
+row_count_reconciliation:mart_monthly_kpis,mart_monthly_kpis,completeness,pass,3180,0,source=3180 target=441
+negative_patient_responsibility_flagged,fact_encounter,numeric,pass,3180,0,"0 negative patient_responsibility row(s), all flagged"
+readmission_no_self_reference,mart_readmission,referential,pass,207,0,0 row(s) reference the same encounter as index and next
+readmission_days_non_negative,mart_readmission,temporal,pass,162,0,0 row(s) with negative days_to_readmission
+kpi_valid:readmission_rate_7_day,kpi,numeric,pass,1,0,numerator=1 denominator=207
+kpi_valid:readmission_rate_14_day,kpi,numeric,pass,1,0,numerator=2 denominator=207
+kpi_valid:readmission_rate_30_day,kpi,numeric,pass,1,0,numerator=3 denominator=207
+kpi_valid:average_encounter_duration,kpi,numeric,pass,1,0,numerator=1102790.9833333334 denominator=3180
+kpi_valid:average_inpatient_length_of_stay,kpi,numeric,pass,1,0,numerator=273442.3333333333 denominator=38
+kpi_valid:emergency_encounter_percentage,kpi,numeric,pass,1,0,numerator=169 denominator=3180
+kpi_valid:payer_coverage_ratio,kpi,numeric,pass,1,0,numerator=6148883.54 denominator=7904354.16
+kpi_valid:average_patient_responsibility,kpi,numeric,pass,1,0,numerator=1755470.62 denominator=3180
+kpi_valid:cost_per_encounter,kpi,numeric,pass,1,0,numerator=7904354.16 denominator=3180
+kpi_valid:encounters_per_patient,kpi,numeric,pass,1,0,numerator=3180 denominator=58
+kpi_valid:procedures_per_encounter,kpi,numeric,pass,1,0,numerator=7601 denominator=3180
+kpi_valid:medications_per_patient,kpi,numeric,pass,1,0,numerator=2104 denominator=58

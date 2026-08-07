@@ -1,0 +1,35 @@
+# CareFlow Analytics - dbt profile (example)
+#
+# Copy to profiles.yml (gitignored) -- this example file is already safe
+# to commit as-is since it contains no real values, only env_var() calls.
+# The port is deliberately NOT hard-coded: on this machine PostgreSQL is
+# exposed on 5433 (5432 is occupied by another project), but that is a
+# local detail that belongs in .env, never in the profile itself.
+#
+# scripts/run_dbt.py passes --profiles-dir pointing at the directory that
+# holds this file, so dbt never depends on ~/.dbt/profiles.yml.
+
+careflow_analytics:
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('POSTGRES_HOST') }}"
+      port: "{{ env_var('POSTGRES_PORT') | int }}"
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: careflow_dbt_mart
+      threads: 4
+      keepalives_idle: 0
+      connect_timeout: 10
+    ci:
+      type: postgres
+      host: "{{ env_var('POSTGRES_HOST') }}"
+      port: "{{ env_var('POSTGRES_PORT') | int }}"
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: careflow_dbt_mart_ci
+      threads: 2
+      connect_timeout: 10

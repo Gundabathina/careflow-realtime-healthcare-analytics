@@ -1,0 +1,23 @@
+# CareFlow Analytics -- Streamlit configuration.
+# No secrets here: PostgreSQL credentials are read from environment
+# variables only (see dashboard/database.py). This file controls
+# presentation/server behavior only.
+
+[theme]
+base = "light"
+primaryColor = "#0B5FA5"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F6F8"
+textColor = "#1A1A2E"
+font = "sans serif"
+
+[server]
+headless = true
+runOnSave = false
+enableStaticServing = true
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"

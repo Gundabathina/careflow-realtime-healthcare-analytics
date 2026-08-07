@@ -1,0 +1,57 @@
+# CareFlow Analytics -- Airflow configuration reference (Phase 4A)
+#
+# This file documents the settings the CareFlow Airflow deployment
+# relies on. It is NOT read directly: docker-compose.yml's airflow
+# services set the equivalent AIRFLOW__<SECTION>__<KEY> environment
+# variables instead (the standard, override-friendly way to configure
+# Airflow in containers), which always win over anything in a mounted
+# airflow.cfg. Keep this file in sync with those env vars so `airflow
+# config list` and this file never silently disagree.
+#
+# Never commit a real airflow.cfg: it can end up holding the Fernet key
+# and webserver secret key in plaintext. Both of those are generated at
+# container start (see docs/airflow_orchestration_guide.md) and passed
+# in only via environment variables (AIRFLOW__CORE__FERNET_KEY,
+# AIRFLOW__WEBSERVER__SECRET_KEY) -- never written to a committed file,
+# never logged.
+
+[core]
+dags_folder = /opt/airflow/dags
+plugins_folder = /opt/airflow/plugins
+executor = LocalExecutor
+load_examples = False
+# One CareFlow end-to-end run at a time -- also enforced per-DAG via
+# max_active_runs=1 in both DAG files, since a second concurrent run
+# against the same PostgreSQL warehouse and dbt target is not safe.
+parallelism = 8
+dag_concurrency = 4
+max_active_runs_per_dag = 1
+
+# Generate with: python3 -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
+# Passed to the container only via AIRFLOW__CORE__FERNET_KEY -- never here.
+fernet_key =
+
+[database]
+# Airflow's own metadata database -- a *separate* PostgreSQL instance/
+# database/credentials from the CareFlow analytics warehouse (see the
+# airflow-postgres service in docker-compose.yml). Never point this at
+# careflow-postgres.
+sql_alchemy_conn = postgresql+psycopg2://airflow:REPLACE_ME@airflow-postgres/airflow
+
+[webserver]
+web_server_port = 8080
+expose_config = False
+# Generate with: python3 -c "import secrets; print(secrets.token_hex(32))"
+# Passed to the container only via AIRFLOW__WEBSERVER__SECRET_KEY -- never here.
+secret_key =
+
+[scheduler]
+catchup_by_default = False
+dag_dir_list_interval = 30
+
+[logging]
+base_log_folder = /opt/airflow/logs
+remote_logging = False
+
+[api]
+auth_backends = airflow.api.auth.backend.basic_auth

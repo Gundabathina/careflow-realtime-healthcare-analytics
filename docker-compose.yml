@@ -1,0 +1,156 @@
+x-airflow-common: &airflow-common
+  image: apache/airflow:2.9.3-python3.11
+  environment: &airflow-common-env
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+    AIRFLOW__CORE__PLUGINS_FOLDER: /opt/airflow/plugins
+    AIRFLOW__CORE__MAX_ACTIVE_RUNS_PER_DAG: "1"
+    AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: "30"
+    AIRFLOW__SCHEDULER__CATCHUP_BY_DEFAULT: "false"
+    AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+    AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth
+    # Fail fast rather than start with guessable/empty security keys --
+    # generate real values into .env (see .env.example and
+    # docs/airflow_orchestration_guide.md). Never logged, never
+    # committed, never written into a config file.
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY:?AIRFLOW_FERNET_KEY must be set (see .env.example)}
+    AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW_WEBSERVER_SECRET_KEY:?AIRFLOW_WEBSERVER_SECRET_KEY must be set (see .env.example)}
+    # Airflow's OWN metadata database -- deliberately a separate
+    # container, database, and credentials from the CareFlow analytics
+    # warehouse (`postgres` below). Never point this at careflow-postgres.
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_POSTGRES_USER:-airflow}:${AIRFLOW_POSTGRES_PASSWORD:?AIRFLOW_POSTGRES_PASSWORD must be set (see .env.example)}@airflow-postgres/${AIRFLOW_POSTGRES_DB:-airflow}
+    # Local/dev convenience: installs the project's runtime deps + the
+    # same pinned dbt-core/dbt-postgres used on the host's .venv-dbt into
+    # Airflow's own Python (re-installed on every container start -- for
+    # a production deployment, replace with a custom Dockerfile image
+    # build instead; see airflow/requirements.txt).
+    _PIP_ADDITIONAL_REQUIREMENTS: "pandas>=3.0 pyarrow>=25.0 pyyaml>=6.0 psycopg[binary]>=3.3 dbt-core==1.8.9 dbt-postgres==1.8.2"
+    # The CareFlow analytics warehouse, reached via internal Docker
+    # networking (the `postgres` service's container-internal port) --
+    # deliberately NOT the host-mapped ${POSTGRES_PORT}, which has no
+    # meaning inside this network.
+    POSTGRES_HOST: postgres
+    POSTGRES_PORT: "5432"
+    POSTGRES_DB: ${POSTGRES_DB:-careflow}
+    POSTGRES_USER: ${POSTGRES_USER:-careflow_user}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set (see .env.example)}
+    DBT_TARGET: ${DBT_TARGET:-dev}
+    DBT_PROFILES_DIR: /opt/careflow
+    CAREFLOW_PROJECT_ROOT: /opt/careflow
+    CAREFLOW_PYTHON_BIN: python3
+    CAREFLOW_DBT_BIN: dbt
+  volumes:
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/plugins:/opt/airflow/plugins
+    - careflow_airflow_logs:/opt/airflow/logs
+    # The whole repo, read-write: DAG tasks run scripts/*.py and dbt
+    # exactly as they run on the host, reading/writing data/, reports/,
+    # and target/ in place. Never used to modify data/raw, data/bronze,
+    # data/silver, or Gold Parquet files -- only the scripts themselves
+    # decide what they write, unchanged from host behavior.
+    - .:/opt/careflow
+  user: "${AIRFLOW_UID:-50000}:0"
+  depends_on:
+    airflow-postgres:
+      condition: service_healthy
+  profiles: ["airflow"]
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: careflow-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-careflow}
+      POSTGRES_USER: ${POSTGRES_USER:-careflow_user}
+      # No default is provided here on purpose -- Compose fails fast if
+      # POSTGRES_PASSWORD isn't set in the environment or a local .env file,
+      # rather than silently starting with a guessable password.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set (see .env.example)}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+      LANG: en_US.utf8
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - careflow_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-careflow_user} -d ${POSTGRES_DB:-careflow}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  # --- Apache Airflow (Phase 4A) -- all opt-in via `--profile airflow`,
+  # so a plain `docker compose up -d` (or `up -d postgres`) behaves
+  # exactly as it did before this phase. Start with
+  # `scripts/start_airflow.py` or `docker compose --profile airflow up -d`.
+
+  airflow-postgres:
+    image: postgres:16-alpine
+    container_name: careflow-airflow-metadata-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${AIRFLOW_POSTGRES_DB:-airflow}
+      POSTGRES_USER: ${AIRFLOW_POSTGRES_USER:-airflow}
+      POSTGRES_PASSWORD: ${AIRFLOW_POSTGRES_PASSWORD:?AIRFLOW_POSTGRES_PASSWORD must be set (see .env.example)}
+    volumes:
+      - careflow_airflow_metadata_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${AIRFLOW_POSTGRES_USER:-airflow} -d ${AIRFLOW_POSTGRES_DB:-airflow}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    # No `ports:` -- internal Docker networking only. Nothing outside
+    # this Compose network needs to reach Airflow's metadata database.
+    profiles: ["airflow"]
+
+  airflow-init:
+    <<: *airflow-common
+    container_name: careflow-airflow-init
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        airflow db migrate
+        airflow users create \
+          --username "${AIRFLOW_ADMIN_USERNAME:-admin}" \
+          --password "${AIRFLOW_ADMIN_PASSWORD:?AIRFLOW_ADMIN_PASSWORD must be set (see .env.example)}" \
+          --firstname CareFlow --lastname Admin --role Admin \
+          --email "${AIRFLOW_ADMIN_EMAIL:-admin@careflow.example}" || true
+    restart: "no"
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: careflow-airflow-webserver
+    command: webserver
+    ports:
+      - "${AIRFLOW_WEBSERVER_PORT:-8080}:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: careflow-airflow-scheduler
+    command: scheduler
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  careflow_postgres_data:
+    name: careflow_postgres_data
+  careflow_airflow_metadata_data:
+    name: careflow_airflow_metadata_data
+  careflow_airflow_logs:
+    name: careflow_airflow_logs

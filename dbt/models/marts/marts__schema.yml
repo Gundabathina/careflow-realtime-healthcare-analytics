@@ -1,0 +1,120 @@
+version: 2
+
+models:
+  - name: fct_encounters
+    description: >
+      dbt-owned encounter fact, incrementally materialized (unique_key =
+      encounter_key). Full refresh rebuilds from int_encounters_enriched
+      entirely; incremental runs only append/replace encounters with a
+      start_timestamp newer than what is already loaded, upserting via
+      encounter_key so late-arriving corrections to an existing
+      encounter_key are handled, not duplicated.
+    meta:
+      owner: analytics-engineering
+      contains_pii: false
+    columns:
+      - name: encounter_key
+        data_tests: [not_null, unique]
+      - name: encounter_id
+        description: Natural key preserved alongside the surrogate key.
+        data_tests: [not_null]
+
+  - name: fct_readmissions
+    description: dbt-owned readmission fact (independently recomputed; see int_readmission_events).
+    columns:
+      - name: index_encounter_key
+        data_tests: [not_null, unique]
+    data_tests:
+      - dbt_utils.expression_is_true:
+          expression: "index_encounter_key != next_encounter_key"
+          config: {where: "next_encounter_key is not null"}
+
+  - name: fct_claim_financials
+    description: Claim-level financial fact.
+    columns:
+      - name: claim_key
+        data_tests: [not_null, unique]
+
+  - name: fct_provider_activity
+    description: Provider activity fact, aggregated by month.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [provider_key, year_month]
+
+  - name: dim_patient_safe
+    description: >
+      Public-safe patient dimension. Contains ONLY: patient_key, age
+      group, gender, race, ethnicity, marital status, city, state,
+      county, ZIP (documented synthetic data). No patient_id, name,
+      SSN, passport, driver's license, address, or lat/lon.
+    meta:
+      owner: analytics-engineering
+      contains_pii: false
+      pii_review: "passed -- see dbt/tests/no_restricted_pii_in_public_models.sql"
+    columns:
+      - name: patient_key
+        data_tests: [not_null, unique]
+
+  - name: dim_provider_reporting
+    description: Public provider reporting dimension.
+    columns:
+      - name: provider_key
+        data_tests: [not_null, unique]
+
+  - name: dim_organization_reporting
+    description: Public organization reporting dimension.
+    columns:
+      - name: organization_key
+        data_tests: [not_null, unique]
+
+  - name: dim_payer_reporting
+    description: Public payer reporting dimension.
+    columns:
+      - name: payer_key
+        data_tests: [not_null, unique]
+
+  - name: mart_executive_monthly
+    description: >
+      One row per month: patient/encounter volume, cost, and 30-day
+      readmission rate. KPI definitions: readmission_rate_30_day =
+      qualifying encounters readmitted within 30 days / total qualifying
+      encounters discharged that month (safe_divide -- null when zero
+      qualifying encounters). Feeds the planned Executive Operations Dashboard.
+    columns:
+      - name: year_month
+        data_tests: [not_null, unique]
+
+  - name: mart_readmission_analysis
+    description: Readmission events with safe patient demographics. Feeds the planned Readmission Dashboard.
+    columns:
+      - name: index_encounter_key
+        data_tests: [not_null, unique]
+
+  - name: mart_financial_analysis
+    description: >
+      Financial performance by payer, organization, and month.
+      coverage_ratio = total_payer_coverage / total_claim_cost
+      (safe_divide). Feeds the planned Financial Performance Dashboard.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [payer_key, organization_key, year_month]
+
+  - name: mart_hospital_operations
+    description: Hospital operations aggregated by organization, date, and encounter class.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [organization_key, encounter_date_key, encounter_class]
+
+  - name: mart_provider_performance
+    description: Provider performance aggregated by month. Feeds the planned Provider Performance Dashboard.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [provider_key, year_month]
+
+  - name: mart_patient_population
+    description: Population-level demographics and clinical activity, built entirely from PII-safe sources.
+    meta:
+      contains_pii: false
+    columns:
+      - name: patient_key
+        data_tests: [not_null, unique]

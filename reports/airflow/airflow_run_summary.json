@@ -1,0 +1,151 @@
+{
+  "dag_id": "careflow_end_to_end",
+  "run_id": "manual__2026-08-07T03:43:11+00:00",
+  "started_at_utc": "2026-08-07 03:43:11.874125+00:00",
+  "completed_at_utc": "2026-08-07 03:43:49.120644",
+  "conf": {
+    "generate_data": false,
+    "force_bronze": false,
+    "force_silver": false,
+    "force_gold": false,
+    "force_warehouse": false,
+    "run_dbt_snapshot": false,
+    "run_dbt_docs": false,
+    "fail_fast": false
+  },
+  "task_count": 21,
+  "status_counts": {
+    "skipped": 4,
+    "success": 17
+  },
+  "failed_tasks": [],
+  "final_status": "success",
+  "tasks": [
+    {
+      "task_id": "setup_synthea",
+      "state": "skipped",
+      "duration": null,
+      "try_number": 1
+    },
+    {
+      "task_id": "environment_check",
+      "state": "success",
+      "duration": 1.70713,
+      "try_number": 2
+    },
+    {
+      "task_id": "decide_generate_data",
+      "state": "success",
+      "duration": 0.231115,
+      "try_number": 2
+    },
+    {
+      "task_id": "generate_synthetic_data",
+      "state": "skipped",
+      "duration": 0.0,
+      "try_number": 1
+    },
+    {
+      "task_id": "skip_generate_data",
+      "state": "success",
+      "duration": 0.196594,
+      "try_number": 2
+    },
+    {
+      "task_id": "profile_raw_data",
+      "state": "success",
+      "duration": 2.142186,
+      "try_number": 2
+    },
+    {
+      "task_id": "validate_raw_data",
+      "state": "success",
+      "duration": 1.585578,
+      "try_number": 2
+    },
+    {
+      "task_id": "build_gold",
+      "state": "success",
+      "duration": 1.150931,
+      "try_number": 2
+    },
+    {
+      "task_id": "validate_postgres",
+      "state": "success",
+      "duration": 1.141117,
+      "try_number": 2
+    },
+    {
+      "task_id": "ensure_postgres_ready",
+      "state": "success",
+      "duration": 0.609033,
+      "try_number": 2
+    },
+    {
+      "task_id": "ingest_bronze",
+      "state": "success",
+      "duration": 2.547258,
+      "try_number": 2
+    },
+    {
+      "task_id": "load_postgres",
+      "state": "success",
+      "duration": 1.001023,
+      "try_number": 2
+    },
+    {
+      "task_id": "build_silver",
+      "state": "success",
+      "duration": 1.236283,
+      "try_number": 2
+    },
+    {
+      "task_id": "skip_dbt_snapshot",
+      "state": "success",
+      "duration": 0.247911,
+      "try_number": 2
+    },
+    {
+      "task_id": "dbt_seed",
+      "state": "success",
+      "duration": 2.639575,
+      "try_number": 2
+    },
+    {
+      "task_id": "dbt_snapshot",
+      "state": "skipped",
+      "duration": null,
+      "try_number": 1
+    },
+    {
+      "task_id": "decide_dbt_snapshot",
+      "state": "success",
+      "duration": 0.275452,
+      "try_number": 2
+    },
+    {
+      "task_id": "dbt_build",
+      "state": "success",
+      "duration": 6.445762,
+      "try_number": 2
+    },
+    {
+      "task_id": "dbt_docs",
+      "state": "skipped",
+      "duration": null,
+      "try_number": 1
+    },
+    {
+      "task_id": "decide_dbt_docs",
+      "state": "success",
+      "duration": 0.259701,
+      "try_number": 2
+    },
+    {
+      "task_id": "skip_dbt_docs",
+      "state": "success",
+      "duration": 0.210993,
+      "try_number": 2
+    }
+  ]
+}

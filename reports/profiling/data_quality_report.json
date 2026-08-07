@@ -1,0 +1,1446 @@
+{
+  "data_quality_version": "1.0.0",
+  "generated_at_utc": "2026-08-07T03:43:23Z",
+  "source_directory": "data/raw/synthea/csv",
+  "summary": {
+    "total_rules": 66,
+    "passed": 66,
+    "warnings": 0,
+    "failed": 0,
+    "skipped": 0,
+    "total_records_failed": 6
+  },
+  "rules": [
+    {
+      "rule_id": "not_null:patients.csv:Id",
+      "rule_name": "Patient identifier is not null",
+      "category": "completeness",
+      "business_reason": "Every patient record must have a primary identifier to support downstream joins and analytics.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 58,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "critical",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "unique:patients.csv:Id",
+      "rule_name": "Patient identifier is unique",
+      "category": "uniqueness",
+      "business_reason": "Duplicate patient identifiers would corrupt patient-level aggregation and readmission analysis.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 58,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "critical",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "not_null:encounters.csv:Id",
+      "rule_name": "Encounter identifier is not null",
+      "category": "completeness",
+      "business_reason": "Every encounter record must have a primary identifier.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "critical",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "unique:encounters.csv:Id",
+      "rule_name": "Encounter identifier is unique",
+      "category": "uniqueness",
+      "business_reason": "Duplicate encounter identifiers would corrupt encounter-level analytics.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "critical",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_parses:encounters.csv:START",
+      "rule_name": "Encounter START parses as a date",
+      "category": "format",
+      "business_reason": "Encounter start time drives scheduling, duration, and time-series analytics.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "START"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_parses:encounters.csv:STOP",
+      "rule_name": "Encounter STOP parses as a date when present",
+      "category": "format",
+      "business_reason": "Encounter stop time, when recorded, must be usable for duration analytics.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "STOP"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_order:encounters.csv:START:STOP",
+      "rule_name": "Encounter STOP is not before START",
+      "category": "temporal",
+      "business_reason": "A stop time earlier than the start time indicates a corrupted or reversed timestamp.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "START",
+        "STOP"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_parses:patients.csv:BIRTHDATE",
+      "rule_name": "Patient BIRTHDATE parses as a date",
+      "category": "format",
+      "business_reason": "Birthdate underpins age, cohort, and readmission-risk calculations.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "BIRTHDATE"
+      ],
+      "records_evaluated": 58,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_order:patients.csv:BIRTHDATE:DEATHDATE",
+      "rule_name": "Patient DEATHDATE is not before BIRTHDATE",
+      "category": "temporal",
+      "business_reason": "A death date earlier than the birth date is biologically impossible.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "BIRTHDATE",
+        "DEATHDATE"
+      ],
+      "records_evaluated": 8,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "critical",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "temporal:birthdate_before_encounter_start",
+      "rule_name": "Patient birth date is not after encounter start",
+      "category": "temporal",
+      "business_reason": "A patient cannot be encountered before they are born; this flags broken patient-encounter linkage or bad dates.",
+      "source_file": "patients.csv,encounters.csv",
+      "columns_used": [
+        "BIRTHDATE",
+        "START"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_order:procedures.csv:START:STOP",
+      "rule_name": "Procedure STOP is not before START",
+      "category": "temporal",
+      "business_reason": "A procedure cannot end before it starts.",
+      "source_file": "procedures.csv",
+      "columns_used": [
+        "START",
+        "STOP"
+      ],
+      "records_evaluated": 7601,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_order:medications.csv:START:STOP",
+      "rule_name": "Medication STOP is not before START",
+      "category": "temporal",
+      "business_reason": "A medication course cannot end before it starts.",
+      "source_file": "medications.csv",
+      "columns_used": [
+        "START",
+        "STOP"
+      ],
+      "records_evaluated": 1946,
+      "records_failed": 6,
+      "failure_percentage": 0.3083,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [
+        {
+          "START": "2010-04-24T07:45:28Z",
+          "STOP": "2010-04-18T07:50:24Z",
+          "patient": "6bbfd787-4488-cda8-2ca2-8aa6cac925b7",
+          "encounter": "6bbfd787-4488-cda8-b155-38379a226765"
+        },
+        {
+          "START": "2010-04-24T07:45:28Z",
+          "STOP": "2010-04-18T07:50:24Z",
+          "patient": "6bbfd787-4488-cda8-2ca2-8aa6cac925b7",
+          "encounter": "6bbfd787-4488-cda8-b155-38379a226765"
+        },
+        {
+          "START": "2014-05-17T07:45:28Z",
+          "STOP": "2014-05-11T07:48:27Z",
+          "patient": "6bbfd787-4488-cda8-2ca2-8aa6cac925b7",
+          "encounter": "6bbfd787-4488-cda8-85c9-6986040b27fd"
+        },
+        {
+          "START": "2014-05-17T07:45:28Z",
+          "STOP": "2014-05-11T07:48:27Z",
+          "patient": "6bbfd787-4488-cda8-2ca2-8aa6cac925b7",
+          "encounter": "6bbfd787-4488-cda8-85c9-6986040b27fd"
+        },
+        {
+          "START": "2017-06-10T07:45:28Z",
+          "STOP": "2017-06-04T07:48:58Z",
+          "patient": "6bbfd787-4488-cda8-2ca2-8aa6cac925b7",
+          "encounter": "6bbfd787-4488-cda8-1c59-5b8358805f27"
+        },
+        {
+          "START": "2017-06-10T07:45:28Z",
+          "STOP": "2017-06-04T07:48:58Z",
+          "patient": "6bbfd787-4488-cda8-2ca2-8aa6cac925b7",
+          "encounter": "6bbfd787-4488-cda8-1c59-5b8358805f27"
+        }
+      ],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_order:careplans.csv:START:STOP",
+      "rule_name": "Careplan STOP is not before START",
+      "category": "temporal",
+      "business_reason": "A care plan cannot end before it starts.",
+      "source_file": "careplans.csv",
+      "columns_used": [
+        "START",
+        "STOP"
+      ],
+      "records_evaluated": 94,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "date_order:devices.csv:START:STOP",
+      "rule_name": "Device STOP is not before START",
+      "category": "temporal",
+      "business_reason": "A device usage period cannot end before it starts.",
+      "source_file": "devices.csv",
+      "columns_used": [
+        "START",
+        "STOP"
+      ],
+      "records_evaluated": 195,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:encounters.csv:BASE_ENCOUNTER_COST",
+      "rule_name": "BASE_ENCOUNTER_COST in encounters.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "BASE_ENCOUNTER_COST"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:encounters.csv:TOTAL_CLAIM_COST",
+      "rule_name": "TOTAL_CLAIM_COST in encounters.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "TOTAL_CLAIM_COST"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:encounters.csv:PAYER_COVERAGE",
+      "rule_name": "PAYER_COVERAGE in encounters.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "PAYER_COVERAGE"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:procedures.csv:BASE_COST",
+      "rule_name": "BASE_COST in procedures.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "procedures.csv",
+      "columns_used": [
+        "BASE_COST"
+      ],
+      "records_evaluated": 7601,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:medications.csv:BASE_COST",
+      "rule_name": "BASE_COST in medications.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "medications.csv",
+      "columns_used": [
+        "BASE_COST"
+      ],
+      "records_evaluated": 2107,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:medications.csv:TOTALCOST",
+      "rule_name": "TOTALCOST in medications.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "medications.csv",
+      "columns_used": [
+        "TOTALCOST"
+      ],
+      "records_evaluated": 2107,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:medications.csv:PAYER_COVERAGE",
+      "rule_name": "PAYER_COVERAGE in medications.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "medications.csv",
+      "columns_used": [
+        "PAYER_COVERAGE"
+      ],
+      "records_evaluated": 2107,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "cost_non_negative:immunizations.csv:BASE_COST",
+      "rule_name": "BASE_COST in immunizations.csv is not negative",
+      "category": "numeric",
+      "business_reason": "Negative costs are not economically meaningful and indicate a data or export error.",
+      "source_file": "immunizations.csv",
+      "columns_used": [
+        "BASE_COST"
+      ],
+      "records_evaluated": 845,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "numeric:encounters.csv:PAYER_COVERAGE_le_TOTAL_CLAIM_COST",
+      "rule_name": "Encounter payer coverage does not exceed total claim cost",
+      "category": "numeric",
+      "business_reason": "A payer cannot cover more than the total cost of the encounter.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "PAYER_COVERAGE",
+        "TOTAL_CLAIM_COST"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "structural:required_foreign_keys_exist",
+      "rule_name": "Required foreign key columns exist",
+      "category": "referential",
+      "business_reason": "Downstream joins depend on expected foreign key columns being present in each file.",
+      "source_file": "multiple",
+      "columns_used": [
+        "*"
+      ],
+      "records_evaluated": 22,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "critical",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "critical_not_null:patients.csv:BIRTHDATE",
+      "rule_name": "BIRTHDATE in patients.csv does not contain unexpected nulls",
+      "category": "completeness",
+      "business_reason": "This column is configured as critical for downstream analytics and must be populated.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "BIRTHDATE"
+      ],
+      "records_evaluated": 58,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "critical_not_null:encounters.csv:PATIENT",
+      "rule_name": "PATIENT in encounters.csv does not contain unexpected nulls",
+      "category": "completeness",
+      "business_reason": "This column is configured as critical for downstream analytics and must be populated.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "critical_not_null:encounters.csv:START",
+      "rule_name": "START in encounters.csv does not contain unexpected nulls",
+      "category": "completeness",
+      "business_reason": "This column is configured as critical for downstream analytics and must be populated.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "START"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "critical_not_null:encounters.csv:ENCOUNTERCLASS",
+      "rule_name": "ENCOUNTERCLASS in encounters.csv does not contain unexpected nulls",
+      "category": "completeness",
+      "business_reason": "This column is configured as critical for downstream analytics and must be populated.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "ENCOUNTERCLASS"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "critical_not_null:organizations.csv:Id",
+      "rule_name": "Id in organizations.csv does not contain unexpected nulls",
+      "category": "completeness",
+      "business_reason": "This column is configured as critical for downstream analytics and must be populated.",
+      "source_file": "organizations.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 161,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "critical_not_null:providers.csv:Id",
+      "rule_name": "Id in providers.csv does not contain unexpected nulls",
+      "category": "completeness",
+      "business_reason": "This column is configured as critical for downstream analytics and must be populated.",
+      "source_file": "providers.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 161,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "critical_not_null:payers.csv:Id",
+      "rule_name": "Id in payers.csv does not contain unexpected nulls",
+      "category": "completeness",
+      "business_reason": "This column is configured as critical for downstream analytics and must be populated.",
+      "source_file": "payers.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 10,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "high",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 0.0,
+        "fail_pct": 1.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "domain:encounters.csv:ENCOUNTERCLASS",
+      "rule_name": "Encounter class is within the allowed set",
+      "category": "domain",
+      "business_reason": "Unrecognized encounter classes indicate schema drift or upstream data issues.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "ENCOUNTERCLASS"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "medium",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:patients.csv:Id",
+      "rule_name": "Id in patients.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 58,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:encounters.csv:Id",
+      "rule_name": "Id in encounters.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:encounters.csv:PATIENT",
+      "rule_name": "PATIENT in encounters.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:encounters.csv:ORGANIZATION",
+      "rule_name": "ORGANIZATION in encounters.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "ORGANIZATION"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:encounters.csv:PROVIDER",
+      "rule_name": "PROVIDER in encounters.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "PROVIDER"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:encounters.csv:PAYER",
+      "rule_name": "PAYER in encounters.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "encounters.csv",
+      "columns_used": [
+        "PAYER"
+      ],
+      "records_evaluated": 3180,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:organizations.csv:Id",
+      "rule_name": "Id in organizations.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "organizations.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 161,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:providers.csv:Id",
+      "rule_name": "Id in providers.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "providers.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 161,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:payers.csv:Id",
+      "rule_name": "Id in payers.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "payers.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 10,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:conditions.csv:PATIENT",
+      "rule_name": "PATIENT in conditions.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "conditions.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 1725,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:conditions.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in conditions.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "conditions.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 1725,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:procedures.csv:PATIENT",
+      "rule_name": "PATIENT in procedures.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "procedures.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 7601,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:procedures.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in procedures.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "procedures.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 7601,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:medications.csv:PATIENT",
+      "rule_name": "PATIENT in medications.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "medications.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 2107,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:medications.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in medications.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "medications.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 2107,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:observations.csv:PATIENT",
+      "rule_name": "PATIENT in observations.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "observations.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 29621,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:observations.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in observations.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "observations.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 28103,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:careplans.csv:Id",
+      "rule_name": "Id in careplans.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "careplans.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 195,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:careplans.csv:PATIENT",
+      "rule_name": "PATIENT in careplans.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "careplans.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 195,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:careplans.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in careplans.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "careplans.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 195,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:devices.csv:PATIENT",
+      "rule_name": "PATIENT in devices.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "devices.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 280,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:devices.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in devices.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "devices.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 280,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:immunizations.csv:PATIENT",
+      "rule_name": "PATIENT in immunizations.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "immunizations.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 845,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:immunizations.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in immunizations.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "immunizations.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 845,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:imaging_studies.csv:Id",
+      "rule_name": "Id in imaging_studies.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "imaging_studies.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 258,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:imaging_studies.csv:PATIENT",
+      "rule_name": "PATIENT in imaging_studies.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "imaging_studies.csv",
+      "columns_used": [
+        "PATIENT"
+      ],
+      "records_evaluated": 258,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:imaging_studies.csv:ENCOUNTER",
+      "rule_name": "ENCOUNTER in imaging_studies.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "imaging_studies.csv",
+      "columns_used": [
+        "ENCOUNTER"
+      ],
+      "records_evaluated": 258,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:claims.csv:Id",
+      "rule_name": "Id in claims.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "claims.csv",
+      "columns_used": [
+        "Id"
+      ],
+      "records_evaluated": 5287,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:claims.csv:PATIENTID",
+      "rule_name": "PATIENTID in claims.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "claims.csv",
+      "columns_used": [
+        "PATIENTID"
+      ],
+      "records_evaluated": 5287,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "uuid_format:claims.csv:APPOINTMENTID",
+      "rule_name": "APPOINTMENTID in claims.csv is a valid UUID",
+      "category": "format",
+      "business_reason": "Identifier columns are expected to be UUID-formatted for reliable joins; deviations may indicate a non-standard export.",
+      "source_file": "claims.csv",
+      "columns_used": [
+        "APPOINTMENTID"
+      ],
+      "records_evaluated": 5287,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "zip_text_format:patients.csv:ZIP",
+      "rule_name": "ZIP in patients.csv is treated as identifier text",
+      "category": "format",
+      "business_reason": "ZIP codes must be treated as identifier text so leading zeros are preserved, not stripped as numbers.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "ZIP"
+      ],
+      "records_evaluated": 58,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "zip_text_format:organizations.csv:ZIP",
+      "rule_name": "ZIP in organizations.csv is treated as identifier text",
+      "category": "format",
+      "business_reason": "ZIP codes must be treated as identifier text so leading zeros are preserved, not stripped as numbers.",
+      "source_file": "organizations.csv",
+      "columns_used": [
+        "ZIP"
+      ],
+      "records_evaluated": 161,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "zip_text_format:providers.csv:ZIP",
+      "rule_name": "ZIP in providers.csv is treated as identifier text",
+      "category": "format",
+      "business_reason": "ZIP codes must be treated as identifier text so leading zeros are preserved, not stripped as numbers.",
+      "source_file": "providers.csv",
+      "columns_used": [
+        "ZIP"
+      ],
+      "records_evaluated": 161,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "low",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    },
+    {
+      "rule_id": "plausibility:patients.csv:age",
+      "rule_name": "Patient age is plausible",
+      "category": "plausibility",
+      "business_reason": "Ages beyond a configurable maximum (or negative ages) indicate corrupted birth/death dates.",
+      "source_file": "patients.csv",
+      "columns_used": [
+        "BIRTHDATE"
+      ],
+      "records_evaluated": 58,
+      "records_failed": 0,
+      "failure_percentage": 0.0,
+      "severity": "medium",
+      "status": "pass",
+      "threshold": {
+        "warning_pct": 1.0,
+        "fail_pct": 5.0
+      },
+      "sample_failures": [],
+      "skipped_reason": null
+    }
+  ]
+}

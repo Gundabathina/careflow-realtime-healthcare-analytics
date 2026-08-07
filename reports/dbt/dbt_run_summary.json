@@ -1,0 +1,443 @@
+{
+  "invocation_id": "97950a1b-7d56-4e55-92ae-5c0c10a7502f",
+  "dbt_version": "1.8.9",
+  "target": "dev",
+  "generated_at_utc": "2026-08-07T03:43:45Z",
+  "elapsed_time_seconds": 3.7328081130981445,
+  "status_counts": {
+    "success": 43
+  },
+  "models_selected": 43,
+  "models": [
+    {
+      "unique_id": "seed.careflow_analytics.seed_kpi_definitions",
+      "name": "seed_kpi_definitions",
+      "resource_type": "seed",
+      "schema": "careflow_dbt_seeds",
+      "materialized": "seed",
+      "status": "success",
+      "duration_seconds": 0.0753786563873291,
+      "rows_affected": 12
+    },
+    {
+      "unique_id": "seed.careflow_analytics.seed_accepted_encounter_classes",
+      "name": "seed_accepted_encounter_classes",
+      "resource_type": "seed",
+      "schema": "careflow_dbt_seeds",
+      "materialized": "seed",
+      "status": "success",
+      "duration_seconds": 0.07709407806396484,
+      "rows_affected": 10
+    },
+    {
+      "unique_id": "seed.careflow_analytics.seed_readmission_windows",
+      "name": "seed_readmission_windows",
+      "resource_type": "seed",
+      "schema": "careflow_dbt_seeds",
+      "materialized": "seed",
+      "status": "success",
+      "duration_seconds": 0.07816267013549805,
+      "rows_affected": 3
+    },
+    {
+      "unique_id": "seed.careflow_analytics.seed_age_group_order",
+      "name": "seed_age_group_order",
+      "resource_type": "seed",
+      "schema": "careflow_dbt_seeds",
+      "materialized": "seed",
+      "status": "success",
+      "duration_seconds": 0.07922887802124023,
+      "rows_affected": 6
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__dates",
+      "name": "stg_careflow__dates",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.12025594711303711,
+      "rows_affected": 30270
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__patients",
+      "name": "stg_careflow__patients",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.10680913925170898,
+      "rows_affected": 58
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__organizations",
+      "name": "stg_careflow__organizations",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.13305211067199707,
+      "rows_affected": 161
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__payers",
+      "name": "stg_careflow__payers",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.09623360633850098,
+      "rows_affected": 10
+    },
+    {
+      "unique_id": "snapshot.careflow_analytics.snap_organization_attributes",
+      "name": "snap_organization_attributes",
+      "resource_type": "snapshot",
+      "schema": "careflow_dbt_snapshots",
+      "materialized": "snapshot",
+      "status": "success",
+      "duration_seconds": 0.20571136474609375,
+      "rows_affected": 161
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__providers",
+      "name": "stg_careflow__providers",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.08948731422424316,
+      "rows_affected": 161
+    },
+    {
+      "unique_id": "snapshot.careflow_analytics.snap_payer_attributes",
+      "name": "snap_payer_attributes",
+      "resource_type": "snapshot",
+      "schema": "careflow_dbt_snapshots",
+      "materialized": "snapshot",
+      "status": "success",
+      "duration_seconds": 0.14312410354614258,
+      "rows_affected": 10
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__claims",
+      "name": "stg_careflow__claims",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.07241153717041016,
+      "rows_affected": 5287
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__encounters",
+      "name": "stg_careflow__encounters",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.07277250289916992,
+      "rows_affected": 3180
+    },
+    {
+      "unique_id": "snapshot.careflow_analytics.snap_provider_attributes",
+      "name": "snap_provider_attributes",
+      "resource_type": "snapshot",
+      "schema": "careflow_dbt_snapshots",
+      "materialized": "snapshot",
+      "status": "success",
+      "duration_seconds": 0.14360642433166504,
+      "rows_affected": 161
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__conditions",
+      "name": "stg_careflow__conditions",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.06999945640563965,
+      "rows_affected": 1725
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__imaging_studies",
+      "name": "stg_careflow__imaging_studies",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.06969070434570312,
+      "rows_affected": 258
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__immunizations",
+      "name": "stg_careflow__immunizations",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.07349181175231934,
+      "rows_affected": 845
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__medications",
+      "name": "stg_careflow__medications",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.07300543785095215,
+      "rows_affected": 2104
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__observations",
+      "name": "stg_careflow__observations",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.07260966300964355,
+      "rows_affected": 28089
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__readmissions",
+      "name": "stg_careflow__readmissions",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.06444263458251953,
+      "rows_affected": 207
+    },
+    {
+      "unique_id": "model.careflow_analytics.stg_careflow__procedures",
+      "name": "stg_careflow__procedures",
+      "resource_type": "model",
+      "schema": "careflow_dbt_staging",
+      "materialized": "view",
+      "status": "success",
+      "duration_seconds": 0.07184457778930664,
+      "rows_affected": 7601
+    },
+    {
+      "unique_id": "model.careflow_analytics.dim_patient_safe",
+      "name": "dim_patient_safe",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.09100103378295898,
+      "rows_affected": 58
+    },
+    {
+      "unique_id": "model.careflow_analytics.dim_payer_reporting",
+      "name": "dim_payer_reporting",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.0848245620727539,
+      "rows_affected": 10
+    },
+    {
+      "unique_id": "model.careflow_analytics.dim_provider_reporting",
+      "name": "dim_provider_reporting",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.08258867263793945,
+      "rows_affected": 161
+    },
+    {
+      "unique_id": "model.careflow_analytics.dim_organization_reporting",
+      "name": "dim_organization_reporting",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.0924234390258789,
+      "rows_affected": 161
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_claim_financials",
+      "name": "int_claim_financials",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.12405729293823242,
+      "rows_affected": 5287
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_encounters_enriched",
+      "name": "int_encounters_enriched",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.1262516975402832,
+      "rows_affected": 3180
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_readmission_events",
+      "name": "int_readmission_events",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.12980246543884277,
+      "rows_affected": 207
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_patient_encounter_history",
+      "name": "int_patient_encounter_history",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.13910150527954102,
+      "rows_affected": 3180
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_organization_activity",
+      "name": "int_organization_activity",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.14167499542236328,
+      "rows_affected": 3112
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_patient_clinical_activity",
+      "name": "int_patient_clinical_activity",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.13878273963928223,
+      "rows_affected": 58
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_provider_activity",
+      "name": "int_provider_activity",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.14830636978149414,
+      "rows_affected": 2167
+    },
+    {
+      "unique_id": "model.careflow_analytics.fct_claim_financials",
+      "name": "fct_claim_financials",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.19121670722961426,
+      "rows_affected": 5287
+    },
+    {
+      "unique_id": "model.careflow_analytics.fct_encounters",
+      "name": "fct_encounters",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "incremental",
+      "status": "success",
+      "duration_seconds": 0.26548051834106445,
+      "rows_affected": 3180
+    },
+    {
+      "unique_id": "model.careflow_analytics.mart_financial_analysis",
+      "name": "mart_financial_analysis",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.18806147575378418,
+      "rows_affected": 2192
+    },
+    {
+      "unique_id": "model.careflow_analytics.int_monthly_healthcare_metrics",
+      "name": "int_monthly_healthcare_metrics",
+      "resource_type": "model",
+      "schema": "careflow_dbt_intermediate",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.18764734268188477,
+      "rows_affected": 441
+    },
+    {
+      "unique_id": "model.careflow_analytics.fct_readmissions",
+      "name": "fct_readmissions",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.11982917785644531,
+      "rows_affected": 207
+    },
+    {
+      "unique_id": "model.careflow_analytics.mart_hospital_operations",
+      "name": "mart_hospital_operations",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.11974096298217773,
+      "rows_affected": 3112
+    },
+    {
+      "unique_id": "model.careflow_analytics.mart_provider_performance",
+      "name": "mart_provider_performance",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.08866000175476074,
+      "rows_affected": 2167
+    },
+    {
+      "unique_id": "model.careflow_analytics.fct_provider_activity",
+      "name": "fct_provider_activity",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.1240987777709961,
+      "rows_affected": 2167
+    },
+    {
+      "unique_id": "model.careflow_analytics.mart_readmission_analysis",
+      "name": "mart_readmission_analysis",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.13815832138061523,
+      "rows_affected": 207
+    },
+    {
+      "unique_id": "model.careflow_analytics.mart_patient_population",
+      "name": "mart_patient_population",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.09702277183532715,
+      "rows_affected": 58
+    },
+    {
+      "unique_id": "model.careflow_analytics.mart_executive_monthly",
+      "name": "mart_executive_monthly",
+      "resource_type": "model",
+      "schema": "careflow_dbt_mart",
+      "materialized": "table",
+      "status": "success",
+      "duration_seconds": 0.05376315116882324,
+      "rows_affected": 441
+    }
+  ]
+}

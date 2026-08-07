@@ -1,0 +1,11 @@
+encounter_class,is_qualifying_for_readmission
+ambulatory,false
+wellness,false
+outpatient,false
+emergency,true
+urgentcare,false
+inpatient,true
+home,false
+hospice,false
+virtual,false
+snf,false

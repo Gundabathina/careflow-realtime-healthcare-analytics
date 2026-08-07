@@ -1,0 +1,52 @@
+name: 'careflow_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'careflow_analytics'
+
+model-paths: ["dbt/models"]
+macro-paths: ["dbt/macros"]
+seed-paths: ["dbt/seeds"]
+snapshot-paths: ["dbt/snapshots"]
+test-paths: ["dbt/tests"]
+analysis-paths: ["dbt/analyses"]
+
+target-path: "target"
+log-path: "logs"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  # Reused across models/macros -- keep in sync with the seed CSVs and
+  # config/project_config.yaml's gold.readmission section (Phase 3A).
+  readmission_qualifying_encounter_classes: ["inpatient", "emergency"]
+  readmission_windows_days: [7, 14, 30]
+  currency_reconciliation_tolerance: 0.01
+  count_reconciliation_tolerance: 0
+
+seeds:
+  careflow_analytics:
+    +schema: careflow_dbt_seeds
+
+snapshots:
+  careflow_analytics:
+    +schema: careflow_dbt_snapshots
+
+models:
+  careflow_analytics:
+    staging:
+      +materialized: view
+      +schema: careflow_dbt_staging
+      +group: staging
+      +tags: ["staging"]
+    intermediate:
+      +materialized: table
+      +schema: careflow_dbt_intermediate
+      +group: intermediate
+      +tags: ["intermediate"]
+    marts:
+      +materialized: table
+      +schema: careflow_dbt_mart
+      +group: marts
+      +tags: ["marts"]

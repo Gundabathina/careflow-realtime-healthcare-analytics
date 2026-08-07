@@ -1,0 +1,1086 @@
+{
+  "generated_at_utc": "2026-08-07T03:43:28Z",
+  "schema_version": "1.0.0",
+  "transformation_version": "1.0.0",
+  "run_id": "gold_20260807T034328Z_cd687953",
+  "summary": {
+    "total_checks": 119,
+    "passed": 118,
+    "warnings": 1,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": [
+    {
+      "check_id": "schema_columns_exist:dim_patient",
+      "table": "dim_patient",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 23,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_patient",
+      "table": "dim_patient",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_patient",
+      "table": "dim_patient",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_patient",
+      "table": "dim_patient",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=58 target=58",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:dim_provider",
+      "table": "dim_provider",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 9,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_provider",
+      "table": "dim_provider",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_provider",
+      "table": "dim_provider",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_provider",
+      "table": "dim_provider",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=161 target=161",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:dim_organization",
+      "table": "dim_organization",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 8,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_organization",
+      "table": "dim_organization",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_organization",
+      "table": "dim_organization",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_organization",
+      "table": "dim_organization",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=161 target=161",
+      "records_evaluated": 161,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:dim_payer",
+      "table": "dim_payer",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_payer",
+      "table": "dim_payer",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_payer",
+      "table": "dim_payer",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_payer",
+      "table": "dim_payer",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=10 target=10",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:dim_date",
+      "table": "dim_date",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 11,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_date",
+      "table": "dim_date",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 30270,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_date",
+      "table": "dim_date",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 30270,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_date",
+      "table": "dim_date",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=50352 target=30270",
+      "records_evaluated": 50352,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:dim_condition",
+      "table": "dim_condition",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 3,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_condition",
+      "table": "dim_condition",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 160,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_condition",
+      "table": "dim_condition",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 160,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_condition",
+      "table": "dim_condition",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=1725 target=160",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:dim_procedure",
+      "table": "dim_procedure",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 3,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_procedure",
+      "table": "dim_procedure",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_procedure",
+      "table": "dim_procedure",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 195,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_procedure",
+      "table": "dim_procedure",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=7601 target=195",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:dim_medication",
+      "table": "dim_medication",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 3,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_not_null:dim_medication",
+      "table": "dim_medication",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null surrogate key(s)",
+      "records_evaluated": 106,
+      "records_failed": 0
+    },
+    {
+      "check_id": "surrogate_key_unique:dim_medication",
+      "table": "dim_medication",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate surrogate key row(s)",
+      "records_evaluated": 106,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:dim_medication",
+      "table": "dim_medication",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=2107 target=106",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_encounter",
+      "table": "fact_encounter",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 19,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_encounter",
+      "table": "fact_encounter",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_encounter",
+      "table": "fact_encounter",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_encounter:patient_key_is_missing",
+      "table": "fact_encounter",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_encounter:provider_key_is_missing",
+      "table": "fact_encounter",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (provider_key_is_missing)",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_encounter:organization_key_is_missing",
+      "table": "fact_encounter",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (organization_key_is_missing)",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_encounter:payer_key_is_missing",
+      "table": "fact_encounter",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (payer_key_is_missing)",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_encounter:encounter_date_key",
+      "table": "fact_encounter",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'encounter_date_key' not found in dim_date",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_encounter",
+      "table": "fact_encounter",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=3180 target=3180",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_condition",
+      "table": "fact_condition",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 8,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_condition",
+      "table": "fact_condition",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_condition",
+      "table": "fact_condition",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_condition:patient_key_is_missing",
+      "table": "fact_condition",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_condition:condition_key_is_missing",
+      "table": "fact_condition",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (condition_key_is_missing)",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_condition:start_date_key",
+      "table": "fact_condition",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'start_date_key' not found in dim_date",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_condition:stop_date_key",
+      "table": "fact_condition",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'stop_date_key' not found in dim_date",
+      "records_evaluated": 1227,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_condition",
+      "table": "fact_condition",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=1725 target=1725",
+      "records_evaluated": 1725,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_procedure",
+      "table": "fact_procedure",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_procedure",
+      "table": "fact_procedure",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_procedure",
+      "table": "fact_procedure",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_procedure:patient_key_is_missing",
+      "table": "fact_procedure",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_procedure:procedure_key_is_missing",
+      "table": "fact_procedure",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (procedure_key_is_missing)",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_procedure:start_date_key",
+      "table": "fact_procedure",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'start_date_key' not found in dim_date",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_procedure:stop_date_key",
+      "table": "fact_procedure",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'stop_date_key' not found in dim_date",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_procedure",
+      "table": "fact_procedure",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=7601 target=7601",
+      "records_evaluated": 7601,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_medication",
+      "table": "fact_medication",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 13,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_medication",
+      "table": "fact_medication",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 2104,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_medication",
+      "table": "fact_medication",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 2104,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_medication:patient_key_is_missing",
+      "table": "fact_medication",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 2104,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_medication:payer_key_is_missing",
+      "table": "fact_medication",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (payer_key_is_missing)",
+      "records_evaluated": 2104,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_medication:medication_key_is_missing",
+      "table": "fact_medication",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (medication_key_is_missing)",
+      "records_evaluated": 2104,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_medication:start_date_key",
+      "table": "fact_medication",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'start_date_key' not found in dim_date",
+      "records_evaluated": 2104,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_medication:stop_date_key",
+      "table": "fact_medication",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'stop_date_key' not found in dim_date",
+      "records_evaluated": 1943,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_medication",
+      "table": "fact_medication",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=2107 target=2104",
+      "records_evaluated": 2107,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_observation",
+      "table": "fact_observation",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 11,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_observation",
+      "table": "fact_observation",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 28089,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_observation",
+      "table": "fact_observation",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 28089,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_observation:patient_key_is_missing",
+      "table": "fact_observation",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 28089,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_observation:observation_date_key",
+      "table": "fact_observation",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'observation_date_key' not found in dim_date",
+      "records_evaluated": 28089,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_observation",
+      "table": "fact_observation",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=29607 target=28089",
+      "records_evaluated": 29607,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_claim",
+      "table": "fact_claim",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 10,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_claim",
+      "table": "fact_claim",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_claim",
+      "table": "fact_claim",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_claim:patient_key_is_missing",
+      "table": "fact_claim",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_claim:provider_key_is_missing",
+      "table": "fact_claim",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (provider_key_is_missing)",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_claim:payer_key_is_missing",
+      "table": "fact_claim",
+      "category": "referential",
+      "status": "warning",
+      "details": "216 row(s) flagged for unresolved foreign key (payer_key_is_missing)",
+      "records_evaluated": 5287,
+      "records_failed": 216
+    },
+    {
+      "check_id": "date_key_resolves:fact_claim:service_date_key",
+      "table": "fact_claim",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'service_date_key' not found in dim_date",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_claim",
+      "table": "fact_claim",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=5287 target=5287",
+      "records_evaluated": 5287,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_immunization",
+      "table": "fact_immunization",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 7,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_immunization",
+      "table": "fact_immunization",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_immunization",
+      "table": "fact_immunization",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_immunization:patient_key_is_missing",
+      "table": "fact_immunization",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_immunization:immunization_date_key",
+      "table": "fact_immunization",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'immunization_date_key' not found in dim_date",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_immunization",
+      "table": "fact_immunization",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=845 target=845",
+      "records_evaluated": 845,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:fact_imaging_study",
+      "table": "fact_imaging_study",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 11,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_not_null:fact_imaging_study",
+      "table": "fact_imaging_study",
+      "category": "completeness",
+      "status": "pass",
+      "details": "0 null fact key(s)",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "fact_key_unique:fact_imaging_study",
+      "table": "fact_imaging_study",
+      "category": "uniqueness",
+      "status": "pass",
+      "details": "0 duplicate fact key row(s)",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "foreign_key_flagged:fact_imaging_study:patient_key_is_missing",
+      "table": "fact_imaging_study",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) flagged for unresolved foreign key (patient_key_is_missing)",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "date_key_resolves:fact_imaging_study:study_date_key",
+      "table": "fact_imaging_study",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 date key value(s) in 'study_date_key' not found in dim_date",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:fact_imaging_study",
+      "table": "fact_imaging_study",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=258 target=258",
+      "records_evaluated": 258,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:mart_patient_360",
+      "table": "mart_patient_360",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 23,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:mart_patient_360",
+      "table": "mart_patient_360",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=58 target=58",
+      "records_evaluated": 58,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:mart_readmission",
+      "table": "mart_readmission",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 11,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:mart_readmission",
+      "table": "mart_readmission",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=3180 target=207",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:mart_hospital_operations",
+      "table": "mart_hospital_operations",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 13,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:mart_hospital_operations",
+      "table": "mart_hospital_operations",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=3180 target=3094",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:mart_financial_performance",
+      "table": "mart_financial_performance",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 9,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:mart_financial_performance",
+      "table": "mart_financial_performance",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=3180 target=2192",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:mart_provider_utilization",
+      "table": "mart_provider_utilization",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 7,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:mart_provider_utilization",
+      "table": "mart_provider_utilization",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=3180 target=2149",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "schema_columns_exist:mart_monthly_kpis",
+      "table": "mart_monthly_kpis",
+      "category": "structural",
+      "status": "pass",
+      "details": "All expected columns present",
+      "records_evaluated": 13,
+      "records_failed": 0
+    },
+    {
+      "check_id": "row_count_reconciliation:mart_monthly_kpis",
+      "table": "mart_monthly_kpis",
+      "category": "completeness",
+      "status": "pass",
+      "details": "source=3180 target=441",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "negative_patient_responsibility_flagged",
+      "table": "fact_encounter",
+      "category": "numeric",
+      "status": "pass",
+      "details": "0 negative patient_responsibility row(s), all flagged",
+      "records_evaluated": 3180,
+      "records_failed": 0
+    },
+    {
+      "check_id": "readmission_no_self_reference",
+      "table": "mart_readmission",
+      "category": "referential",
+      "status": "pass",
+      "details": "0 row(s) reference the same encounter as index and next",
+      "records_evaluated": 207,
+      "records_failed": 0
+    },
+    {
+      "check_id": "readmission_days_non_negative",
+      "table": "mart_readmission",
+      "category": "temporal",
+      "status": "pass",
+      "details": "0 row(s) with negative days_to_readmission",
+      "records_evaluated": 162,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:readmission_rate_7_day",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=1 denominator=207",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:readmission_rate_14_day",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=2 denominator=207",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:readmission_rate_30_day",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=3 denominator=207",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:average_encounter_duration",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=1102790.9833333334 denominator=3180",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:average_inpatient_length_of_stay",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=273442.3333333333 denominator=38",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:emergency_encounter_percentage",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=169 denominator=3180",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:payer_coverage_ratio",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=6148883.54 denominator=7904354.16",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:average_patient_responsibility",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=1755470.62 denominator=3180",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:cost_per_encounter",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=7904354.16 denominator=3180",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:encounters_per_patient",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=3180 denominator=58",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:procedures_per_encounter",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=7601 denominator=3180",
+      "records_evaluated": 1,
+      "records_failed": 0
+    },
+    {
+      "check_id": "kpi_valid:medications_per_patient",
+      "table": "kpi",
+      "category": "numeric",
+      "status": "pass",
+      "details": "numerator=2104 denominator=58",
+      "records_evaluated": 1,
+      "records_failed": 0
+    }
+  ]
+}

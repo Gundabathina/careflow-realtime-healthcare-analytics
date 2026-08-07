@@ -1,0 +1,149 @@
+version: 2
+
+models:
+  - name: stg_careflow__patients
+    description: >
+      One row per patient. Selects explicit columns only from
+      careflow_dim.dim_patient; latitude/longitude are dropped here as
+      restricted PII. Owner: CareFlow Data Engineering.
+    meta:
+      owner: data-engineering
+      contains_pii: false
+    columns:
+      - name: patient_key
+        description: Deterministic surrogate key.
+        data_tests: [not_null, unique]
+      - name: patient_id
+        description: Natural key (synthetic UUID).
+        data_tests: [not_null]
+      - name: zip
+        description: Synthetic ZIP code; safe to expose per the documented synthetic-data exception.
+
+  - name: stg_careflow__providers
+    description: One row per provider. No restricted PII (professional, not patient, identifiers).
+    columns:
+      - name: provider_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__organizations
+    description: One row per healthcare organization.
+    columns:
+      - name: organization_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__payers
+    description: One row per insurance payer.
+    columns:
+      - name: payer_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__dates
+    description: Calendar date dimension.
+    columns:
+      - name: date_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__encounters
+    description: One row per encounter, natural and surrogate keys both preserved.
+    columns:
+      - name: encounter_key
+        data_tests: [not_null, unique]
+      - name: encounter_id
+        description: Natural key from the source Synthea encounters.csv.
+        data_tests: [not_null]
+      - name: encounter_class
+        data_tests:
+          - accepted_values:
+              values: ["ambulatory", "wellness", "outpatient", "emergency", "urgentcare", "inpatient", "home", "hospice", "virtual", "snf"]
+      - name: encounter_duration_minutes
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config: {where: "encounter_duration_minutes is not null"}
+      - name: patient_responsibility
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0 or patient_responsibility_is_negative"
+              config: {where: "patient_responsibility is not null"}
+      - name: patient_key
+        data_tests:
+          - relationships:
+              to: ref('stg_careflow__patients')
+              field: patient_key
+      - name: provider_key
+        data_tests:
+          - relationships:
+              to: ref('stg_careflow__providers')
+              field: provider_key
+      - name: organization_key
+        data_tests:
+          - relationships:
+              to: ref('stg_careflow__organizations')
+              field: organization_key
+      - name: payer_key
+        data_tests:
+          - relationships:
+              to: ref('stg_careflow__payers')
+              field: payer_key
+      - name: encounter_date_key
+        data_tests:
+          - relationships:
+              to: ref('stg_careflow__dates')
+              field: date_key
+
+  - name: stg_careflow__conditions
+    description: One row per condition occurrence.
+    columns:
+      - name: condition_event_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__procedures
+    description: One row per procedure occurrence.
+    columns:
+      - name: procedure_event_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__medications
+    description: One row per medication occurrence.
+    columns:
+      - name: medication_event_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__observations
+    description: One row per observation occurrence. numeric_value is null whenever raw_value did not parse as a number -- never forced.
+    columns:
+      - name: observation_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__claims
+    description: One row per claim.
+    columns:
+      - name: claim_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__immunizations
+    description: One row per immunization.
+    columns:
+      - name: immunization_key
+        data_tests: [not_null, unique]
+
+  - name: stg_careflow__imaging_studies
+    description: >
+      One row per imaging study series/instance. Grain is the composite
+      (study_id, series_uid, instance_uid) -- study_id alone is NOT
+      unique, so it is never tested as such.
+    columns:
+      - name: imaging_study_key
+        description: Deterministic hash of (study_id, series_uid, instance_uid).
+        data_tests: [not_null, unique]
+      - name: study_id
+        description: Source DICOM study id -- deliberately not tested as unique alone.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [study_id, series_uid, instance_uid]
+
+  - name: stg_careflow__readmissions
+    description: Staged from the Python Gold mart_readmission table; the reconciliation baseline for int_readmission_events.
+    columns:
+      - name: index_encounter_key
+        data_tests: [not_null, unique]

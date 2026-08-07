@@ -1,0 +1,9 @@
+layer,check_type,passed,warnings,failed,skipped,status,last_updated
+Bronze Ingestion,ingestion_manifest,18,0,0,0,healthy,2026-08-07T03:43:24Z
+Silver Transformation,transformation_manifest,0,0,0,18,healthy,2026-08-07T03:43:26Z
+Silver Data Quality,quality_report,226,2,1,0,failed,2026-08-07T03:43:26Z
+Gold Transformation,transformation_manifest,0,0,0,22,healthy,2026-08-07T03:43:28Z
+Gold Data Quality,quality_report,118,1,0,0,warning,2026-08-07T03:43:28Z
+PostgreSQL Warehouse Validation,warehouse_validation,172,0,0,0,healthy,2026-08-07T03:43:34Z
+dbt Tests,test_suite,133,0,0,0,healthy,2026-08-07T03:43:45Z
+Airflow Orchestration,orchestration_run,1,0,0,0,healthy,2026-08-07 03:43:49.120644

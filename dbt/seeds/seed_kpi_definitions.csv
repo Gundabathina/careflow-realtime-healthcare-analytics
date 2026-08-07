@@ -1,0 +1,13 @@
+kpi_name,unit,definition
+readmission_rate_7_day,ratio,Share of qualifying index encounters followed by another qualifying encounter within 7 days.
+readmission_rate_14_day,ratio,Share of qualifying index encounters followed by another qualifying encounter within 14 days.
+readmission_rate_30_day,ratio,Share of qualifying index encounters followed by another qualifying encounter within 30 days.
+average_encounter_duration,minutes,Mean encounter duration across encounters with both a start and stop timestamp.
+average_inpatient_length_of_stay,minutes,Mean encounter duration for inpatient-class encounters.
+emergency_encounter_percentage,ratio,Emergency-class encounters as a fraction of all encounters.
+payer_coverage_ratio,ratio,Total payer coverage divided by total claim cost across encounters.
+average_patient_responsibility,currency,Mean patient responsibility (total claim cost minus payer coverage) per encounter.
+cost_per_encounter,currency,Mean total claim cost per encounter.
+encounters_per_patient,ratio,Total encounters divided by the number of distinct patients with at least one encounter.
+procedures_per_encounter,ratio,Total procedure occurrences divided by total encounters.
+medications_per_patient,ratio,Total medication occurrences divided by total patients.

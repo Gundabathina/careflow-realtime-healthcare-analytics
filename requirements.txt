@@ -1,0 +1,8 @@
+# CareFlow Analytics - runtime dependencies
+pandas>=3.0
+pyarrow>=25.0
+pyyaml>=6.0
+psycopg[binary]>=3.3
+
+# Testing
+pytest>=9.0

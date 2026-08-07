@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: int_encounters_enriched
+    description: >
+      Encounters enriched with safe patient demographics (age group,
+      gender only), provider speciality, organization name, payer name,
+      and calendar context. One row per encounter. Owner: CareFlow
+      Analytics Engineering.
+    meta:
+      owner: analytics-engineering
+      contains_pii: false
+    columns:
+      - name: encounter_key
+        data_tests: [not_null, unique]
+
+  - name: int_patient_encounter_history
+    description: Per-patient encounter sequencing (previous/next encounter, days between, sequence number, first/latest flags) via window functions.
+    columns:
+      - name: encounter_key
+        data_tests: [not_null, unique]
+      - name: days_since_previous_encounter
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config: {where: "days_since_previous_encounter is not null"}
+      - name: days_to_next_encounter
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config: {where: "days_to_next_encounter is not null"}
+
+  - name: int_patient_clinical_activity
+    description: Per-patient rollup of condition/procedure/medication/observation/immunization/encounter counts.
+    columns:
+      - name: patient_key
+        data_tests: [not_null, unique]
+
+  - name: int_claim_financials
+    description: >
+      Claim-level financial measures. encounter_payer_coverage and
+      encounter_patient_responsibility are sourced from the linked
+      encounter (fact_claim has no native cost columns) and are null,
+      never fabricated, when no encounter link resolves.
+    columns:
+      - name: claim_key
+        data_tests: [not_null, unique]
+
+  - name: int_provider_activity
+    description: Provider activity aggregated by month.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [provider_key, year_month]
+
+  - name: int_organization_activity
+    description: Organization activity aggregated by date and encounter class.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [organization_key, encounter_date_key, encounter_class]
+
+  - name: int_readmission_events
+    description: >
+      Readmission logic recomputed independently in dbt (not a copy of
+      the Python Gold mart) for reconciliation. See
+      dbt/tests/reconcile_readmission_counts.sql.
+    columns:
+      - name: index_encounter_key
+        data_tests: [not_null, unique]
+      - name: days_to_readmission
+        data_tests:
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+              config: {where: "days_to_readmission is not null"}
+    data_tests:
+      - dbt_utils.expression_is_true:
+          expression: "index_encounter_key != next_encounter_key"
+          config: {where: "next_encounter_key is not null"}
+
+  - name: int_monthly_healthcare_metrics
+    description: Monthly healthcare metrics (patients served, encounters, cost) aggregated from int_encounters_enriched.
+    columns:
+      - name: year_month
+        data_tests: [not_null, unique]

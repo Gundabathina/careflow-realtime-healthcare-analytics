@@ -1,0 +1,68 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+.venv-dbt/
+.venv-airflow/
+.venv-dashboard/
+venv/
+
+# Environment variables
+.env
+
+# OS
+.DS_Store
+
+# IDE / editor / local tool state -- never shared project config, and in
+# Claude Code's case, its own local settings/session files can embed this
+# machine's absolute paths.
+.claude/
+.vscode/
+.idea/
+
+# Logs
+reports/*.log
+
+# Synthea installation (cloned via scripts/setup_synthea.py)
+tools/synthea/
+
+# Synthea temporary generation workspace
+data/tmp/
+
+# Generated synthetic data (regenerate via scripts/generate_synthea_data.py)
+data/raw/synthea/csv/*
+data/raw/synthea/fhir/*
+data/raw/synthea/generation_manifest.json
+
+# Bronze layer output (regenerate via scripts/ingest_bronze.py)
+data/bronze/*
+
+# Silver layer output (regenerate via scripts/build_silver_layer.py)
+data/silver/*
+
+# Gold layer output (regenerate via scripts/build_gold_layer.py)
+data/gold/*
+
+# dbt (Phase 3C) -- the real profile holds env_var() references only, but
+# is still never committed; dbt's own build artifacts are regenerable.
+profiles.yml
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Airflow (Phase 4A) -- runtime state only; DAG/plugin source and
+# reports/airflow/*.json|*.csv are tracked, same as reports/dbt and
+# reports/warehouse.
+airflow/logs/
+airflow/webserver_config.py
+airflow.db
+
+# Dashboard (Phase 5A) -- never commit a real secrets.toml (PostgreSQL
+# credentials must only ever come from environment variables, never this
+# file); dashboard/.streamlit/config.toml itself holds no secrets and is tracked.
+dashboard/.streamlit/secrets.toml

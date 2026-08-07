@@ -1,0 +1,201 @@
+# CareFlow Analytics - Project Configuration
+# Phase 2A
+
+project:
+  name: "CareFlow Analytics"
+  description: "Real-Time Hospital Operations and Patient Readmission Platform"
+  phase: "2A"
+  version: "0.1.0"
+
+paths:
+  root: "."
+  data:
+    root: "data"
+    raw: "data/raw"
+    raw_synthea_csv: "data/raw/synthea/csv"
+    raw_synthea_fhir: "data/raw/synthea/fhir"
+    samples: "data/samples"
+    bronze: "data/bronze"
+    silver: "data/silver"
+    gold: "data/gold"
+  data_dictionary: "data_dictionary"
+  docs: "docs"
+  reports: "reports"
+  reports_profiling: "reports/profiling"
+  scripts: "scripts"
+  config: "config"
+  src: "src/careflow"
+  tests: "tests"
+
+logging:
+  config_path: "config/logging.yaml"
+  default_level: "INFO"
+
+data_generation:
+  synthea:
+    population_size: 1000
+    seed: 42
+    state: "Massachusetts"
+    export_formats:
+      csv: true
+      fhir: false
+    overwrite: false
+    repository_url: "https://github.com/synthetichealth/synthea.git"
+    install_dir: "tools/synthea"
+    temp_output_dir: "data/tmp/synthea_generation"
+    manifest_path: "data/raw/synthea/generation_manifest.json"
+
+profiling:
+  enabled: true
+  output_dir: "reports/profiling"
+
+data_quality:
+  chunk_size: 50000
+  max_failure_samples: 10
+  max_patient_age_years: 115
+
+  thresholds:
+    warning_pct: 1.0
+    fail_pct: 5.0
+
+  relationship_thresholds:
+    warning_match_pct: 98.0
+    fail_match_pct: 90.0
+
+  allowed_encounter_classes:
+    - ambulatory
+    - wellness
+    - outpatient
+    - emergency
+    - urgentcare
+    - inpatient
+    - home
+    - hospice
+    - virtual
+    - snf
+
+  critical_columns:
+    - {file: "patients.csv", column: "BIRTHDATE"}
+    - {file: "encounters.csv", column: "PATIENT"}
+    - {file: "encounters.csv", column: "START"}
+    - {file: "encounters.csv", column: "ENCOUNTERCLASS"}
+    - {file: "organizations.csv", column: "Id"}
+    - {file: "providers.csv", column: "Id"}
+    - {file: "payers.csv", column: "Id"}
+
+  cost_fields:
+    - {file: "encounters.csv", column: "BASE_ENCOUNTER_COST"}
+    - {file: "encounters.csv", column: "TOTAL_CLAIM_COST"}
+    - {file: "encounters.csv", column: "PAYER_COVERAGE"}
+    - {file: "procedures.csv", column: "BASE_COST"}
+    - {file: "medications.csv", column: "BASE_COST"}
+    - {file: "medications.csv", column: "TOTALCOST"}
+    - {file: "medications.csv", column: "PAYER_COVERAGE"}
+    - {file: "immunizations.csv", column: "BASE_COST"}
+
+  uuid_columns:
+    - {file: "patients.csv", column: "Id"}
+    - {file: "encounters.csv", column: "Id"}
+    - {file: "encounters.csv", column: "PATIENT"}
+    - {file: "encounters.csv", column: "ORGANIZATION"}
+    - {file: "encounters.csv", column: "PROVIDER"}
+    - {file: "encounters.csv", column: "PAYER"}
+    - {file: "organizations.csv", column: "Id"}
+    - {file: "providers.csv", column: "Id"}
+    - {file: "payers.csv", column: "Id"}
+    - {file: "conditions.csv", column: "PATIENT"}
+    - {file: "conditions.csv", column: "ENCOUNTER"}
+    - {file: "procedures.csv", column: "PATIENT"}
+    - {file: "procedures.csv", column: "ENCOUNTER"}
+    - {file: "medications.csv", column: "PATIENT"}
+    - {file: "medications.csv", column: "ENCOUNTER"}
+    - {file: "observations.csv", column: "PATIENT"}
+    - {file: "observations.csv", column: "ENCOUNTER"}
+    - {file: "careplans.csv", column: "Id"}
+    - {file: "careplans.csv", column: "PATIENT"}
+    - {file: "careplans.csv", column: "ENCOUNTER"}
+    - {file: "devices.csv", column: "PATIENT"}
+    - {file: "devices.csv", column: "ENCOUNTER"}
+    - {file: "immunizations.csv", column: "PATIENT"}
+    - {file: "immunizations.csv", column: "ENCOUNTER"}
+    - {file: "imaging_studies.csv", column: "Id"}
+    - {file: "imaging_studies.csv", column: "PATIENT"}
+    - {file: "imaging_studies.csv", column: "ENCOUNTER"}
+    - {file: "claims.csv", column: "Id"}
+    - {file: "claims.csv", column: "PATIENTID"}
+    - {file: "claims.csv", column: "APPOINTMENTID"}
+
+  zip_columns:
+    - {file: "patients.csv", column: "ZIP"}
+    - {file: "organizations.csv", column: "ZIP"}
+    - {file: "providers.csv", column: "ZIP"}
+
+  relationships:
+    - {name: "encounters.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "encounters.csv", child_key: "PATIENT"}
+    - {name: "encounters.ORGANIZATION -> organizations.Id", parent_file: "organizations.csv", parent_key: "Id", child_file: "encounters.csv", child_key: "ORGANIZATION"}
+    - {name: "encounters.PROVIDER -> providers.Id", parent_file: "providers.csv", parent_key: "Id", child_file: "encounters.csv", child_key: "PROVIDER"}
+    - {name: "encounters.PAYER -> payers.Id", parent_file: "payers.csv", parent_key: "Id", child_file: "encounters.csv", child_key: "PAYER"}
+    - {name: "conditions.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "conditions.csv", child_key: "PATIENT"}
+    - {name: "conditions.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "conditions.csv", child_key: "ENCOUNTER"}
+    - {name: "procedures.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "procedures.csv", child_key: "PATIENT"}
+    - {name: "procedures.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "procedures.csv", child_key: "ENCOUNTER"}
+    - {name: "medications.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "medications.csv", child_key: "PATIENT"}
+    - {name: "medications.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "medications.csv", child_key: "ENCOUNTER"}
+    - {name: "observations.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "observations.csv", child_key: "PATIENT"}
+    - {name: "observations.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "observations.csv", child_key: "ENCOUNTER"}
+    - {name: "claims.PATIENTID -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "claims.csv", child_key: "PATIENTID"}
+    - {name: "claims.APPOINTMENTID -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "claims.csv", child_key: "APPOINTMENTID"}
+    - {name: "devices.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "devices.csv", child_key: "PATIENT"}
+    - {name: "devices.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "devices.csv", child_key: "ENCOUNTER"}
+    - {name: "immunizations.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "immunizations.csv", child_key: "PATIENT"}
+    - {name: "immunizations.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "immunizations.csv", child_key: "ENCOUNTER"}
+    - {name: "careplans.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "careplans.csv", child_key: "PATIENT"}
+    - {name: "careplans.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "careplans.csv", child_key: "ENCOUNTER"}
+    - {name: "imaging_studies.PATIENT -> patients.Id", parent_file: "patients.csv", parent_key: "Id", child_file: "imaging_studies.csv", child_key: "PATIENT"}
+    - {name: "imaging_studies.ENCOUNTER -> encounters.Id", parent_file: "encounters.csv", parent_key: "Id", child_file: "imaging_studies.csv", child_key: "ENCOUNTER"}
+
+bronze:
+  chunk_size: 50000
+
+  gate:
+    enabled: true
+    block_on_statuses: ["fail"]
+
+  # Numeric typing reuses data_quality.cost_fields above (no duplication).
+  # Everything not listed here or in cost_fields stays as text, so
+  # identifiers and ZIP codes are never corrupted by type inference.
+  date_columns:
+    - {file: "patients.csv", column: "BIRTHDATE"}
+    - {file: "patients.csv", column: "DEATHDATE"}
+    - {file: "encounters.csv", column: "START"}
+    - {file: "encounters.csv", column: "STOP"}
+    - {file: "conditions.csv", column: "START"}
+    - {file: "conditions.csv", column: "STOP"}
+    - {file: "procedures.csv", column: "START"}
+    - {file: "procedures.csv", column: "STOP"}
+    - {file: "medications.csv", column: "START"}
+    - {file: "medications.csv", column: "STOP"}
+    - {file: "careplans.csv", column: "START"}
+    - {file: "careplans.csv", column: "STOP"}
+    - {file: "devices.csv", column: "START"}
+    - {file: "devices.csv", column: "STOP"}
+    - {file: "immunizations.csv", column: "DATE"}
+    - {file: "observations.csv", column: "DATE"}
+    - {file: "imaging_studies.csv", column: "DATE"}
+    - {file: "claims.csv", column: "SERVICEDATE"}
+    - {file: "claims.csv", column: "CURRENTILLNESSDATE"}
+
+silver:
+  # Reference date for age derivations. Deliberately a fixed configured
+  # value, never "today", so Silver output is reproducible run-to-run.
+  reference_date: "2026-01-01T00:00:00Z"
+
+gold:
+  readmission:
+    # Encounter classes that qualify as an index/next readmission event.
+    qualifying_encounter_classes: ["inpatient", "emergency"]
+    windows_days: [7, 14, 30]
+
+environment:
+  name: "development"
+  debug: false

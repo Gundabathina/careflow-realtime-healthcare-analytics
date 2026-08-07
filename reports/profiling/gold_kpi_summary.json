@@ -1,0 +1,134 @@
+{
+  "kpi_calculator_version": "1.0.0",
+  "generated_at_utc": "2026-08-07T03:43:28Z",
+  "kpis": [
+    {
+      "kpi_name": "readmission_rate_7_day",
+      "numerator": 1,
+      "denominator": 207,
+      "value": 0.004830917874396135,
+      "unit": "ratio",
+      "definition": "Share of qualifying index encounters followed by another qualifying encounter within 7 days.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {
+        "window_days": 7
+      }
+    },
+    {
+      "kpi_name": "readmission_rate_14_day",
+      "numerator": 2,
+      "denominator": 207,
+      "value": 0.00966183574879227,
+      "unit": "ratio",
+      "definition": "Share of qualifying index encounters followed by another qualifying encounter within 14 days.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {
+        "window_days": 14
+      }
+    },
+    {
+      "kpi_name": "readmission_rate_30_day",
+      "numerator": 3,
+      "denominator": 207,
+      "value": 0.014492753623188406,
+      "unit": "ratio",
+      "definition": "Share of qualifying index encounters followed by another qualifying encounter within 30 days.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {
+        "window_days": 30
+      }
+    },
+    {
+      "kpi_name": "average_encounter_duration",
+      "numerator": 1102790.9833333334,
+      "denominator": 3180,
+      "value": 346.78961740041933,
+      "unit": "minutes",
+      "definition": "Mean encounter duration across encounters with both a start and stop timestamp.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    },
+    {
+      "kpi_name": "average_inpatient_length_of_stay",
+      "numerator": 273442.3333333333,
+      "denominator": 38,
+      "value": 7195.850877192982,
+      "unit": "minutes",
+      "definition": "Mean encounter duration for inpatient-class encounters.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {
+        "is_inpatient": true
+      }
+    },
+    {
+      "kpi_name": "emergency_encounter_percentage",
+      "numerator": 169,
+      "denominator": 3180,
+      "value": 0.05314465408805032,
+      "unit": "ratio",
+      "definition": "Emergency-class encounters as a fraction of all encounters.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    },
+    {
+      "kpi_name": "payer_coverage_ratio",
+      "numerator": 6148883.54,
+      "denominator": 7904354.16,
+      "value": 0.777910935610203,
+      "unit": "ratio",
+      "definition": "Total payer coverage divided by total claim cost across encounters.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    },
+    {
+      "kpi_name": "average_patient_responsibility",
+      "numerator": 1755470.62,
+      "denominator": 3180,
+      "value": 552.0347861635221,
+      "unit": "currency",
+      "definition": "Mean patient responsibility (total claim cost minus payer coverage) per encounter.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    },
+    {
+      "kpi_name": "cost_per_encounter",
+      "numerator": 7904354.16,
+      "denominator": 3180,
+      "value": 2485.645962264151,
+      "unit": "currency",
+      "definition": "Mean total claim cost per encounter.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    },
+    {
+      "kpi_name": "encounters_per_patient",
+      "numerator": 3180,
+      "denominator": 58,
+      "value": 54.827586206896555,
+      "unit": "ratio",
+      "definition": "Total encounters divided by the number of distinct patients with at least one encounter.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    },
+    {
+      "kpi_name": "procedures_per_encounter",
+      "numerator": 7601,
+      "denominator": 3180,
+      "value": 2.390251572327044,
+      "unit": "ratio",
+      "definition": "Total procedure occurrences divided by total encounters.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    },
+    {
+      "kpi_name": "medications_per_patient",
+      "numerator": 2104,
+      "denominator": 58,
+      "value": 36.275862068965516,
+      "unit": "ratio",
+      "definition": "Total medication occurrences divided by total patients in dim_patient.",
+      "calculated_at_utc": "2026-08-07T03:43:28Z",
+      "filters": {}
+    }
+  ]
+}

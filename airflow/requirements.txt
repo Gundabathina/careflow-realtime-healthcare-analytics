@@ -1,0 +1,29 @@
+# CareFlow Analytics - additional Python packages installed into the
+# Airflow container's own Python environment (apache/airflow:2.9.3-python3.11,
+# see docker-compose.yml's airflow services and docs/airflow_orchestration_guide.md).
+#
+# This is NOT installed into the host's main Python 3.14 environment, and
+# is NOT the same as .venv-dbt -- it lets DAG tasks running *inside* the
+# Airflow container invoke scripts/*.py and dbt directly with the same
+# interpreter that's running Airflow itself, since a host-built venv
+# (.venv-dbt) cannot run inside a Linux container.
+#
+# Mirrors the pinned versions used elsewhere in the project:
+#   - requirements.txt (project runtime deps, for scripts/*.py)
+#   - dbt-core/dbt-postgres pins from the Phase 3C .venv-dbt setup
+#
+# Consumed via the AIRFLOW_COMMON_PIP_ADDITIONAL_REQUIREMENTS environment
+# variable in docker-compose.yml (see the x-airflow-common anchor) --
+# a supported Airflow quickstart mechanism for local/dev use. For a
+# production deployment, replace this with a custom Dockerfile that
+# `pip install`s this file into a proper image layer instead (faster
+# container start, immutable image, no dependency re-resolution on
+# every restart).
+
+pandas>=3.0
+pyarrow>=25.0
+pyyaml>=6.0
+psycopg[binary]>=3.3
+
+dbt-core==1.8.9
+dbt-postgres==1.8.2

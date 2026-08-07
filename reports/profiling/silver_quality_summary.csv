@@ -1,0 +1,230 @@
+check_id,dataset,category,status,records_evaluated,records_failed,details
+target_columns_exist:allergies,allergies,structural,pass,15,0,All expected target columns present
+foreign_key_not_null:allergies:patient_id,allergies,referential,pass,79,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:allergies:encounter_id,allergies,referential,pass,79,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:allergies:start,allergies,type,pass,79,0,UTC-aware timestamp
+date_type_utc:allergies:stop,allergies,type,pass,79,0,UTC-aware timestamp
+identifier_type:allergies:patient_id,allergies,type,pass,79,0,Text dtype preserved
+identifier_type:allergies:encounter_id,allergies,type,pass,79,0,Text dtype preserved
+identifier_type:allergies:code,allergies,type,pass,79,0,Text dtype preserved
+row_count_reconciliation:allergies,allergies,completeness,pass,79,0,source=79 duplicates_removed=0 target=79
+target_columns_exist:careplans,careplans,structural,pass,9,0,All expected target columns present
+primary_key_not_null:careplans,careplans,completeness,pass,195,0,0 null primary key value(s)
+primary_key_unique:careplans,careplans,uniqueness,pass,195,0,0 row(s) share a duplicate primary key
+foreign_key_not_null:careplans:patient_id,careplans,referential,pass,195,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:careplans:encounter_id,careplans,referential,pass,195,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:careplans:start,careplans,type,pass,195,0,UTC-aware timestamp
+date_type_utc:careplans:stop,careplans,type,pass,195,0,UTC-aware timestamp
+identifier_type:careplans:id,careplans,type,pass,195,0,Text dtype preserved
+identifier_type:careplans:patient_id,careplans,type,pass,195,0,Text dtype preserved
+identifier_type:careplans:encounter_id,careplans,type,pass,195,0,Text dtype preserved
+identifier_type:careplans:code,careplans,type,pass,195,0,Text dtype preserved
+identifier_type:careplans:reasoncode,careplans,type,pass,195,0,Text dtype preserved
+row_count_reconciliation:careplans,careplans,completeness,pass,195,0,source=195 duplicates_removed=0 target=195
+target_columns_exist:claims,claims,structural,pass,31,0,All expected target columns present
+primary_key_not_null:claims,claims,completeness,pass,5287,0,0 null primary key value(s)
+primary_key_unique:claims,claims,uniqueness,pass,5287,0,0 row(s) share a duplicate primary key
+foreign_key_not_null:claims:patient_id,claims,referential,pass,5287,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:claims:encounter_id,claims,referential,pass,5287,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:claims:currentillnessdate,claims,type,pass,5287,0,UTC-aware timestamp
+date_type_utc:claims:servicedate,claims,type,pass,5287,0,UTC-aware timestamp
+date_type_utc:claims:lastbilleddate1,claims,type,pass,5287,0,UTC-aware timestamp
+date_type_utc:claims:lastbilleddate2,claims,type,pass,5287,0,UTC-aware timestamp
+date_type_utc:claims:lastbilleddatep,claims,type,pass,5287,0,UTC-aware timestamp
+identifier_type:claims:id,claims,type,pass,5287,0,Text dtype preserved
+identifier_type:claims:patient_id,claims,type,pass,5287,0,Text dtype preserved
+identifier_type:claims:encounter_id,claims,type,pass,5287,0,Text dtype preserved
+row_count_reconciliation:claims,claims,completeness,pass,5287,0,source=5287 duplicates_removed=0 target=5287
+target_columns_exist:claims_transactions,claims_transactions,structural,pass,33,0,All expected target columns present
+primary_key_not_null:claims_transactions,claims_transactions,completeness,pass,44926,0,0 null primary key value(s)
+primary_key_unique:claims_transactions,claims_transactions,uniqueness,pass,44926,0,0 row(s) share a duplicate primary key
+foreign_key_not_null:claims_transactions:patient_id,claims_transactions,referential,pass,44926,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:claims_transactions:encounter_id,claims_transactions,referential,pass,44926,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:claims_transactions:fromdate,claims_transactions,type,pass,44926,0,UTC-aware timestamp
+date_type_utc:claims_transactions:todate,claims_transactions,type,pass,44926,0,UTC-aware timestamp
+identifier_type:claims_transactions:id,claims_transactions,type,pass,44926,0,Text dtype preserved
+identifier_type:claims_transactions:patient_id,claims_transactions,type,pass,44926,0,Text dtype preserved
+identifier_type:claims_transactions:encounter_id,claims_transactions,type,pass,44926,0,Text dtype preserved
+identifier_type:claims_transactions:procedurecode,claims_transactions,type,pass,44926,0,Text dtype preserved
+row_count_reconciliation:claims_transactions,claims_transactions,completeness,pass,44926,0,source=44926 duplicates_removed=0 target=44926
+target_columns_exist:conditions,conditions,structural,pass,7,0,All expected target columns present
+required_not_null:conditions:patient_id,conditions,completeness,pass,1725,0,0 null value(s) in required column 'patient_id'
+required_not_null:conditions:code,conditions,completeness,pass,1725,0,0 null value(s) in required column 'code'
+foreign_key_not_null:conditions:patient_id,conditions,referential,pass,1725,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:conditions:encounter_id,conditions,referential,pass,1725,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:conditions:start,conditions,type,pass,1725,0,UTC-aware timestamp
+date_type_utc:conditions:stop,conditions,type,pass,1725,0,UTC-aware timestamp
+identifier_type:conditions:patient_id,conditions,type,pass,1725,0,Text dtype preserved
+identifier_type:conditions:encounter_id,conditions,type,pass,1725,0,Text dtype preserved
+identifier_type:conditions:code,conditions,type,pass,1725,0,Text dtype preserved
+row_count_reconciliation:conditions,conditions,completeness,pass,1725,0,source=1725 duplicates_removed=0 target=1725
+target_columns_exist:devices,devices,structural,pass,7,0,All expected target columns present
+foreign_key_not_null:devices:patient_id,devices,referential,pass,280,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:devices:encounter_id,devices,referential,pass,280,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:devices:start,devices,type,pass,280,0,UTC-aware timestamp
+date_type_utc:devices:stop,devices,type,pass,280,0,UTC-aware timestamp
+identifier_type:devices:patient_id,devices,type,pass,280,0,Text dtype preserved
+identifier_type:devices:encounter_id,devices,type,pass,280,0,Text dtype preserved
+identifier_type:devices:code,devices,type,pass,280,0,Text dtype preserved
+identifier_type:devices:udi,devices,type,pass,280,0,Text dtype preserved
+row_count_reconciliation:devices,devices,completeness,pass,280,0,source=280 duplicates_removed=0 target=280
+target_columns_exist:encounters,encounters,structural,pass,15,0,All expected target columns present
+primary_key_not_null:encounters,encounters,completeness,pass,3180,0,0 null primary key value(s)
+primary_key_unique:encounters,encounters,uniqueness,pass,3180,0,0 row(s) share a duplicate primary key
+required_not_null:encounters:encounter_id,encounters,completeness,pass,3180,0,0 null value(s) in required column 'encounter_id'
+required_not_null:encounters:patient_id,encounters,completeness,pass,3180,0,0 null value(s) in required column 'patient_id'
+required_not_null:encounters:start,encounters,completeness,pass,3180,0,0 null value(s) in required column 'start'
+foreign_key_not_null:encounters:patient_id,encounters,referential,pass,3180,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:encounters:organization_id,encounters,referential,pass,3180,0,0 null value(s) in foreign key 'organization_id'
+foreign_key_not_null:encounters:provider_id,encounters,referential,pass,3180,0,0 null value(s) in foreign key 'provider_id'
+foreign_key_not_null:encounters:payer_id,encounters,referential,pass,3180,0,0 null value(s) in foreign key 'payer_id'
+date_type_utc:encounters:start,encounters,type,pass,3180,0,UTC-aware timestamp
+date_type_utc:encounters:stop,encounters,type,pass,3180,0,UTC-aware timestamp
+numeric_type:encounters:base_encounter_cost,encounters,type,pass,3180,0,Numeric dtype
+numeric_type:encounters:total_claim_cost,encounters,type,pass,3180,0,Numeric dtype
+numeric_type:encounters:payer_coverage,encounters,type,pass,3180,0,Numeric dtype
+identifier_type:encounters:encounter_id,encounters,type,pass,3180,0,Text dtype preserved
+identifier_type:encounters:patient_id,encounters,type,pass,3180,0,Text dtype preserved
+identifier_type:encounters:organization_id,encounters,type,pass,3180,0,Text dtype preserved
+identifier_type:encounters:provider_id,encounters,type,pass,3180,0,Text dtype preserved
+identifier_type:encounters:payer_id,encounters,type,pass,3180,0,Text dtype preserved
+identifier_type:encounters:code,encounters,type,pass,3180,0,Text dtype preserved
+identifier_type:encounters:reasoncode,encounters,type,pass,3180,0,Text dtype preserved
+no_negative_cost:encounters:base_encounter_cost,encounters,numeric,pass,3180,0,0 negative value(s) in 'base_encounter_cost'
+no_negative_cost:encounters:total_claim_cost,encounters,numeric,pass,3180,0,0 negative value(s) in 'total_claim_cost'
+no_negative_cost:encounters:payer_coverage,encounters,numeric,pass,3180,0,0 negative value(s) in 'payer_coverage'
+encounter_stop_not_before_start,encounters,temporal,pass,3180,0,0 encounter(s) flagged with STOP before START
+row_count_reconciliation:encounters,encounters,completeness,pass,3180,0,source=3180 duplicates_removed=0 target=3180
+target_columns_exist:imaging_studies,imaging_studies,structural,pass,13,0,All expected target columns present
+primary_key_not_null:imaging_studies,imaging_studies,completeness,pass,258,0,0 null primary key value(s)
+primary_key_unique:imaging_studies,imaging_studies,uniqueness,fail,258,100,100 row(s) share a duplicate primary key
+foreign_key_not_null:imaging_studies:patient_id,imaging_studies,referential,pass,258,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:imaging_studies:encounter_id,imaging_studies,referential,pass,258,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:imaging_studies:date,imaging_studies,type,pass,258,0,UTC-aware timestamp
+identifier_type:imaging_studies:id,imaging_studies,type,pass,258,0,Text dtype preserved
+identifier_type:imaging_studies:patient_id,imaging_studies,type,pass,258,0,Text dtype preserved
+identifier_type:imaging_studies:encounter_id,imaging_studies,type,pass,258,0,Text dtype preserved
+identifier_type:imaging_studies:bodysite_code,imaging_studies,type,pass,258,0,Text dtype preserved
+identifier_type:imaging_studies:modality_code,imaging_studies,type,pass,258,0,Text dtype preserved
+identifier_type:imaging_studies:sop_code,imaging_studies,type,pass,258,0,Text dtype preserved
+identifier_type:imaging_studies:procedure_code,imaging_studies,type,pass,258,0,Text dtype preserved
+row_count_reconciliation:imaging_studies,imaging_studies,completeness,pass,258,0,source=258 duplicates_removed=0 target=258
+target_columns_exist:immunizations,immunizations,structural,pass,6,0,All expected target columns present
+foreign_key_not_null:immunizations:patient_id,immunizations,referential,pass,845,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:immunizations:encounter_id,immunizations,referential,pass,845,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:immunizations:immunization_date,immunizations,type,pass,845,0,UTC-aware timestamp
+numeric_type:immunizations:base_cost,immunizations,type,pass,845,0,Numeric dtype
+identifier_type:immunizations:patient_id,immunizations,type,pass,845,0,Text dtype preserved
+identifier_type:immunizations:encounter_id,immunizations,type,pass,845,0,Text dtype preserved
+identifier_type:immunizations:code,immunizations,type,pass,845,0,Text dtype preserved
+no_negative_cost:immunizations:base_cost,immunizations,numeric,pass,845,0,0 negative value(s) in 'base_cost'
+row_count_reconciliation:immunizations,immunizations,completeness,pass,845,0,source=845 duplicates_removed=0 target=845
+target_columns_exist:medications,medications,structural,pass,13,0,All expected target columns present
+required_not_null:medications:patient_id,medications,completeness,pass,2107,0,0 null value(s) in required column 'patient_id'
+required_not_null:medications:code,medications,completeness,pass,2107,0,0 null value(s) in required column 'code'
+foreign_key_not_null:medications:patient_id,medications,referential,pass,2107,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:medications:encounter_id,medications,referential,pass,2107,0,0 null value(s) in foreign key 'encounter_id'
+foreign_key_not_null:medications:payer_id,medications,referential,pass,2107,0,0 null value(s) in foreign key 'payer_id'
+date_type_utc:medications:start,medications,type,pass,2107,0,UTC-aware timestamp
+date_type_utc:medications:stop,medications,type,pass,2107,0,UTC-aware timestamp
+numeric_type:medications:base_cost,medications,type,pass,2107,0,Numeric dtype
+numeric_type:medications:payer_coverage,medications,type,pass,2107,0,Numeric dtype
+numeric_type:medications:dispenses,medications,type,pass,2107,0,Numeric dtype
+numeric_type:medications:total_cost,medications,type,pass,2107,0,Numeric dtype
+identifier_type:medications:patient_id,medications,type,pass,2107,0,Text dtype preserved
+identifier_type:medications:encounter_id,medications,type,pass,2107,0,Text dtype preserved
+identifier_type:medications:payer_id,medications,type,pass,2107,0,Text dtype preserved
+identifier_type:medications:code,medications,type,pass,2107,0,Text dtype preserved
+identifier_type:medications:reasoncode,medications,type,pass,2107,0,Text dtype preserved
+no_negative_cost:medications:base_cost,medications,numeric,pass,2107,0,0 negative value(s) in 'base_cost'
+no_negative_cost:medications:payer_coverage,medications,numeric,pass,2107,0,0 negative value(s) in 'payer_coverage'
+no_negative_cost:medications:total_cost,medications,numeric,pass,2107,0,0 negative value(s) in 'total_cost'
+row_count_reconciliation:medications,medications,completeness,pass,2107,0,source=2107 duplicates_removed=0 target=2107
+target_columns_exist:observations,observations,structural,pass,9,0,All expected target columns present
+required_not_null:observations:patient_id,observations,completeness,pass,29607,0,0 null value(s) in required column 'patient_id'
+required_not_null:observations:code,observations,completeness,pass,29607,0,0 null value(s) in required column 'code'
+foreign_key_not_null:observations:patient_id,observations,referential,pass,29607,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:observations:encounter_id,observations,referential,warning,29607,1518,1518 null value(s) in foreign key 'encounter_id'
+date_type_utc:observations:observation_date,observations,type,pass,29607,0,UTC-aware timestamp
+identifier_type:observations:patient_id,observations,type,pass,29607,0,Text dtype preserved
+identifier_type:observations:encounter_id,observations,type,pass,29607,0,Text dtype preserved
+identifier_type:observations:code,observations,type,pass,29607,0,Text dtype preserved
+row_count_reconciliation:observations,observations,completeness,pass,29621,0,source=29621 duplicates_removed=14 target=29607
+target_columns_exist:organizations,organizations,structural,pass,11,0,All expected target columns present
+primary_key_not_null:organizations,organizations,completeness,pass,161,0,0 null primary key value(s)
+primary_key_unique:organizations,organizations,uniqueness,pass,161,0,0 row(s) share a duplicate primary key
+identifier_type:organizations:id,organizations,type,pass,161,0,Text dtype preserved
+identifier_type:organizations:zip,organizations,type,pass,161,0,Text dtype preserved
+zip_is_string:organizations,organizations,type,pass,161,0,ZIP preserved as text
+row_count_reconciliation:organizations,organizations,completeness,pass,161,0,source=161 duplicates_removed=0 target=161
+target_columns_exist:patients,patients,structural,pass,28,0,All expected target columns present
+primary_key_not_null:patients,patients,completeness,pass,58,0,0 null primary key value(s)
+primary_key_unique:patients,patients,uniqueness,pass,58,0,0 row(s) share a duplicate primary key
+required_not_null:patients:patient_id,patients,completeness,pass,58,0,0 null value(s) in required column 'patient_id'
+date_type_utc:patients:birthdate,patients,type,pass,58,0,UTC-aware timestamp
+date_type_utc:patients:deathdate,patients,type,pass,58,0,UTC-aware timestamp
+numeric_type:patients:lat,patients,type,pass,58,0,Numeric dtype
+numeric_type:patients:lon,patients,type,pass,58,0,Numeric dtype
+numeric_type:patients:healthcare_expenses,patients,type,pass,58,0,Numeric dtype
+numeric_type:patients:healthcare_coverage,patients,type,pass,58,0,Numeric dtype
+numeric_type:patients:income,patients,type,pass,58,0,Numeric dtype
+identifier_type:patients:patient_id,patients,type,pass,58,0,Text dtype preserved
+identifier_type:patients:ssn,patients,type,pass,58,0,Text dtype preserved
+identifier_type:patients:drivers,patients,type,pass,58,0,Text dtype preserved
+identifier_type:patients:passport,patients,type,pass,58,0,Text dtype preserved
+identifier_type:patients:fips,patients,type,pass,58,0,Text dtype preserved
+identifier_type:patients:zip,patients,type,pass,58,0,Text dtype preserved
+zip_is_string:patients,patients,type,pass,58,0,ZIP preserved as text
+no_negative_cost:patients:healthcare_expenses,patients,numeric,pass,58,0,0 negative value(s) in 'healthcare_expenses'
+no_negative_cost:patients:healthcare_coverage,patients,numeric,pass,58,0,0 negative value(s) in 'healthcare_coverage'
+no_negative_cost:patients:income,patients,numeric,pass,58,0,0 negative value(s) in 'income'
+row_count_reconciliation:patients,patients,completeness,pass,58,0,source=58 duplicates_removed=0 target=58
+target_columns_exist:payer_transitions,payer_transitions,structural,pass,8,0,All expected target columns present
+foreign_key_not_null:payer_transitions:patient_id,payer_transitions,referential,pass,1975,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:payer_transitions:payer_id,payer_transitions,referential,pass,1975,0,0 null value(s) in foreign key 'payer_id'
+foreign_key_not_null:payer_transitions:member_id,payer_transitions,referential,warning,1975,357,357 null value(s) in foreign key 'member_id'
+date_type_utc:payer_transitions:start_date,payer_transitions,type,pass,1975,0,UTC-aware timestamp
+date_type_utc:payer_transitions:end_date,payer_transitions,type,pass,1975,0,UTC-aware timestamp
+identifier_type:payer_transitions:patient_id,payer_transitions,type,pass,1975,0,Text dtype preserved
+identifier_type:payer_transitions:payer_id,payer_transitions,type,pass,1975,0,Text dtype preserved
+identifier_type:payer_transitions:member_id,payer_transitions,type,pass,1975,0,Text dtype preserved
+row_count_reconciliation:payer_transitions,payer_transitions,completeness,pass,1975,0,source=1975 duplicates_removed=0 target=1975
+target_columns_exist:payers,payers,structural,pass,22,0,All expected target columns present
+primary_key_not_null:payers,payers,completeness,pass,10,0,0 null primary key value(s)
+primary_key_unique:payers,payers,uniqueness,pass,10,0,0 row(s) share a duplicate primary key
+identifier_type:payers:id,payers,type,pass,10,0,Text dtype preserved
+identifier_type:payers:zip,payers,type,pass,10,0,Text dtype preserved
+zip_is_string:payers,payers,type,pass,10,0,ZIP preserved as text
+row_count_reconciliation:payers,payers,completeness,pass,10,0,source=10 duplicates_removed=0 target=10
+target_columns_exist:procedures,procedures,structural,pass,10,0,All expected target columns present
+required_not_null:procedures:patient_id,procedures,completeness,pass,7601,0,0 null value(s) in required column 'patient_id'
+required_not_null:procedures:code,procedures,completeness,pass,7601,0,0 null value(s) in required column 'code'
+foreign_key_not_null:procedures:patient_id,procedures,referential,pass,7601,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:procedures:encounter_id,procedures,referential,pass,7601,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:procedures:start,procedures,type,pass,7601,0,UTC-aware timestamp
+date_type_utc:procedures:stop,procedures,type,pass,7601,0,UTC-aware timestamp
+numeric_type:procedures:base_cost,procedures,type,pass,7601,0,Numeric dtype
+identifier_type:procedures:patient_id,procedures,type,pass,7601,0,Text dtype preserved
+identifier_type:procedures:encounter_id,procedures,type,pass,7601,0,Text dtype preserved
+identifier_type:procedures:code,procedures,type,pass,7601,0,Text dtype preserved
+identifier_type:procedures:reasoncode,procedures,type,pass,7601,0,Text dtype preserved
+no_negative_cost:procedures:base_cost,procedures,numeric,pass,7601,0,0 negative value(s) in 'base_cost'
+row_count_reconciliation:procedures,procedures,completeness,pass,7601,0,source=7601 duplicates_removed=0 target=7601
+target_columns_exist:providers,providers,structural,pass,13,0,All expected target columns present
+primary_key_not_null:providers,providers,completeness,pass,161,0,0 null primary key value(s)
+primary_key_unique:providers,providers,uniqueness,pass,161,0,0 row(s) share a duplicate primary key
+foreign_key_not_null:providers:organization_id,providers,referential,pass,161,0,0 null value(s) in foreign key 'organization_id'
+identifier_type:providers:id,providers,type,pass,161,0,Text dtype preserved
+identifier_type:providers:organization_id,providers,type,pass,161,0,Text dtype preserved
+identifier_type:providers:zip,providers,type,pass,161,0,Text dtype preserved
+zip_is_string:providers,providers,type,pass,161,0,ZIP preserved as text
+row_count_reconciliation:providers,providers,completeness,pass,161,0,source=161 duplicates_removed=0 target=161
+target_columns_exist:supplies,supplies,structural,pass,6,0,All expected target columns present
+foreign_key_not_null:supplies:patient_id,supplies,referential,pass,1423,0,0 null value(s) in foreign key 'patient_id'
+foreign_key_not_null:supplies:encounter_id,supplies,referential,pass,1423,0,0 null value(s) in foreign key 'encounter_id'
+date_type_utc:supplies:supply_date,supplies,type,pass,1423,0,UTC-aware timestamp
+identifier_type:supplies:patient_id,supplies,type,pass,1423,0,Text dtype preserved
+identifier_type:supplies:encounter_id,supplies,type,pass,1423,0,Text dtype preserved
+identifier_type:supplies:code,supplies,type,pass,1423,0,Text dtype preserved
+row_count_reconciliation:supplies,supplies,completeness,pass,1427,0,source=1427 duplicates_removed=4 target=1423
+birthdate_before_encounter_start,cross_dataset,temporal,pass,3180,0,0 encounter(s) start before the patient's birthdate

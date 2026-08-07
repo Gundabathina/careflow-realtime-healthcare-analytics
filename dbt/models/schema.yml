@@ -1,0 +1,80 @@
+version: 2
+
+# Project-wide groups (referenced by +group in dbt_project.yml) and
+# exposures. Model- and column-level docs/tests live alongside their
+# models in staging/, intermediate/, and marts/ schema.yml files.
+
+groups:
+  - name: staging
+    owner:
+      name: CareFlow Data Engineering
+      email: data-engineering@careflow.example
+  - name: intermediate
+    owner:
+      name: CareFlow Data Engineering
+      email: data-engineering@careflow.example
+  - name: marts
+    owner:
+      name: CareFlow Analytics Engineering
+      email: analytics-engineering@careflow.example
+
+exposures:
+  - name: executive_operations_dashboard
+    label: Executive Operations Dashboard
+    type: dashboard
+    maturity: low
+    url: null
+    description: >
+      PLANNED (does not exist yet). Will surface monthly volume, cost,
+      and readmission trends for hospital leadership.
+    depends_on:
+      - ref('mart_executive_monthly')
+      - ref('mart_hospital_operations')
+    owner:
+      name: CareFlow Analytics Engineering
+      email: analytics-engineering@careflow.example
+
+  - name: readmission_dashboard
+    label: Readmission Dashboard
+    type: dashboard
+    maturity: low
+    url: null
+    description: >
+      PLANNED (does not exist yet). Will surface 7/14/30-day readmission
+      rates by patient population, provider, and organization.
+    depends_on:
+      - ref('mart_readmission_analysis')
+      - ref('fct_readmissions')
+    owner:
+      name: CareFlow Analytics Engineering
+      email: analytics-engineering@careflow.example
+
+  - name: financial_performance_dashboard
+    label: Financial Performance Dashboard
+    type: dashboard
+    maturity: low
+    url: null
+    description: >
+      PLANNED (does not exist yet). Will surface claim cost, payer
+      coverage, and patient responsibility trends by payer and organization.
+    depends_on:
+      - ref('mart_financial_analysis')
+      - ref('fct_claim_financials')
+    owner:
+      name: CareFlow Analytics Engineering
+      email: analytics-engineering@careflow.example
+
+  - name: provider_performance_dashboard
+    label: Provider Performance Dashboard
+    type: dashboard
+    maturity: low
+    url: null
+    description: >
+      PLANNED (does not exist yet). Will surface provider-level encounter
+      volume, procedure counts, and average encounter duration.
+    depends_on:
+      - ref('mart_provider_performance')
+      - ref('fct_provider_activity')
+    owner:
+      name: CareFlow Analytics Engineering
+      email: analytics-engineering@careflow.example

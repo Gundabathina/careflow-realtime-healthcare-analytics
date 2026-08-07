@@ -1,0 +1,155 @@
+version: 2
+
+sources:
+  - name: careflow_dim
+    description: >
+      Gold-layer dimension tables loaded by the Python warehouse loader
+      (Phase 3B, `scripts/load_postgres_warehouse.py`) from
+      `data/gold/dim_*.parquet`. dbt treats this schema as read-only
+      source data -- the Python pipeline remains the system of record.
+    database: "{{ env_var('POSTGRES_DB', 'careflow') }}"
+    schema: careflow_dim
+    loader: careflow_warehouse_loader
+    tables:
+      - name: dim_patient
+        description: One row per patient. PII-restricted columns (SSN, passport, driver's license, street address, full name) were already excluded during the Silver->Gold build; latitude/longitude are present here but must never reach a public model.
+        loaded_at_field: transformation_timestamp_utc
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 90, period: day}
+        columns:
+          - name: patient_key
+            description: Deterministic surrogate key (sha256 hash of the natural patient_id).
+            data_tests: [not_null, unique]
+          - name: patient_id
+            description: Natural key from the source Synthea data.
+            data_tests: [not_null]
+      - name: dim_provider
+        description: One row per provider.
+        columns:
+          - name: provider_key
+            data_tests: [not_null, unique]
+      - name: dim_organization
+        description: One row per healthcare organization.
+        columns:
+          - name: organization_key
+            data_tests: [not_null, unique]
+      - name: dim_payer
+        description: One row per insurance payer.
+        columns:
+          - name: payer_key
+            data_tests: [not_null, unique]
+      - name: dim_date
+        description: Complete daily calendar dimension spanning every date referenced anywhere in Gold.
+        columns:
+          - name: date_key
+            description: YYYYMMDD integer date key.
+            data_tests: [not_null, unique]
+      - name: dim_condition
+        description: Deduplicated condition code/description lookup.
+        columns:
+          - name: condition_key
+            data_tests: [not_null, unique]
+      - name: dim_procedure
+        description: Deduplicated procedure code/description lookup.
+        columns:
+          - name: procedure_key
+            data_tests: [not_null, unique]
+      - name: dim_medication
+        description: Deduplicated medication code/description lookup.
+        columns:
+          - name: medication_key
+            data_tests: [not_null, unique]
+
+  - name: careflow_fact
+    description: >
+      Gold-layer fact tables loaded by the Python warehouse loader from
+      `data/gold/fact_*.parquet`.
+    database: "{{ env_var('POSTGRES_DB', 'careflow') }}"
+    schema: careflow_fact
+    loader: careflow_warehouse_loader
+    tables:
+      - name: fact_encounter
+        description: One row per encounter. `patient_responsibility = total_claim_cost - payer_coverage`; negative values are flagged, never silently corrected.
+        columns:
+          - name: encounter_key
+            data_tests: [not_null, unique]
+          - name: encounter_id
+            description: Natural key from the source Synthea encounters.csv.
+            data_tests: [not_null]
+      - name: fact_condition
+        description: One row per condition occurrence (grain has no natural source id; keyed on a composite-natural-key hash).
+        columns:
+          - name: condition_event_key
+            data_tests: [not_null, unique]
+      - name: fact_procedure
+        description: One row per procedure occurrence.
+        columns:
+          - name: procedure_event_key
+            data_tests: [not_null, unique]
+      - name: fact_medication
+        description: One row per medication occurrence.
+        columns:
+          - name: medication_event_key
+            data_tests: [not_null, unique]
+      - name: fact_observation
+        description: One row per observation occurrence. `numeric_value` is populated only when `raw_value` parses as a number.
+        columns:
+          - name: observation_key
+            data_tests: [not_null, unique]
+      - name: fact_claim
+        description: One row per claim (claims.csv only -- claims_transactions was not reliably joinable and is not modeled here).
+        columns:
+          - name: claim_key
+            data_tests: [not_null, unique]
+      - name: fact_immunization
+        description: One row per immunization.
+        columns:
+          - name: immunization_key
+            data_tests: [not_null, unique]
+      - name: fact_imaging_study
+        description: >
+          One row per imaging study series/instance. IMPORTANT: the
+          source `imaging_studies.Id` (`study_id` here) is NOT row-level
+          unique -- one study can span multiple series/instance rows.
+          The true grain is the composite (study_id, series_uid,
+          instance_uid), matching the surrogate imaging_study_key.
+        columns:
+          - name: imaging_study_key
+            description: Deterministic hash of (study_id, series_uid, instance_uid) -- the true grain. Never study_id alone.
+            data_tests: [not_null, unique]
+          - name: study_id
+            description: Source DICOM study id. Deliberately NOT tested as unique on its own -- see model description.
+
+  - name: careflow_mart
+    description: >
+      Gold-layer analytics marts loaded by the Python warehouse loader
+      from `data/gold/mart_*.parquet`. dbt's `stg_careflow__readmissions`
+      sources `mart_readmission` here specifically to support
+      reconciliation against dbt's independently-recomputed
+      `int_readmission_events`.
+    database: "{{ env_var('POSTGRES_DB', 'careflow') }}"
+    schema: careflow_mart
+    loader: careflow_warehouse_loader
+    tables:
+      - name: mart_patient_360
+        description: One row per patient with encounter/condition/procedure/medication/observation/immunization rollups.
+      - name: mart_readmission
+        description: >
+          Python Gold's readmission mart (one row per qualifying index
+          encounter). Used as the reconciliation baseline for dbt's
+          independently-computed int_readmission_events.
+        columns:
+          - name: index_encounter_key
+            data_tests: [not_null, unique]
+      - name: mart_hospital_operations
+        description: Encounters aggregated by organization, date, and encounter class.
+      - name: mart_financial_performance
+        description: Encounters aggregated by payer, organization, and month.
+      - name: mart_provider_utilization
+        description: Encounters aggregated by provider and month.
+      - name: mart_monthly_kpis
+        description: Monthly healthcare KPI rollup.
+        columns:
+          - name: year_month
+            data_tests: [not_null, unique]
