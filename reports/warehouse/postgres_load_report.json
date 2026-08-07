@@ -1,7 +1,7 @@
 {
-  "run_id": "warehouse_20260807T034331Z_df0915f6",
-  "started_at_utc": "2026-08-07T03:43:31Z",
-  "completed_at_utc": "2026-08-07T03:43:31Z",
+  "run_id": "warehouse_20260807T140924Z_a804f4b1",
+  "started_at_utc": "2026-08-07T14:09:24Z",
+  "completed_at_utc": "2026-08-07T14:09:24Z",
   "gold_manifest_path": "data/gold/gold_manifest.json",
   "gold_manifest_checksum": "gold_20260807T034328Z_cd687953",
   "schema_version": "1.0.0",
@@ -9,7 +9,7 @@
   "mode": "full",
   "tables": [
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_patient",
       "source_path": "data/gold/dim_patient.parquet",
@@ -19,14 +19,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.001681,
+      "duration_seconds": 0.002739,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_provider",
       "source_path": "data/gold/dim_provider.parquet",
@@ -36,14 +36,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000269,
+      "duration_seconds": 0.000555,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_organization",
       "source_path": "data/gold/dim_organization.parquet",
@@ -53,14 +53,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000312,
+      "duration_seconds": 0.000496,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_payer",
       "source_path": "data/gold/dim_payer.parquet",
@@ -70,14 +70,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000249,
+      "duration_seconds": 0.000552,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_date",
       "source_path": "data/gold/dim_date.parquet",
@@ -87,14 +87,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000228,
+      "duration_seconds": 0.000638,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_condition",
       "source_path": "data/gold/dim_condition.parquet",
@@ -104,14 +104,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000265,
+      "duration_seconds": 0.001143,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_procedure",
       "source_path": "data/gold/dim_procedure.parquet",
@@ -121,14 +121,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000216,
+      "duration_seconds": 0.000724,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_dim",
       "table_name": "dim_medication",
       "source_path": "data/gold/dim_medication.parquet",
@@ -138,14 +138,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000218,
+      "duration_seconds": 0.001674,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_encounter",
       "source_path": "data/gold/fact_encounter.parquet",
@@ -155,14 +155,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000207,
+      "duration_seconds": 0.000543,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_condition",
       "source_path": "data/gold/fact_condition.parquet",
@@ -172,14 +172,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000191,
+      "duration_seconds": 0.000434,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_procedure",
       "source_path": "data/gold/fact_procedure.parquet",
@@ -189,14 +189,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000228,
+      "duration_seconds": 0.000397,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_medication",
       "source_path": "data/gold/fact_medication.parquet",
@@ -206,14 +206,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000193,
+      "duration_seconds": 0.000408,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_observation",
       "source_path": "data/gold/fact_observation.parquet",
@@ -223,14 +223,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000167,
+      "duration_seconds": 0.000392,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_claim",
       "source_path": "data/gold/fact_claim.parquet",
@@ -240,14 +240,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000218,
+      "duration_seconds": 0.000354,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_immunization",
       "source_path": "data/gold/fact_immunization.parquet",
@@ -257,14 +257,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000226,
+      "duration_seconds": 0.000401,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_fact",
       "table_name": "fact_imaging_study",
       "source_path": "data/gold/fact_imaging_study.parquet",
@@ -274,14 +274,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000195,
+      "duration_seconds": 0.000423,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_mart",
       "table_name": "mart_patient_360",
       "source_path": "data/gold/mart_patient_360.parquet",
@@ -291,14 +291,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000193,
+      "duration_seconds": 0.000366,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_mart",
       "table_name": "mart_readmission",
       "source_path": "data/gold/mart_readmission.parquet",
@@ -308,14 +308,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000194,
+      "duration_seconds": 0.000332,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_mart",
       "table_name": "mart_hospital_operations",
       "source_path": "data/gold/mart_hospital_operations.parquet",
@@ -325,14 +325,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000176,
+      "duration_seconds": 0.00037,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_mart",
       "table_name": "mart_financial_performance",
       "source_path": "data/gold/mart_financial_performance.parquet",
@@ -342,14 +342,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000181,
+      "duration_seconds": 0.000341,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_mart",
       "table_name": "mart_provider_utilization",
       "source_path": "data/gold/mart_provider_utilization.parquet",
@@ -359,14 +359,14 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000177,
+      "duration_seconds": 0.00037,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     },
     {
-      "run_id": "warehouse_20260807T034331Z_df0915f6",
+      "run_id": "warehouse_20260807T140924Z_a804f4b1",
       "schema_name": "careflow_mart",
       "table_name": "mart_monthly_kpis",
       "source_path": "data/gold/mart_monthly_kpis.parquet",
@@ -376,11 +376,11 @@
       "load_method": "skipped",
       "status": "skipped",
       "error_message": null,
-      "duration_seconds": 0.000163,
+      "duration_seconds": 0.000369,
       "schema_version": "1.0.0",
       "loader_version": "1.0.0",
-      "started_at_utc": "2026-08-07T03:43:31Z",
-      "completed_at_utc": "2026-08-07T03:43:31Z"
+      "started_at_utc": "2026-08-07T14:09:24Z",
+      "completed_at_utc": "2026-08-07T14:09:24Z"
     }
   ],
   "summary": {

@@ -154,6 +154,15 @@ Blueprint: New -> Web Service -> connect this repo -> Build command
 -> set `POSTGRES_HOST`/`PORT`/`DB`/`USER`/`PASSWORD`/`SSLMODE`
 environment variables to the existing database's connection details.
 
+## Health check
+
+`render.yaml`'s web service sets `healthCheckPath: /_stcore/health` --
+Streamlit's own built-in liveness endpoint (added in its Starlette-based
+server; no custom code needed). It returns `200 OK` as soon as the
+Streamlit runtime is up, without querying PostgreSQL or exposing any
+application data -- Render uses it to know when the service is ready
+and to detect a hung/crashed process, not to check warehouse health.
+
 ## PostgreSQL SSL
 
 `src/careflow/warehouse/postgres_client.py` supports an optional
@@ -191,22 +200,25 @@ export POSTGRES_USER=<render-postgres-user>
 export POSTGRES_PASSWORD=<render-postgres-password>
 export POSTGRES_SSLMODE=require
 
-# 3. Create schema + load every table (this is the SAME command used
-#    locally -- schema_manager.ensure_schema() runs automatically as
-#    part of a normal load, no separate schema-only step needed for a
-#    brand-new database):
-PYTHONPATH=src python3 scripts/load_postgres_warehouse.py --force
-
-# 4. Validate the load the same way local loads are validated:
-PYTHONPATH=src python3 scripts/validate_postgres_warehouse.py
+# 3. Run the bootstrap script -- schema creation, full load, and
+#    validation in one command (fails loudly, non-zero exit, on any
+#    problem; never logs the password):
+PYTHONPATH=src python3 scripts/bootstrap_production_database.py
 ```
 
-This is exactly `scripts/load_postgres_warehouse.py` and
-`scripts/validate_postgres_warehouse.py` -- the same two commands
-documented in [`README.md#15-running-the-pipeline`](../README.md#15-running-the-pipeline)
--- pointed at a different `POSTGRES_HOST` via environment variables.
+`scripts/bootstrap_production_database.py` is a thin wrapper around the
+exact same functions `scripts/load_postgres_warehouse.py` and
+`scripts/validate_postgres_warehouse.py` call --
+`careflow.warehouse.gold_loader.run_gold_load()` (schema + load; its
+`ensure_schema()` step creates schema/indexes/views automatically for a
+brand-new database) and `careflow.warehouse.warehouse_validator.run_validation()`.
 Nothing about the loader or validator changes for a cloud target; only
-the connection config differs.
+the connection config differs. It's checksum-based like every other
+CareFlow load -- re-running it against an already-bootstrapped,
+unchanged database is a fast no-op, not a destructive reload, so it is
+**never** wired into the web service's own start command (a service
+restart must never re-trigger a warehouse reload). Pass `--force` to
+force a full reload.
 
 ## 4. Railway
 

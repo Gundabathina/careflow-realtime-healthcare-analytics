@@ -12,10 +12,13 @@
 # repository) -- nothing is provisioned by the file's presence alone.
 #
 # Before the dashboard will show real data, the managed database below
-# must be bootstrapped once -- see
-# docs/deployment_guide.md#cloud-database-bootstrap (reuses the
-# project's existing schema manager, warehouse loader, and validation
-# scripts; no separate pipeline).
+# must be bootstrapped once by running
+# scripts/bootstrap_production_database.py locally, pointed at this
+# database's connection details -- see
+# docs/deployment_guide.md#cloud-database-bootstrap. That script reuses
+# the project's existing schema manager, warehouse loader, and
+# validation scripts; it is deliberately NOT wired into this service's
+# startCommand, so a restart never re-triggers a warehouse reload.
 #
 # Render's Blueprint field names occasionally change -- verify against
 # https://render.com/docs/blueprint-spec if `render blueprint launch`
@@ -32,6 +35,7 @@ services:
     runtime: python
     plan: free
     buildCommand: pip install -r requirements-dashboard.txt
+    healthCheckPath: /_stcore/health
     startCommand: >-
       streamlit run dashboard/CareFlow_Analytics.py
       --server.address 0.0.0.0
