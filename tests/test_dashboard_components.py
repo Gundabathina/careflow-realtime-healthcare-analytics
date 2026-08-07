@@ -228,6 +228,6 @@ def test_app_entrypoint_imports_and_executes_without_error(monkeypatch):
         "dashboard.database.check_database_available",
         lambda: (False, "PostgreSQL is not configured (missing environment variables)."),
     )
-    spec = importlib.util.spec_from_file_location("dashboard_app", PROJECT_ROOT / "dashboard" / "app.py")
+    spec = importlib.util.spec_from_file_location("dashboard_app", PROJECT_ROOT / "dashboard" / "CareFlow_Analytics.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

@@ -7,7 +7,7 @@ never queries anything outside `careflow_dbt_mart`.
 ```mermaid
 flowchart TD
     subgraph Entry
-        A[dashboard/app.py -- landing page]
+        A[dashboard/CareFlow_Analytics.py -- landing page]
     end
 
     subgraph Pages["dashboard/pages/*.py (Streamlit auto-discovered)"]
@@ -49,7 +49,7 @@ flowchart TD
 
 | Layer | File(s) | Responsibility |
 |---|---|---|
-| Entry point | `app.py` | Landing page; Streamlit auto-discovers `pages/*.py` for sidebar navigation |
+| Entry point | `CareFlow_Analytics.py` | Landing page; Streamlit auto-discovers `pages/*.py` for sidebar navigation |
 | Pages | `pages/1..7_*.py` | One page per analytics use case; compose filters + queries + charts/KPI cards -- no raw SQL lives here |
 | Filters | `components/filters.py` | Sidebar widgets (date range, organization, age group, gender, encounter class) build a single `Filters` object passed into every query function |
 | Queries | `queries.py` | One function per chart/KPI (e.g. `get_readmission_kpis`, `get_encounter_volume_by_month`); every query is parameterized (`%s` placeholders), never string-interpolated |

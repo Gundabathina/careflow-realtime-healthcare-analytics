@@ -36,7 +36,7 @@ The project's main Python 3.14 environment, `.venv-dbt`, and
 set -a && source .env && set +a
 PYTHONPATH=src python3 scripts/start_dashboard.py
 # or directly:
-.venv-dashboard/bin/streamlit run dashboard/app.py
+.venv-dashboard/bin/streamlit run dashboard/CareFlow_Analytics.py
 ```
 
 URL: <http://localhost:8501> by default (`--port` to override).
@@ -67,7 +67,7 @@ dashboard/
     5_Provider_Performance.py
     6_Patient_Population.py
     7_Data_Quality.py
-  app.py               -- landing page (Streamlit auto-discovers pages/ for navigation)
+  CareFlow_Analytics.py -- landing page (Streamlit auto-discovers pages/ for navigation)
 ```
 
 `database.py` and `queries.py` import streamlit behind a

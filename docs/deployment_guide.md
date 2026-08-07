@@ -49,9 +49,9 @@ Data persists in named volumes (`careflow_postgres_data`,
 compose down` alone does not delete them; `docker compose down -v`
 does.
 
-To containerize the dashboard itself for deployment (not currently in
-the repo -- this is a suggested pattern, not an existing file), a
-minimal `Dockerfile` would look like:
+To containerize the dashboard itself for deployment (there is no
+`Dockerfile` in the repo -- Render's `render.yaml` blueprint below uses
+a native Python runtime instead), a minimal one would look like:
 
 ```dockerfile
 FROM python:3.11-slim
@@ -62,14 +62,16 @@ COPY dashboard/ dashboard/
 COPY src/ src/
 COPY config/ config/
 ENV PYTHONPATH=/app/src
-EXPOSE 8501
-CMD ["streamlit", "run", "dashboard/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD streamlit run dashboard/CareFlow_Analytics.py --server.address 0.0.0.0 --server.port ${PORT:-8501} --server.headless true
 ```
 
-where `requirements-dashboard.txt` mirrors the isolated
-`.venv-dashboard` dependency set documented in
-[`dashboard_guide.md`](dashboard_guide.md):
-`streamlit plotly "psycopg[binary]>=3.3" pandas pyyaml`.
+`requirements-dashboard.txt` is a real, tracked file at the repo root
+mirroring the isolated `.venv-dashboard` dependency set documented in
+[`dashboard_guide.md`](dashboard_guide.md). Note the `CMD` uses shell
+form (not exec-form JSON array) specifically so `${PORT:-8501}`
+expands at container start -- most platforms (Render, Railway, Cloud
+Run) inject `$PORT` and expect the container to bind to it rather than
+a fixed port; `8501` is only the local-development fallback.
 
 ## 2. Streamlit Community Cloud (dashboard only)
 
@@ -77,13 +79,14 @@ Best fit for sharing the live dashboard for free, pointed at an
 externally-reachable PostgreSQL instance (see options 3-5).
 
 1. Push this repository to GitHub (already done).
-2. Add `requirements-dashboard.txt` at the repo root with the dashboard
-   dependency set above (Streamlit Cloud installs from a single
+2. `requirements-dashboard.txt` at the repo root already has the
+   dashboard dependency set (Streamlit Cloud installs from a single
    requirements file; it cannot use the project's isolated
-   `.venv-dashboard` setup directly).
+   `.venv-dashboard` setup directly) -- point Streamlit Cloud's
+   "Requirements file" field at it if it doesn't auto-detect it.
 3. In [share.streamlit.io](https://share.streamlit.io), create a new
    app pointing at this repo, branch `main`, main file path
-   `dashboard/app.py`.
+   `dashboard/CareFlow_Analytics.py`.
 4. In the app's **Secrets** (Settings -> Secrets), set the same
    variables as `.env.example`'s PostgreSQL block:
    ```toml
@@ -92,37 +95,118 @@ externally-reachable PostgreSQL instance (see options 3-5).
    POSTGRES_DB = "careflow"
    POSTGRES_USER = "careflow_user"
    POSTGRES_PASSWORD = "replace_with_a_real_value_change_me"
+   POSTGRES_SSLMODE = "require"
    ```
    Streamlit Cloud injects secrets as environment variables, which
    `careflow.warehouse.postgres_client.load_connection_config()` reads
    the same way it reads `.env` locally -- no code change needed.
+   `POSTGRES_SSLMODE` is optional but should be `require` for any
+   managed/cloud PostgreSQL instance (see "PostgreSQL SSL" below).
 5. The PostgreSQL instance must be reachable from the public internet
    (or Streamlit Cloud's egress IPs allow-listed) -- see options 3-5
    for a managed instance, since Streamlit Cloud has no database
    hosting of its own.
 
-## 3. Render
+## 3. Render (target platform for the first public deployment)
 
 Good fit for hosting **both** PostgreSQL and the dashboard under one
-provider.
+provider, and the platform this project is actually prepared for --
+`render.yaml` at the repo root is a real
+[Render Blueprint](https://render.com/docs/blueprint-spec), not just
+documentation. It declares:
 
-**PostgreSQL:** Render -> New -> PostgreSQL. Load the warehouse once
-locally against Render's external connection string (`load_postgres_warehouse.py`
-reads `POSTGRES_*` from the environment, so point those vars at
-Render's host/port/db/user/password for a one-time load), or re-run the
-full pipeline with `POSTGRES_HOST` set to the Render host.
+- a managed PostgreSQL instance (`careflow-postgres`)
+- a web service (`careflow-analytics-dashboard`) that builds with
+  `pip install -r requirements-dashboard.txt` and starts with
+  `streamlit run dashboard/CareFlow_Analytics.py --server.address 0.0.0.0 --server.port $PORT --server.headless true`
+  (`$PORT` is Render's injected port -- never hard-coded to 8501 here)
+- `POSTGRES_HOST`/`PORT`/`DB`/`USER`/`PASSWORD` wired automatically from
+  the managed database via `fromDatabase`, so no credential is typed
+  into the Render dashboard by hand
+- `POSTGRES_SSLMODE=require`, since Render's managed PostgreSQL
+  requires SSL (see "PostgreSQL SSL" below)
 
-**Dashboard (Web Service):**
-1. New -> Web Service -> connect this GitHub repo.
-2. Build command: `pip install -r requirements-dashboard.txt` (see
-   Docker section above for its contents).
-3. Start command: `streamlit run dashboard/app.py --server.port=$PORT --server.address=0.0.0.0`
-   (Render injects `$PORT`; `scripts/start_dashboard.py --port` is for
-   local use and isn't needed here).
-4. Environment variables: the same `POSTGRES_*` block as `.env.example`,
-   pointed at the Render PostgreSQL instance's internal connection
-   details (same-region services can use Render's private network,
-   avoiding a public database endpoint).
+**To deploy (manual steps, not run by this repository or by any
+assistant):**
+
+1. On [render.com](https://render.com), **New +** -> **Blueprint**,
+   connect this GitHub repository (`Gundabathina/careflow-realtime-healthcare-analytics`),
+   branch `main`.
+2. Render reads `render.yaml` and proposes the database + web service
+   above -- review and apply.
+3. Wait for both resources to provision. The web service will build
+   and start, but the dashboard will show "PostgreSQL warehouse is not
+   reachable" (or an empty warehouse) until the database is
+   bootstrapped -- see "Cloud database bootstrap" below.
+4. Once bootstrapped, reload the deployed URL -- the landing page's
+   "Connected to the CareFlow PostgreSQL warehouse" message confirms
+   it's live.
+
+Render's Blueprint field names occasionally change between platform
+versions -- if `render.yaml` fails to parse, check the current spec at
+the link above before editing field names.
+
+**Manual (non-Blueprint) alternative**, if you'd rather wire an
+existing Render Postgres instance by hand instead of applying the
+Blueprint: New -> Web Service -> connect this repo -> Build command
+`pip install -r requirements-dashboard.txt` -> Start command
+`streamlit run dashboard/CareFlow_Analytics.py --server.address 0.0.0.0 --server.port $PORT --server.headless true`
+-> set `POSTGRES_HOST`/`PORT`/`DB`/`USER`/`PASSWORD`/`SSLMODE`
+environment variables to the existing database's connection details.
+
+## PostgreSQL SSL
+
+`src/careflow/warehouse/postgres_client.py` supports an optional
+`POSTGRES_SSLMODE` environment variable (added for this deployment
+phase). Unset, it behaves exactly as it always has (libpq's own
+`prefer` default) -- local Docker Compose PostgreSQL doesn't speak SSL
+and is completely unaffected. Any managed/cloud PostgreSQL (Render,
+RDS, Supabase, etc.) should set `POSTGRES_SSLMODE=require`. This is
+wired automatically in `render.yaml`; set it explicitly in
+`.env`/platform secrets for every other deployment target in this
+guide.
+
+## Cloud database bootstrap
+
+Loading a fresh managed PostgreSQL database reuses the project's
+existing schema manager, warehouse loader, and validation scripts --
+there is no separate "production" pipeline. Do this once per fresh
+database (and again any time you want to refresh it with newly
+generated data):
+
+```bash
+# 1. Generate the Gold layer locally first, if you haven't already
+#    (see README.md#15-running-the-pipeline) -- this step reads only
+#    data/gold/*.parquet, it does not regenerate it.
+
+# 2. Point the environment at the target managed database instead of
+#    local Docker Compose Postgres -- e.g. export the values Render
+#    shows for the `careflow-postgres` database it provisioned
+#    (Dashboard -> careflow-postgres -> Connect), or source a separate
+#    .env.production with the same POSTGRES_* variable names:
+export POSTGRES_HOST=<render-postgres-host>
+export POSTGRES_PORT=<render-postgres-port>
+export POSTGRES_DB=<render-postgres-database>
+export POSTGRES_USER=<render-postgres-user>
+export POSTGRES_PASSWORD=<render-postgres-password>
+export POSTGRES_SSLMODE=require
+
+# 3. Create schema + load every table (this is the SAME command used
+#    locally -- schema_manager.ensure_schema() runs automatically as
+#    part of a normal load, no separate schema-only step needed for a
+#    brand-new database):
+PYTHONPATH=src python3 scripts/load_postgres_warehouse.py --force
+
+# 4. Validate the load the same way local loads are validated:
+PYTHONPATH=src python3 scripts/validate_postgres_warehouse.py
+```
+
+This is exactly `scripts/load_postgres_warehouse.py` and
+`scripts/validate_postgres_warehouse.py` -- the same two commands
+documented in [`README.md#15-running-the-pipeline`](../README.md#15-running-the-pipeline)
+-- pointed at a different `POSTGRES_HOST` via environment variables.
+Nothing about the loader or validator changes for a cloud target; only
+the connection config differs.
 
 ## 4. Railway
 

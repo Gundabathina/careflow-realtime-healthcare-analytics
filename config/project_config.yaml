@@ -3,7 +3,7 @@
 
 project:
   name: "CareFlow Analytics"
-  description: "Real-Time Hospital Operations and Patient Readmission Platform"
+  description: "Orchestrated Hospital Operations and Patient Readmission Analytics Platform"
   phase: "2A"
   version: "0.1.0"
 

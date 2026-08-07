@@ -68,7 +68,7 @@ def test_readme_has_required_section(readme_text, section):
 
 def test_readme_has_hero_title_and_subtitle(readme_text):
     assert "# CareFlow Analytics" in readme_text
-    assert "Real-Time Hospital Operations & Patient Readmission Intelligence Platform" in readme_text
+    assert "Orchestrated Hospital Operations & Patient Readmission Analytics Platform" in readme_text
 
 
 def test_readme_states_synthetic_data_clearly(readme_text):

@@ -64,6 +64,7 @@ def render_error_state(message: str) -> None:
 
 def render_synthetic_data_notice() -> None:
     st.caption(
-        "Data is derived from Synthea-generated synthetic patients and is used here to "
-        "demonstrate analytics engineering, not to represent real hospital performance."
+        "Demo environment -- all patient data is synthetic, generated using Synthea, and "
+        "used here to demonstrate analytics engineering, not to represent real hospital "
+        "performance."
     )

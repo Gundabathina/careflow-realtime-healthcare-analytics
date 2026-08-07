@@ -76,31 +76,49 @@ try:
     with col1:
         render_section_title("Readmission Rate Over Time")
         fig = line_chart(trend, "year_month", "readmission_rate_30_day", "30-Day Readmission Rate by Month", "Month", "Rate")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
     with col2:
         render_section_title("Readmissions by Encounter Class")
         fig = horizontal_bar_chart(by_class, "index_encounter_class", "readmission_rate_pct", "Readmission Rate by Index Encounter Class", "Rate (%)", "Encounter Class", value_is_percent=True)
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Readmissions by Age Group")
         fig = horizontal_bar_chart(by_age, "age_group", "readmission_rate_pct", "Readmission Rate by Age Group", "Rate (%)", "Age Group", value_is_percent=True)
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
     with col2:
         render_section_title("Readmissions by Gender")
         fig = horizontal_bar_chart(by_gender, "gender", "readmission_rate_pct", "Readmission Rate by Gender", "Rate (%)", "Gender", value_is_percent=True)
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Readmissions by Organization")
         fig = horizontal_bar_chart(by_org, "organization_name", "readmission_rate_pct", "Readmission Rate by Organization (min. 5 qualifying encounters)", "Rate (%)", "Organization", value_is_percent=True)
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
     with col2:
         render_section_title("Distribution of Days to Readmission")
         fig = distribution_histogram(days_dist, "days_to_readmission", "Days to Readmission (within selected window)", "Days")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
 
     render_section_title(
         "Top Patient Segments by Readmission Rate",

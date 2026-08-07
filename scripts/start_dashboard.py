@@ -84,7 +84,7 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         logger.info("PostgreSQL connectivity OK.")
 
-    app_path = PROJECT_ROOT / "dashboard" / "app.py"
+    app_path = PROJECT_ROOT / "dashboard" / "CareFlow_Analytics.py"
     cmd = [
         resolve_streamlit_executable(), "run", str(app_path),
         "--server.port", str(args.port),

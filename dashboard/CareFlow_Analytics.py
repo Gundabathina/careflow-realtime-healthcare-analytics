@@ -1,12 +1,16 @@
 """CareFlow Analytics -- entry point.
 
 Run with:
-    streamlit run dashboard/app.py
+    streamlit run dashboard/CareFlow_Analytics.py
 or:
     PYTHONPATH=src python3 scripts/start_dashboard.py
 
 Streamlit auto-discovers dashboard/pages/*.py for the sidebar
-navigation; this file is only the landing page.
+navigation; this file is only the landing page. It's named
+`CareFlow_Analytics.py` rather than `app.py` because Streamlit derives
+the sidebar's top nav label directly from the entry script's filename
+(with underscores rendered as spaces) -- `app.py` would otherwise show
+the generic label "app".
 """
 
 from __future__ import annotations
@@ -35,7 +39,7 @@ db_available, db_error = check_database_available()
 if not db_available:
     st.error(
         "The CareFlow PostgreSQL warehouse is not reachable right now, so live analytics can't be "
-        "shown. Start it and reload this page."
+        "shown. Please try again shortly."
     )
     if db_error:
         st.caption(db_error)

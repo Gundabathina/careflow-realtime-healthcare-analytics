@@ -44,6 +44,27 @@ def test_missing_all_env_vars_raises():
         pc.load_connection_config({})
 
 
+def test_sslmode_defaults_to_prefer_when_unset():
+    env = {
+        "POSTGRES_HOST": "localhost", "POSTGRES_PORT": "5432", "POSTGRES_DB": "careflow",
+        "POSTGRES_USER": "careflow_user", "POSTGRES_PASSWORD": "secret123",
+    }
+    cfg = pc.load_connection_config(env)
+    assert cfg.sslmode == "prefer"
+    assert cfg.as_conninfo_kwargs()["sslmode"] == "prefer"
+
+
+def test_sslmode_honors_env_override_for_managed_postgres():
+    env = {
+        "POSTGRES_HOST": "cloud-db.example.com", "POSTGRES_PORT": "5432", "POSTGRES_DB": "careflow",
+        "POSTGRES_USER": "careflow_user", "POSTGRES_PASSWORD": "secret123",
+        "POSTGRES_SSLMODE": "require",
+    }
+    cfg = pc.load_connection_config(env)
+    assert cfg.sslmode == "require"
+    assert cfg.as_conninfo_kwargs()["sslmode"] == "require"
+
+
 def test_invalid_port_raises_missing_credentials_error():
     env = {
         "POSTGRES_HOST": "localhost", "POSTGRES_PORT": "not-a-number", "POSTGRES_DB": "careflow",

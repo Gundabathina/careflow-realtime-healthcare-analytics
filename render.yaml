@@ -1,0 +1,64 @@
+# Render Blueprint for CareFlow Analytics.
+#
+# Deploys only the Streamlit dashboard as a public web service, backed
+# by a Render-managed PostgreSQL instance. This does NOT deploy
+# Airflow, dbt, or the Bronze/Silver/Gold pipeline -- those remain
+# local/Docker Compose only (see docs/deployment_guide.md). The
+# dashboard is read-only against `careflow_dbt_mart`; nothing in this
+# blueprint writes pipeline data.
+#
+# This file only takes effect once you apply it from the Render
+# dashboard ("New +" -> "Blueprint", pointing at this GitHub
+# repository) -- nothing is provisioned by the file's presence alone.
+#
+# Before the dashboard will show real data, the managed database below
+# must be bootstrapped once -- see
+# docs/deployment_guide.md#cloud-database-bootstrap (reuses the
+# project's existing schema manager, warehouse loader, and validation
+# scripts; no separate pipeline).
+#
+# Render's Blueprint field names occasionally change -- verify against
+# https://render.com/docs/blueprint-spec if `render blueprint launch`
+# reports a schema error.
+
+databases:
+  - name: careflow-postgres
+    plan: free
+    postgresMajorVersion: "16"
+
+services:
+  - type: web
+    name: careflow-analytics-dashboard
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-dashboard.txt
+    startCommand: >-
+      streamlit run dashboard/CareFlow_Analytics.py
+      --server.address 0.0.0.0
+      --server.port $PORT
+      --server.headless true
+    envVars:
+      - key: PYTHONPATH
+        value: src
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: careflow-postgres
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: careflow-postgres
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: careflow-postgres
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: careflow-postgres
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: careflow-postgres
+          property: password
+      - key: POSTGRES_SSLMODE
+        value: require

@@ -2,8 +2,8 @@
 
 ## Project title
 
-**CareFlow Analytics -- Real-Time Hospital Operations & Patient
-Readmission Intelligence Platform**
+**CareFlow Analytics -- Orchestrated Hospital Operations & Patient
+Readmission Analytics Platform**
 
 ## 2-line description
 

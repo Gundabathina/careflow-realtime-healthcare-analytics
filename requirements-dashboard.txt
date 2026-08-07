@@ -1,0 +1,18 @@
+# CareFlow Analytics -- Streamlit dashboard runtime dependencies.
+#
+# A separate file from requirements.txt on purpose: streamlit requires
+# pyarrow<25, which conflicts with the main project's pinned
+# pyarrow>=25.0 (see docs/dashboard_guide.md and
+# docs/architecture/technology_stack.md for why dbt/Airflow/Streamlit
+# each get their own isolated environment locally, via .venv-dashboard).
+#
+# This file is for a single-environment deployment target (Render,
+# Streamlit Community Cloud, etc.) where only the dashboard runs --
+# never installed into the main project's environment, and pyarrow is
+# deliberately left unpinned here so pip resolves whatever version
+# streamlit itself requires.
+streamlit>=1.61
+plotly>=6.9
+psycopg[binary]>=3.3
+pandas>=3.0
+pyyaml>=6.0

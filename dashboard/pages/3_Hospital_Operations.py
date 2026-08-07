@@ -71,31 +71,49 @@ try:
     with col1:
         render_section_title("Encounter Volume by Month")
         fig = line_chart(volume_by_month, "year_month", "encounter_count", "Encounter Volume by Month", "Month", "Encounters")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
     with col2:
         render_section_title("Encounter Volume by Organization")
         fig = horizontal_bar_chart(volume_by_org, "organization_name", "encounter_count", "Top 15 Organizations by Volume", "Encounters", "Organization")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Average Encounter Duration by Organization")
         fig = horizontal_bar_chart(duration_by_org, "organization_name", "avg_duration_minutes", "Top 15 by Average Duration", "Minutes", "Organization")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
     with col2:
         render_section_title("Organization x Encounter Class")
         fig = heatmap(heatmap_df, "encounter_class", "organization_name", "encounter_count", "Encounter Volume Heatmap", "Encounter Class", "Organization")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
 
     col1, col2 = st.columns(2)
     with col1:
         render_section_title("Emergency Utilization Trend")
         fig = line_chart(emergency_trend, "year_month", "emergency_pct", "Emergency Encounter % by Month", "Month", "Emergency %")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
     with col2:
         render_section_title("Inpatient Utilization Trend")
         fig = line_chart(inpatient_trend, "year_month", "inpatient_pct", "Inpatient Encounter % by Month", "Month", "Inpatient %")
-        st.plotly_chart(fig, width="stretch") if fig else render_empty_state()
+        if fig:
+            st.plotly_chart(fig, width="stretch")
+        else:
+            render_empty_state()
 
     render_section_title("Organization Comparison")
     comparison = get_organization_comparison_table(filters)

@@ -51,6 +51,7 @@ class PostgresConnectionConfig:
     user: str
     password: str
     connect_timeout: int = 10
+    sslmode: str = "prefer"
 
     def as_conninfo_kwargs(self) -> dict:
         return {
@@ -60,6 +61,7 @@ class PostgresConnectionConfig:
             "user": self.user,
             "password": self.password,
             "connect_timeout": self.connect_timeout,
+            "sslmode": self.sslmode,
         }
 
     def safe_repr(self) -> str:
@@ -90,6 +92,12 @@ def load_connection_config(env: dict | None = None) -> PostgresConnectionConfig:
         dbname=source["POSTGRES_DB"],
         user=source["POSTGRES_USER"],
         password=source["POSTGRES_PASSWORD"],
+        # Optional -- unset behaves exactly as before this field existed
+        # (libpq's own "prefer" default). Managed PostgreSQL providers
+        # (Render, RDS, etc.) generally require SSL: set
+        # POSTGRES_SSLMODE=require for those. Never a credential value,
+        # so no sanitization is needed here.
+        sslmode=source.get("POSTGRES_SSLMODE") or "prefer",
     )
 
 

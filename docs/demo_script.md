@@ -71,7 +71,7 @@ regress."*
 
 ## 6. Streamlit (45 seconds)
 
-**Show:** `streamlit run dashboard/app.py` (or `make dashboard`), land
+**Show:** `streamlit run dashboard/CareFlow_Analytics.py` (or `make dashboard`), land
 on the Executive Overview page.
 
 **Say:** *"This is live, querying PostgreSQL through the dbt layer in

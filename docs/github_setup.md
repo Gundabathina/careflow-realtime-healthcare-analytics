@@ -15,10 +15,30 @@ what's tracked-vs-not before that first commit).
 ## About section
 
 - **Description:** use the repository description above.
-- **Website:** leave blank unless the Streamlit dashboard is deployed
-  somewhere publicly reachable (e.g. Streamlit Community Cloud) -- don't
-  link a `localhost` URL.
+- **Website:** leave blank until the dashboard is actually deployed
+  somewhere publicly reachable (see [`deployment_guide.md`](deployment_guide.md)
+  -- Render is the prepared target). Never link a `localhost` URL, and
+  never fabricate a URL that doesn't resolve yet.
 - **Topics:** see below.
+
+### After the dashboard is deployed (manual steps, once a real URL exists)
+
+1. On GitHub, repository home -> the gear icon next to **About** (top
+   right of the file listing) -> **Website** field -> paste the real
+   deployed URL (e.g. `https://careflow-analytics-dashboard.onrender.com`)
+   -> **Save changes**.
+2. In `README.md`, replace the HTML comment placeholder right after the
+   badges (`<!-- Once deployed, add: **[Live Demo](...)** here -->`)
+   with a real link, e.g.:
+   ```markdown
+   **[Live Demo](https://careflow-analytics-dashboard.onrender.com)**
+   ```
+3. Commit and push that one-line README change -- don't bundle it with
+   unrelated changes, so it's easy to revert if the deployment is ever
+   taken down.
+4. If the deployment is later taken offline, reverse both steps (clear
+   the Website field, remove the README link) rather than leaving a
+   dead link live.
 
 ## Recommended topics
 
