@@ -66,3 +66,6 @@ airflow.db
 # credentials must only ever come from environment variables, never this
 # file); dashboard/.streamlit/config.toml itself holds no secrets and is tracked.
 dashboard/.streamlit/secrets.toml
+
+# Local production credentials - NEVER COMMIT
+.render-prod.env

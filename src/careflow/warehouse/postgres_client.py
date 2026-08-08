@@ -15,6 +15,7 @@ import re
 from contextlib import contextmanager
 from dataclasses import dataclass
 from typing import Iterator
+from urllib.parse import urlsplit
 
 import psycopg
 
@@ -69,13 +70,61 @@ class PostgresConnectionConfig:
         return f"postgresql://{self.user}:***@{self.host}:{self.port}/{self.dbname}"
 
 
+def _parse_database_url(url: str, sslmode: str) -> PostgresConnectionConfig:
+    """Parse a single bundled connection URL (e.g. Render's "External Database URL",
+    ``postgresql://user:password@host:port/dbname``) into the same config shape as
+    the five separate POSTGRES_* variables.
+
+    Never includes the raw URL (which embeds the password) in any error
+    message -- only field names, exactly like the POSTGRES_* path.
+    """
+    try:
+        parts = urlsplit(url)
+    except ValueError:
+        raise MissingCredentialsError("DATABASE_URL is not a valid URL") from None
+
+    missing = [
+        name for name, value in (
+            ("host", parts.hostname), ("user", parts.username),
+            ("password", parts.password), ("dbname", parts.path.lstrip("/")),
+        ) if not value
+    ]
+    if missing:
+        raise MissingCredentialsError(
+            f"DATABASE_URL is missing required component(s): {', '.join(missing)}."
+        )
+    return PostgresConnectionConfig(
+        host=parts.hostname,
+        port=parts.port or 5432,
+        dbname=parts.path.lstrip("/"),
+        user=parts.username,
+        password=parts.password,
+        sslmode=sslmode,
+    )
+
+
 def load_connection_config(env: dict | None = None) -> PostgresConnectionConfig:
     """Build connection config strictly from environment variables.
 
-    Raises :class:`MissingCredentialsError` naming which variable(s) are
-    missing -- the error message never includes any credential value.
+    Supports two forms, checked in this order:
+
+    1. ``DATABASE_URL`` -- a single bundled connection string (e.g. what
+       Render's "Connect" page shows as the "External Database URL").
+    2. The five separate ``POSTGRES_HOST``/``POSTGRES_PORT``/``POSTGRES_DB``/
+       ``POSTGRES_USER``/``POSTGRES_PASSWORD`` variables (unchanged,
+       original behavior).
+
+    ``POSTGRES_SSLMODE`` applies to either form. Raises
+    :class:`MissingCredentialsError` naming which variable(s)/component(s)
+    are missing -- the error message never includes any credential value.
     """
     source = env if env is not None else os.environ
+    sslmode = source.get("POSTGRES_SSLMODE") or "prefer"
+
+    database_url = source.get("DATABASE_URL")
+    if database_url:
+        return _parse_database_url(database_url, sslmode)
+
     missing = [name for name in REQUIRED_ENV_VARS if not source.get(name)]
     if missing:
         raise MissingCredentialsError(
@@ -92,12 +141,7 @@ def load_connection_config(env: dict | None = None) -> PostgresConnectionConfig:
         dbname=source["POSTGRES_DB"],
         user=source["POSTGRES_USER"],
         password=source["POSTGRES_PASSWORD"],
-        # Optional -- unset behaves exactly as before this field existed
-        # (libpq's own "prefer" default). Managed PostgreSQL providers
-        # (Render, RDS, etc.) generally require SSL: set
-        # POSTGRES_SSLMODE=require for those. Never a credential value,
-        # so no sanitization is needed here.
-        sslmode=source.get("POSTGRES_SSLMODE") or "prefer",
+        sslmode=sslmode,
     )
 
 

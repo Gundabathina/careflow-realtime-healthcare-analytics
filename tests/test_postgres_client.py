@@ -65,6 +65,50 @@ def test_sslmode_honors_env_override_for_managed_postgres():
     assert cfg.as_conninfo_kwargs()["sslmode"] == "require"
 
 
+# -- DATABASE_URL (bundled connection string, e.g. Render's External URL) --------
+
+
+def test_load_connection_config_from_database_url():
+    env = {
+        "DATABASE_URL": "postgresql://careflow_user:secret123@cloud-db.example.com:5432/careflow",
+        "POSTGRES_SSLMODE": "require",
+    }
+    cfg = pc.load_connection_config(env)
+    assert cfg.host == "cloud-db.example.com"
+    assert cfg.port == 5432
+    assert cfg.dbname == "careflow"
+    assert cfg.user == "careflow_user"
+    assert cfg.password == "secret123"
+    assert cfg.sslmode == "require"
+
+
+def test_database_url_takes_precedence_over_separate_postgres_vars():
+    env = {
+        "DATABASE_URL": "postgresql://url_user:url_pass@url-host.example.com:5432/url_db",
+        "POSTGRES_HOST": "should-be-ignored", "POSTGRES_PORT": "5432",
+        "POSTGRES_DB": "should-be-ignored", "POSTGRES_USER": "should-be-ignored",
+        "POSTGRES_PASSWORD": "should-be-ignored",
+    }
+    cfg = pc.load_connection_config(env)
+    assert cfg.host == "url-host.example.com"
+    assert cfg.user == "url_user"
+
+
+def test_database_url_missing_component_names_it_without_leaking_url():
+    env = {"DATABASE_URL": "postgresql://user@host:5432/db"}  # no password
+    with pytest.raises(pc.MissingCredentialsError) as exc_info:
+        pc.load_connection_config(env)
+    message = str(exc_info.value)
+    assert "password" in message
+    assert "user@host" not in message
+
+
+def test_database_url_defaults_port_when_omitted():
+    env = {"DATABASE_URL": "postgresql://careflow_user:secret123@cloud-db.example.com/careflow"}
+    cfg = pc.load_connection_config(env)
+    assert cfg.port == 5432
+
+
 def test_invalid_port_raises_missing_credentials_error():
     env = {
         "POSTGRES_HOST": "localhost", "POSTGRES_PORT": "not-a-number", "POSTGRES_DB": "careflow",

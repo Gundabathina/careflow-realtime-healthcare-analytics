@@ -5,17 +5,26 @@ Reuses the exact same pipeline components a local load uses -- no
 second pipeline exists for "production":
 
     1. careflow.warehouse.postgres_client.load_connection_config()
-       -- verifies POSTGRES_* env vars, never guesses/hard-codes them.
+       -- verifies POSTGRES_* env vars (or a single DATABASE_URL),
+          never guesses/hard-codes them.
     2. careflow.warehouse.gold_loader.run_gold_load()
        -- the same function scripts/load_postgres_warehouse.py calls;
           creates schema/indexes/views (ensure_schema) and loads every
-          Gold table transactionally. Checksum-based: re-running this
-          script against an already-bootstrapped, unchanged database is
-          a fast no-op, not a destructive reload.
+          Gold table transactionally into careflow_dim/careflow_fact/
+          careflow_mart. Checksum-based: re-running this script against
+          an already-bootstrapped, unchanged database is a fast no-op,
+          not a destructive reload.
     3. careflow.warehouse.warehouse_validator.run_validation()
        -- the same function scripts/validate_postgres_warehouse.py
           calls; compares the loaded warehouse back to Gold's own
           output.
+    4. scripts/run_dbt.py build (invoked as a subprocess, exactly as a
+       developer would run it) -- builds careflow_dbt_staging /
+       careflow_dbt_intermediate / careflow_dbt_mart on top of the
+       tables step 2 just loaded. The dashboard queries
+       careflow_dbt_mart exclusively (see dashboard/config.py), never
+       careflow_dim/careflow_fact directly -- steps 1-3 alone are NOT
+       sufficient to make the dashboard work.
 
 Intended to be run manually, once, pointed at a fresh managed database
 (e.g. via the POSTGRES_* values Render shows for a provisioned
@@ -34,6 +43,9 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
+import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -59,6 +71,14 @@ from careflow.warehouse.warehouse_validator import (  # noqa: E402
 )
 
 logger = get_logger(__name__)
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# Same patterns used by scripts/run_dbt.py's own sanitize_text() -- strips
+# anything resembling a password or embedded DSN before dbt's raw
+# stdout/stderr is logged.
+_PASSWORD_PATTERN = re.compile(r"password[=:]\S+", re.IGNORECASE)
+_DSN_PATTERN = re.compile(r"://[^:@/\s]+:[^@/\s]+@")
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -153,6 +173,52 @@ def main(argv: list[str] | None = None) -> int:
         logger.error("Production database bootstrap completed with validation failures -- see report above.")
         return 1
 
+    # 4. dbt build -- creates careflow_dbt_staging/intermediate/mart on top
+    #    of the careflow_dim/careflow_fact/careflow_mart tables just
+    #    loaded. Invoked exactly like scripts/run_dbt.py's own "build"
+    #    subcommand (same executable resolution, same --project-dir/
+    #    --profiles-dir), so dbt's profiles.yml env_var() calls resolve
+    #    correctly regardless of whether this process was configured via
+    #    DATABASE_URL or the five separate POSTGRES_* variables.
+    dbt_bin_override = os.environ.get("CAREFLOW_DBT_BIN")
+    dbt_bin = dbt_bin_override or str(PROJECT_ROOT / ".venv-dbt" / "bin" / "dbt")
+    if not Path(dbt_bin).is_file():
+        logger.error(
+            "dbt executable not found (resolved to %s) -- the warehouse tables loaded "
+            "correctly, but careflow_dbt_mart (what the dashboard reads) was not built. "
+            "Set up .venv-dbt (see docs/dbt_analytics_guide.md) and re-run, or run "
+            "`PYTHONPATH=src python3 scripts/run_dbt.py build` yourself with the same "
+            "POSTGRES_* values.",
+            dbt_bin,
+        )
+        return 1
+
+    dbt_env = dict(os.environ)
+    dbt_env.update({
+        "POSTGRES_HOST": config.host,
+        "POSTGRES_PORT": str(config.port),
+        "POSTGRES_DB": config.dbname,
+        "POSTGRES_USER": config.user,
+        "POSTGRES_PASSWORD": config.password,
+        "POSTGRES_SSLMODE": config.sslmode,
+        "DBT_TARGET": os.environ.get("DBT_TARGET", "dev"),
+    })
+    dbt_cmd = [dbt_bin, "build", "--project-dir", str(PROJECT_ROOT), "--profiles-dir", str(PROJECT_ROOT)]
+    logger.info("Running dbt build against the same database...")
+    dbt_result = subprocess.run(dbt_cmd, cwd=PROJECT_ROOT, env=dbt_env, capture_output=True, text=True)
+
+    sanitized_stdout = _DSN_PATTERN.sub("://***:***@", _PASSWORD_PATTERN.sub("password=***", dbt_result.stdout))
+    sanitized_stderr = _DSN_PATTERN.sub("://***:***@", _PASSWORD_PATTERN.sub("password=***", dbt_result.stderr))
+    if sanitized_stdout.strip():
+        logger.info("dbt stdout:\n%s", sanitized_stdout)
+    if sanitized_stderr.strip():
+        logger.info("dbt stderr:\n%s", sanitized_stderr)
+
+    if dbt_result.returncode != 0:
+        logger.error("dbt build failed (exit code %d) -- careflow_dbt_mart was not fully built.", dbt_result.returncode)
+        return 1
+
+    logger.info("dbt build succeeded -- careflow_dbt_mart is ready for the dashboard.")
     logger.info("Production database bootstrap succeeded.")
     return 0
 

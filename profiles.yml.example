@@ -19,6 +19,7 @@ careflow_analytics:
       user: "{{ env_var('POSTGRES_USER') }}"
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
       dbname: "{{ env_var('POSTGRES_DB') }}"
+      sslmode: "{{ env_var('POSTGRES_SSLMODE', 'prefer') }}"
       schema: careflow_dbt_mart
       threads: 4
       keepalives_idle: 0
@@ -30,6 +31,7 @@ careflow_analytics:
       user: "{{ env_var('POSTGRES_USER') }}"
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
       dbname: "{{ env_var('POSTGRES_DB') }}"
+      sslmode: "{{ env_var('POSTGRES_SSLMODE', 'prefer') }}"
       schema: careflow_dbt_mart_ci
       threads: 2
       connect_timeout: 10
