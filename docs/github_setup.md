@@ -15,24 +15,19 @@ what's tracked-vs-not before that first commit).
 ## About section
 
 - **Description:** use the repository description above.
-- **Website:** leave blank until the dashboard is actually deployed
-  somewhere publicly reachable (see [`deployment_guide.md`](deployment_guide.md)
-  -- Render is the prepared target). Never link a `localhost` URL, and
-  never fabricate a URL that doesn't resolve yet.
+- **Website:** `https://careflow-analytics-dashboard.onrender.com` --
+  the live deployment (see [`deployment_guide.md`](deployment_guide.md)).
+  Never link a `localhost` URL, and never set this to a URL that
+  doesn't actually resolve.
 - **Topics:** see below.
 
-### After the dashboard is deployed (manual steps, once a real URL exists)
+### Keeping the live URL in sync (if the deployment ever moves or goes offline)
 
 1. On GitHub, repository home -> the gear icon next to **About** (top
-   right of the file listing) -> **Website** field -> paste the real
-   deployed URL (e.g. `https://careflow-analytics-dashboard.onrender.com`)
-   -> **Save changes**.
-2. In `README.md`, replace the HTML comment placeholder right after the
-   badges (`<!-- Once deployed, add: **[Live Demo](...)** here -->`)
-   with a real link, e.g.:
-   ```markdown
-   **[Live Demo](https://careflow-analytics-dashboard.onrender.com)**
-   ```
+   right of the file listing) -> **Website** field -> update or clear
+   it -> **Save changes**.
+2. `README.md`'s `**[Live Demo](...)**` line (right after the badges)
+   should match -- update or remove it in the same commit.
 3. Commit and push that one-line README change -- don't bundle it with
    unrelated changes, so it's easy to revert if the deployment is ever
    taken down.
